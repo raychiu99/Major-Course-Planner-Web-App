@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "ucsc-major-planner",
     "public": "public",
     "ignore": [
       "firebase.json",
