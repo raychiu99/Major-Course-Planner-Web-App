@@ -5,29 +5,20 @@ import SignUp from "./components/SignUp";
 import Navbar from "./components/Navbar";
 
 
-function App() { 
+function App() {
   return (
     <Router>
       <div className="App">
         <Navbar />
         <div className="Content">
           <Switch>
-            
-            <Route exact path="/">
-              <SignIn />
-            </Route>
-            
-            <Route exact path="/SignUp">
-              <SignUp />
-            </Route>
-
+            <Route exact path="/" component={SignIn} />
+            <Route exact path="/SignUp" component={SignUp} />
           </Switch>
-          
         </div>
       </div>
     </Router>
   );
-  
 }
 
 export default App;

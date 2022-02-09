@@ -5,10 +5,9 @@ const Navbar = () => {
 			<div className="links">
 				<a href="/SignUp">Sign Up</a>
 				<a href="/">Log in</a>
-			</div>	
+			</div>
 		</nav>
 	);
 }
-
 
 export default Navbar;
