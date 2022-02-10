@@ -12,18 +12,22 @@ import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-
+import {useAuth} from '../contexts/AuthContext'
+import { useState } from 'react';
 const theme = createTheme();
 
 export default function SignIn() {
-  const handleSubmit = (event) => {
+  const {signIn} = useAuth();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const handleSubmit = async(event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    // eslint-disable-next-line no-console
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    try {
+      await signIn(email, password);
+      console.log('email: ', email, 'password: ', password);
+    } catch (error) {
+      console.log('THERES AN ERROR');
+    }
   };
 
   return (
@@ -60,7 +64,7 @@ export default function SignIn() {
             <Typography component="h1" variant="h5">
               Sign in
             </Typography>
-            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+            <Box component="form" noValidate sx={{ mt: 1 }}>
               <TextField
                 margin="normal"
                 required
@@ -69,6 +73,7 @@ export default function SignIn() {
                 label="Email Address"
                 name="email"
                 autoComplete="email"
+                onChange={(event) => setEmail(event.target.value)}
                 autoFocus
               />
               <TextField
@@ -80,6 +85,7 @@ export default function SignIn() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                onChange = {(event) => setPassword(event.target.value)}
               />
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
@@ -90,6 +96,7 @@ export default function SignIn() {
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
+                onSubmit={handleSubmit}
               >
                 Sign In
               </Button>

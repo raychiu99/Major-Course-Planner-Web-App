@@ -12,20 +12,23 @@ import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-
+import {useAuth} from '../contexts/AuthContext'
+import { useState } from 'react';
 const theme = createTheme();
 
 export default function SignUp() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    // eslint-disable-next-line no-console
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-  };
-
+    const {signUp} = useAuth();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const handleSubmit = async(event) => {
+      event.preventDefault();
+      try {
+        await signUp(email, password);
+        console.log('email: ', email, 'password: ', password);
+      } catch (error) {
+        console.log('THERES AN ERROR');
+      }
+    };
   return (
     <ThemeProvider theme={theme}>
       <Grid container component="main" sx={{ height: '100vh' }}>
@@ -91,6 +94,7 @@ export default function SignUp() {
                     label="Email Address"
                     name="email"
                     autoComplete="email"
+                    onChange={(event) => setEmail(event.target.value)}
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -102,6 +106,7 @@ export default function SignUp() {
                     type="password"
                     id="password"
                     autoComplete="new-password"
+                    onChange = {(event) => setPassword(event.target.value)}
                   />
                 </Grid>
               </Grid>
@@ -110,6 +115,7 @@ export default function SignUp() {
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
+                onSubmit={handleSubmit}
               >
                 Sign Up
               </Button>
