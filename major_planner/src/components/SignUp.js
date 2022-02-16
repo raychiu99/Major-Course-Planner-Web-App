@@ -14,17 +14,26 @@ import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import {useAuth} from '../contexts/AuthContext'
 import { useState } from 'react';
+import { getDatabase, ref, set } from "firebase/database";
 const theme = createTheme();
 
 export default function SignUp() {
     const {signUp} = useAuth();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const db = getDatabase();
     const handleSubmit = async(event) => {
       event.preventDefault();
       try {
-        await signUp(email, password);
-        console.log('email: ', email, 'password: ', password);
+        const user = await signUp(email, password, firstName, lastName);
+        console.log('email: ', email, 'password: ', password, 'userId: ', user.user.uid, firstName, lastName, user);
+        set(ref(db,'Users/'+user.user.uid), {
+          firstName: firstName,
+          lastName: lastName,
+          email: email 
+        });
       } catch (error) {
         console.log('THERES AN ERROR');
       }
@@ -73,6 +82,7 @@ export default function SignUp() {
                     fullWidth
                     id="firstName"
                     label="First Name"
+                    onChange={(event) => setFirstName(event.target.value)}
                     autoFocus
                   />
                 </Grid>
@@ -83,6 +93,7 @@ export default function SignUp() {
                     id="lastName"
                     label="Last Name"
                     name="lastName"
+                    onChange={(event) => setLastName(event.target.value)}
                     autoComplete="family-name"
                   />
                 </Grid>
