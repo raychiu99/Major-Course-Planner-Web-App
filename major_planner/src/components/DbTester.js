@@ -50,7 +50,7 @@ export default function RowAndColumnSpacing() {
           label="currentFaculty"
           onChange={handleChange}
         > {allFaculties.map((faculty, index)  => (
-          <MenuItem value={faculty}>{faculty}</MenuItem>
+          <MenuItem value = {faculty} key={faculty}>{faculty}</MenuItem>
         ))}
         </Select>
       </FormControl>

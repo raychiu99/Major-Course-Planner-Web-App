@@ -41,17 +41,17 @@ export default function BasicList(props) {
                  * key[1] = Object containing all the information
                  */
                 return(
-                <ListItem value = {value}> {key[0]}
+                <List key = {value}> {key[0]}
                     {
                         /** Loop through the object containing the information
                          * display the name of the key 'k'
                          * and display the value at position key[1][k]
                          */
-                        Object.keys(key[1]).map((k)=> (
-                            <ListItem> {<b>{k+': '}</b>}{key[1][k]}</ListItem>
+                        Object.keys(key[1]).map((k, v)=> (
+                            <ListItem key = {v}> {<b>{k+': '}</b>}{key[1][k]}</ListItem>
                         ))
                     }
-                </ListItem>
+                </List>
                 );
             })  
         }
