@@ -1,0 +1,26 @@
+.Course {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.title{
+    position: absolute;
+    width: 660px;
+    height: 164px;
+    left: 390px;
+    top: 209px;
+
+    font-family: Manrope;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 60px;
+    line-height: 82px;
+    /* or 137% */
+
+    text-transform: uppercase;
+
+    color: #000000;
+}

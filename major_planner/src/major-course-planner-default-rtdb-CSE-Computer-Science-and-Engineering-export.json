@@ -1,0 +1,936 @@
+[{
+  "ClassDescription" : "An overview of the theory, foundations, and practice of computer science with emphasis on what computers can and cannot do, now and in the future. Topics include algorithms and data, correctness and efficiency of algorithms, hardware, programming languages, limitations of computation, applications, and social issues. No programming skills are required as a prerequisite. Major concepts and open problems in computer science are presented without reliance on sophisticated mathematical tools. Students cannot receive credit for this course after completing CSE 15. (Formerly CMPS 10.)",
+  "ClassName" : "CSE 10 Introduction to Computer Science",
+  "Credits" : "5",
+  "GeneralEducationCode" : "MF",
+  "Professor(s)" : " The Staff, Patrick Tantalo, Marilyn Walker",
+  "QuarterOffered" : "No information"
+},
+{
+    "ClassDescription" : "Boolean algebra, logic minimization, finite-state machine design, sequential circuits, common logic elements, programmable logic devices, and an introduction to system level design. The electrical behavior of circuits including three state outputs, propagation delay, logic levels, and fanout.",
+    "ClassName" : "CSE 100 Logic Design",
+    "Credits" : "5",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : "Scott Beamer, Martine Schlag, Sagnik Nath",
+    "QuarterOffered" : "Fall, Winter, Spring",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): CSE 12; previous or concurrent enrollment in CSE 100L is required."
+  },
+{
+    "ClassDescription" : "Laboratory sequence illustrating topics covered in course 100. Two 2-hour laboratory sessions per week. Weekly laboratory assignments which require the use of the oscilloscopes, TTL circuits, computer-aided design and simulation tools, and programmable logic.",
+    "ClassName" : "CSE 100L Logic Design Laboratory",
+    "Credits" : "2",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : "Scott Beamer, Martine Schlag, Sagnik Nath",
+    "QuarterOffered" : "Fall, Winter, Spring",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): CSE 12; previous or concurrent enrollment in CSE 100 is required."
+  },
+{
+    "ClassDescription" : "Introduction to abstract data types and basics of algorithms. Linked lists, stacks, queues, hash tables, trees, heaps, and graphs will be covered. Students will also be taught how to derive big-Oh analysis of simple algorithms. All assignments will be in C/C++. (Formerly Computer Science 101 Algorithms and Abstract Data Types.)",
+    "ClassName" : "CSE 101 Introduction to Data Structures and Algorithms",
+    "Credits" : "5",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : " The Staff, Patrick Tantalo, Manfred Warmuth, Allen Van Gelder, David Helmbold, Seshadhri Comandur, James Davis, Alex Pang",
+    "QuarterOffered" : "Fall, Winter, Spring",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): CSE 12 or BME 160; CSE 13E or ECE 13 or CSE 13S; and CSE 16; and CSE 30; and MATH 11B or MATH 19B or MATH 20B or AM 11B."
+  },
+ {
+    "ClassDescription" : "Methods for the systematic construction and mathematical analysis of algorithms. Order notation, the RAM model of computation, lower bounds, and recurrence relations are covered. The algorithm design techniques include divide-and-conquer, branch and bound, and dynamic programming. Applications to combinatorial, graph, string, and geometric algorithms. (Formerly Computer  Science 102.)",
+    "ClassName" : "CSE 102 Introduction to Analysis of Algorithms",
+    "Credits" : "5",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : " The Staff, Manfred Warmuth, Allen Van Gelder, Suresh Lodha, David Helmbold, Daniel Fremont, Abhradeep Guha Thakurta",
+    "QuarterOffered" : "Fall, Winter, Spring",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): CSE 101."
+  },
+{
+    "ClassDescription" : "Various representations for regular languages, context-free grammars, normal forms, simple parsing, pumping lemmas, Turing machines, the Church-Turing thesis, intractable problems, the P-NP question. (Formerly CMPS 130.)",
+    "ClassName" : "CSE 103 Computational Models",
+    "Credits" : "5",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : "Delbert Bailey, Patrick Tantalo, Manfred Warmuth, Allen Van Gelder, Phokion Kolaitis, David Helmbold, Seshadhri Comandur",
+    "QuarterOffered" : "Fall, Winter, Spring",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): CSE 101."
+  },
+{
+    "ClassDescription" : "Turing machines, general phase-structure grammars, the Chomsky hierarchy, recursive functions, diagonalization, the Halting problem, computability and unsolvability, computational complexity, time and space bounds, NP-completeness with emphasis on reductions between problems from various areas. (Formerly CMPS 132.)",
+    "ClassName" : "CSE 104 Computability and Computational Complexity",
+    "Credits" : "5",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : "Delbert Bailey, Manfred Warmuth, Allen Van Gelder, Phokion Kolaitis, David Helmbold",
+    "QuarterOffered" : "No information",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): CSE 103."
+  },
+{
+    "ClassDescription" : "Basic concepts and algorithms are reviewed including trees, Eulerian and Hamiltonian graphs, and graph transversal. Algorithms are explored to solve problems in connectivity, routing, matching, and embedding of graphs. Graph theory and algorithms are developed around applications in computer engineering. (Formerly Computer Engineering 177.)",
+    "ClassName" : "CSE 106 Applied Graph Theory and Algorithms",
+    "Credits" : "5",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : "Martine Schlag, Patrick Tantalo",
+    "QuarterOffered" : "Winter",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): CSE 101."
+  },
+{
+    "ClassDescription" : "Introduction to fundamental tools of stochastic analysis. Probability, conditional probability; Bayes Theorem; random variables and transforms; independence; Bernnoulli trials. Statistics, inference from limited data; outcomes of repeated experiments; applications to design; assessment of relative frequency and probability; law of large numbers; precision of measurements. Elements of stochastic processes, Poisson processes; Markov chains. Students cannot receive credit for this course and Applied Mathematics and Statistics 131. (Formerly Computer Engineering 107.)",
+    "ClassName" : "CSE 107 Probability and Statistics for Engineers",
+    "Credits" : "5",
+    "GeneralEducationCode" : "SR",
+    "Professor(s)" : "Jose Garcia-Luna-Aceves, Mircea Teodorescu, John Musacchio",
+    "QuarterOffered" : "Winter, Spring",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): CSE 16; and AM 30 or MATH 22 or MATH 23A."
+  },
+{
+    "ClassDescription" : "Focuses on some of the foundational aspects of modern cryptography, namely, private and public key cryptography, digital signatures, pseudorandom generators and functions, message authentication codes, hash functions, and random oracles. Course also connects the formal concepts with some real-world applications, like RA, SSL, and bitcoin, exposing students to general concepts of probability theory, number theory, and rigorous proofs. (Formerly Computer Science 118.)",
+    "ClassName" : "CSE 108 Algorithmic Foundations of Cryptography",
+    "Credits" : "5",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : "Abhradeep Guha Thakurta, Ioannis Demertzis",
+    "QuarterOffered" : "Winter",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): CSE 101. Enrollment restricted to computer engineering and computer science majors."
+  },
+{
+    "ClassDescription" : "An introduction to the basic techniques used in compiler design. Topics include compiler structure, symbol tables, regular expressions and languages, finite automata, lexical analysis, context-free languages, LL(1), recursive descent, LALR(1), and LR(1) parsing; and attribute grammars as a model of syntax-directed translation. Students use compiler building tools to construct a working compiler. (Formerly Computer  Science 104A.)",
+    "ClassName" : "CSE 110A Fundamentals of Compiler Design I",
+    "Credits" : "5",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : "Wesley Mackey, Owen Arden, TylerSorensen Sorensen",
+    "QuarterOffered" : "Winter, Spring",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): CSE 12 and CSE 101."
+  },
+{
+    "ClassDescription" : "Advanced study of compiler implementation. Topics include compiler structure back end, run-time environments, storage management, garbage collection, register allocation, code generation, basic blocks, control flow, data flow, local and global optimization, interpretation, and machine-code generation. Students may not receive credit for this course and CSE 211. Taught in conjunction with CSE 211. (Formerly Computer Science 104B.)",
+    "ClassName" : "CSE 110B Fundamentals of Compiler Design II",
+    "Credits" : "5",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : "Wesley Mackey",
+    "QuarterOffered" : "No information",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): CSE 110A."
+  },
+{
+    "ClassDescription" : "An introduction to object-oriented techniques of software development including data abstraction, inheritance, polymorphism, and object-oriented design. Extensive practice using a computer to solve problems, including construction of graphical user interfaces and a multithreaded client/server applications.",
+    "ClassName" : "CSE 111 Advanced Programming",
+    "Credits" : "5",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : " The Staff, Wesley Mackey",
+    "QuarterOffered" : "Fall, Winter, Spring",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): CSE 15 and CSE 15L; or CSE 13S and CMPM 35; or CSE 13E and CMPM 35; or ECE 13 and CMPM 35; or CSE 101."
+  },
+{
+    "ClassDescription" : "Covers several programming languages and compares styles, philosophy, and design principles. Principles underlying declarative, functional, and object-oriented programming styles are studied. Students write programs emphasizing each of these techniques. (Formerly Computer Science 112.)",
+    "ClassName" : "CSE 112 Comparative Programming Languages",
+    "Credits" : "5",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : "W. Mackey, D. Long, C. Flanagan, A. Van Gelder, O. Arden, D. Harrison",
+    "QuarterOffered" : "Fall, Spring",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): CSE 101."
+  },
+{
+    "ClassDescription" : "Introduction to parallel and concurrent programming. Topics include: types of parallel computers and programming platforms; design, implementation, and optimization of programs for parallel and multicore processors; basic and advanced programming techniques; performance analysis and load balancing; and selected parallel algorithms.",
+    "ClassName" : "CSE 113 Parallel and Concurrent Programming",
+    "Credits" : "5",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : "Tyler Sorensen",
+    "QuarterOffered" : "Winter",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): CSE 12 and CSE 101. CSE 120 recommended."
+  },
+{
+    "ClassDescription" : "Problem solving emphasizing recursion, data abstraction, and higher-order functions. Introduction to types and type checking, modular programming, and reasoning about program correctness. (Formerly CSE 116, Introduction to Functional Programming.)",
+    "ClassName" : "CSE 114A Foundations of Programming Languages",
+    "Credits" : "5",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : "Owen Arden, Lindsey Kuper, Cormac Flanagan",
+    "QuarterOffered" : "Fall, Winter, Spring",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): CSE 101."
+  },
+{
+    "ClassDescription" : "An in-depth study of the functional style of programming and functional abstraction, including the study of applicative functors and monads, and monadic parsers. (Formerly CSE 114.)",
+    "ClassName" : "CSE 114B Functional Programming",
+    "Credits" : "5",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : "Cormac Flanagan",
+    "QuarterOffered" : "No information",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): CSE 114A. Enrollment is restricted to junior and senior computer science majors."
+  },
+{
+    "ClassDescription" : "Emphasizes the characteristics of well-engineered software systems. Topics include requirements analysis and specification, design, programming, verification and validation, maintenance, and project management. Practical and research methods are studied. Imparts an understanding of the steps used to effectively develop computer software. (Formerly Computer Science 115.)",
+    "ClassName" : "CSE 115A Introduction to Software Engineering",
+    "Credits" : "5",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : " The Staff, Jim Whitehead, Cormac Flanagan, Linda Werner, Richard Jullig, Narges Norouzi",
+    "QuarterOffered" : "Fall, Winter, Spring",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): satisfaction of the Entry Level Writing and Composition requirements and CSE 101 and CSE 130."
+  },
+{
+    "ClassDescription" : "Students in teams specify, design, construct, test, and document a complete software system in a specialized application domain. Class time is spent in technical discussions and ongoing design reviews. A formal presentation and demonstration of each project is required. An organizational meeting will be held during the preceding quarter. Projects may be drawn from industry and campus research groups. (Formerly Computer Science 116.)",
+    "ClassName" : "CSE 115B Software Design Project",
+    "Credits" : "5",
+    "GeneralEducationCode" : "PR-E",
+    "Professor(s)" : "Jim Whitehead, Luca De Alfaro, Linda Werner, Richard Jullig",
+    "QuarterOffered" : "Winter",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): CSE 115A."
+  },
+{
+    "ClassDescription" : "Continuation of CSE 116. Students work in teams to develop, test, document, and deploy a substantial software project. Teams give a formal presentation and demonstration of each project. (Formerly Computer Science 117.)",
+    "ClassName" : "CSE 115C Software Design Project II",
+    "Credits" : "5",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : " The Staff, Jim Whitehead, Luca De Alfaro, Linda Werner, Richard Jullig",
+    "QuarterOffered" : "Spring",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): CSE 115B."
+  },
+{
+    "ClassDescription" : "Accelerated version of CSE 115B and CSE 115C. Students work in teams to develop, test, document and deploy a substantial software project. Each team gives a formal presentation and demonstration of their project. Students cannot receive credit for both CSE 115D and any part of the 115B-115C sequence.",
+    "ClassName" : "CSE 115D Software Design Project - Accelerated",
+    "Credits" : "5",
+    "GeneralEducationCode" : "PR-E",
+    "Professor(s)" : "Richard Jullig",
+    "QuarterOffered" : "Fall",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): CSE 115A."
+  },
+{
+    "ClassDescription" : "Presents an opportunity to participate in Linux Kernel development--one of the preeminent open source projects. Through community involvement, students accelerate comprehension of computer science fundamentals and display their understanding and experience relevant to other programming projects.",
+    "ClassName" : "CSE 117 Open Source Programming",
+    "Credits" : "5",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : " The Staff, Carl Maltzahn",
+    "QuarterOffered" : "No information",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): CSE 101 and CSE 12. Enrollment restricted to School of Engineering majors."
+  },
+{
+    "ClassDescription" : "Introduces programming and application development for mobile devices. Covers the Android SDK and main programming platforms available on mobile devices, methodologies for developing native applications. Students build applications and learn about different Android application components such as Activities, Services, Broadcast Receivers, and Content Providers through course assignments. Course based on emulators and SDK tools, so ownership of a cell phone/tablet is not required for the course. (Formerly CMPS 121.)",
+    "ClassName" : "CSE 118 Mobile Applications",
+    "Credits" : "5",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : "David Harrison, Luca De Alfaro, Narges Norouzi",
+    "QuarterOffered" : "No information",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): CSE 101."
+  },
+{
+    "ClassDescription" : "Provides experience with applying computing to social issues. Case studies on multiple issues. For example: privacy, copyright, voting, education, poverty, energy, activism. Team project in which students develop software to address a pre-identified need of a global or local non-profit. (Formerly Computer Science 119.)",
+    "ClassName" : "CSE 119 Software for Society",
+    "Credits" : "5",
+    "GeneralEducationCode" : "PE-T",
+    "Professor(s)" : "Suresh Lodha, James Davis",
+    "QuarterOffered" : "No information",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): CSE 101."
+  },
+{
+    "ClassDescription" : "Introduction to computer systems and assembly language and how computers compute in hardware and software. Topics include digital logic, number systems, data structures, compiling/assembly process, basics of the system software, and computer architecture. Course is 7 credits with integrated laboratories illustrating concepts covered in lecture. Note that CSE 12 assumes some programming experience. Students can show programming experience by taking one of the courses listed in the prerequisite list below or by taking the CSE python Test-out Exam: https://undergrad.soe.ucsc.edu/cse-20-testout-exam (Formerly CSE 12 and CSE 12L)",
+    "ClassName" : "CSE 12 Computer Systems and Assembly Language and Lab",
+    "Credits" : "7",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : " The Staff, Tracy Larrabee, Darrell Long, Jose Renau Ardevol, Matthew Guthaus, Max Dunne, Sagnik Nath",
+    "QuarterOffered" : "Fall, Winter, Spring, Summer",
+    "Requirements" : "Prerequisite(s): CSE 5J, or CSE 20, or CSE 30, or BME 160, or equivalent."
+  },
+{
+    "ClassDescription" : "Introduction to computer architecture including examples of current approaches and the effect of technology and software. Computer performance evaluation, basic combinatorial and sequential digital components, different instruction set architectures with a focus on the MIPS ISA and RISC paradigm. Evolution of CPU microarchitecture from single-cycle to multi-cycle pipelines, with overview of super-scalar, multiple-issue and VLIW. Memory system, cache, virtual memory and relationship between memory and performance. Evolution of PC system architecture. May include advanced topics, such as parallel processing, MIMD, and SIMD.",
+    "ClassName" : "CSE 120 Computer Architecture",
+    "Credits" : "5",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : "Scott Beamer, Ethan Miller, Jose Renau Ardevol, Heiner Litz, Sagnik Nath",
+    "QuarterOffered" : "Fall, Winter, Spring",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): CSE 12; and CSE 13E, or CSE 13S, or ECE 13, or CSE 15 and CSE 15L. CSE 16 recommended."
+  },
+{
+    "ClassDescription" : "The design and use of microprocessor-based embedded systems. Covers microprocessor and microcontroller architecture, programming techniques, bus and memory organization, DMA, timing issues, interrupts, peripheral devices, serial and parallel communication, and interfacing to analog and digital systems. (Formerly Microprocessor System Design, and formerly offered as two courses, CMPE 121 and CMPE 121L.)",
+    "ClassName" : "CSE 121 Embedded System Design",
+    "Credits" : "7",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : "Anujan Varma, David Harrison",
+    "QuarterOffered" : "Fall, Spring",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): CSE 12, CSE 100, CSE 100L; and CSE 13E or CSE 13S or ECE 13 or CSE 15 and CSE 15L; and ECE 101, ECE 101L, PHYS 5C and PHYS 5N."
+  },
+{
+    "ClassDescription" : "Introduces very large scale integrated (VLSI) custom integrated circuits. Topics include: semiconductor manufacturing, logic families, field-effect transistors (FETs), interconnect models, simulation, and circuits. Introduces the design flow from logic design to layout with a focus on high performance and low power. Students cannot receive credit for this course and CSE 222A. (Formerly Computer Engineering 122.)",
+    "ClassName" : "CSE 122 Introduction to VLSI Digital System Design",
+    "Credits" : "5",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : "Matthew Guthaus",
+    "QuarterOffered" : "Winter",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): CSE 100, CSE 100L, ECE 101, and ECE 101L."
+  },
+  {
+    "ClassDescription" : "First of a two-course sequence that is the culmination of the engineering program. Students apply knowledge and skills gained in elective track to complete a major design project. Students complete research, specification, planning, and procurement for a substantial project. Includes technical discussions, design reviews, and formal presentations; engineering design cycle, engineering teams, and professional practices. Formal technical specification of the approved project is presented to faculty.",
+    "ClassName" : "CSE 123A Engineering Design Project I",
+    "Credits" : "5",
+    "GeneralEducationCode" : "PR-E",
+    "Professor(s)" : " The Staff, Anujan Varma, David Harrison",
+    "QuarterOffered" : "Winter",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): CSE 121; previous or concurrent enrollment in CSE 185E."
+  },
+{
+    "ClassDescription" : "Second of two-course sequence in engineering system design. Students fully implement and test system designed and specified in CSE 123A. Formal written report, oral presentation, and demonstration of successful project to review panel of engineering faculty required.",
+    "ClassName" : "CSE 123B Engineering Design Project II",
+    "Credits" : "7",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : " The Staff, Anujan Varma, David Harrison",
+    "QuarterOffered" : "Spring",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): CSE 123A, and CSE 185E or CSE 185S."
+  },
+{
+    "ClassDescription" : "Verilog digital logic design with emphasis on ASIC and FPGA design. Students design and verify large-scale systems. Assignments and project use the Verilog Hardware Description Language with emphasis on verification and high-frequency ASIC/FPGA targets. May be taught in conjunction with CSE 225. Students cannot receive credit for both courses.",
+    "ClassName" : "CSE 125 Logic Design with Verilog",
+    "Credits" : "7",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : "Jose Renau Ardevol, Matthew Guthaus, Heiner Litz",
+    "QuarterOffered" : "Spring",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): CSE 100 and CSE 100L and CSE 120."
+  },
+ {
+    "ClassDescription" : "First of a three-course sequence in which students apply knowledge and skills gained in elective track to complete a major design project. In this first course, students complete the specification and planning for a substantial project. Topics covered: engineering design cycle, engineering teams, and professional practices. (Formerly Computer Engineering 129A.)",
+    "ClassName" : "CSE 129A Capstone Project I",
+    "Credits" : "2",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : "Patrick Mantey, Gabriel Elkaim",
+    "QuarterOffered" : "No information",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): previous or concurrent enrollment in courses CSE 121 and CSE 121L. Enrollment is restricted to bioengineering, biomolecular engineering and bioinformatics, computer engineering, and robotics engineering majors."
+  },
+ {
+    "ClassDescription" : "Second of a three-course sequence in which students apply knowledge and skills gained in elective track to complete a major design project. In this second course, students complete the research and procurement for a substantial project and a preliminary implementation. Prerequisite(s): CSE 121, CSE 121L, and CSE 129A. Previous or concurrent enrollment in CSE 185. Enrollment by permission of instructor.",
+    "ClassName" : "CSE 129B Capstone Project II",
+    "Credits" : "5",
+    "GeneralEducationCode" : "PR-E",
+    "Professor(s)" : "Patrick Mantey, Gabriel Elkaim",
+    "QuarterOffered" : "No information",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): previous or concurrent enrollment in courses CSE 121 and CSE 121L. Enrollment is restricted to bioengineering, biomolecular engineering and bioinformatics, computer engineering, and robotics engineering majors."
+  },
+{
+    "ClassDescription" : "Third of a three-course sequence in which students apply knowledge and skills gained in elective track to complete a major design project. In this third course, students work in teams to complete the project specified and advanced in the first two courses. A formal written report, oral presentation, and demonstration of the successful project to a review panel of engineering faculty is required. Prerequisite(s): CSE 129B and CSE 185. Enrollment by permission of instructor.",
+    "ClassName" : "CSE 129C Capstone Project III",
+    "Credits" : "5",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : "Patrick Mantey, Gabriel Elkaim",
+    "QuarterOffered" : "No information",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): previous or concurrent enrollment in courses CSE 121 and CSE 121L. Enrollment is restricted to bioengineering, biomolecular engineering and bioinformatics, computer engineering, and robotics engineering majors."
+  },
+{
+    "ClassDescription" : "Covers the principles governing computer-systems design and complexity; familiarity with memory, storage, and networking; concurrency and synchronization; layering (abstraction and modularity); naming; client-server and virtualized system models; and performance. Requires significant programming projects demonstrating mastery of these concepts.",
+    "ClassName" : "CSE 130 Principles of Computer Systems Design",
+    "Credits" : "5",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : "Ethan Miller, Gabriel Elkaim, Faisal Nawab, Peter Alvaro, David Harrison",
+    "QuarterOffered" : "Fall, Winter",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): CSE 12; and CSE 101, or CSE 15 and CSE 15L; and knowledge of C programming language."
+  },
+{
+    "ClassDescription" : "Introduction to computer security (including selected topics in network security). Access control. Security in programming languages. Basic cryptography. Security protocols. (Formerly CMPS 122.)",
+    "ClassName" : "CSE 132 Computer Security",
+    "Credits" : "5",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : "Ethan Miller, Owen Arden, Alvaro Cardenas",
+    "QuarterOffered" : "Fall, Spring",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): CSE 130 or CSE 131 or permission of instructor. Enrollment restricted to School of Engineering majors."
+  },
+{
+    "ClassDescription" : "Detailed exploration of the internal design of an embedded operating systems kernel. Covers kernel structure and organization, device drivers, I/O systems, file systems, memory management, and security. Students complete significant programming projects that extend or modify existing operating systems. (Formerly Computer Engineering 114.)",
+    "ClassName" : "CSE 134 Embedded Operating Systems",
+    "Credits" : "5",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : "Ethan Miller, Darrell Long",
+    "QuarterOffered" : "Spring",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): CSE 120 and CSE 130."
+  },
+{
+    "ClassDescription" : "Covers topics in distributed computing including communication, naming, synchronization, consistency and replication, fault tolerance, and security. Examples drawn from peer-to-peer systems, online gaming, the World Wide Web; other systems also used to illustrate approaches to these topics. Students implement simple distributed systems over the course of the quarter. (Formerly CMPS 128, Distributed Systems: File Sharing, Online Gaming, and More.)",
+    "ClassName" : "CSE 138 Distributed Systems",
+    "Credits" : "5",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : "L. Kuper, E. Miller, D. Long, P. Alvaro",
+    "QuarterOffered" : "Fall",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): CSE 130 or CSE 131."
+  },
+{
+    "ClassDescription" : "Focuses on C programming, command line, shell programming, editors, debuggers, source code control, and other tools. Examines basic computer systems, algorithm design, and development, data types, and program structures. Develops understanding of process model, compile-link-execute build cycle, language-machine interface, memory, and data representation. Students cannot receive credit for both CSE 13S and CSE 13E. Course is 7 credits with integrated laboratory.",
+    "ClassName" : "CSE 13S Computer Systems and C Programming",
+    "Credits" : "7",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : "Darrell Long, Peter Alvaro, Faisal Nawab, Davis Harrison",
+    "QuarterOffered" : "Fall, Winter, Spring",
+    "Requirements" : "Prerequisite(s): CSE 12 or BME 160."
+  },
+{
+    "ClassDescription" : "Introduction to the contemporary concepts and techniques of artificial intelligence, including any or all of: machine perception and inference, machine learning, optimization problems, computational methods and models of search, game playing and theorem proving. Emphasis may be on any formal method of perceiving, learning, reasoning, and problem solving which proves to be effective. This includes both symbolic and neural network approaches to artificial intelligence. Issues discussed include symbolic versus nonsymbolic methods, local versus global methods, hierarchical organization and control, and brain modeling versus engineering approaches. Lisp or Prolog may be introduced. Involves one major project or regular programming assignments. (Formerly CMPS 140.)",
+    "ClassName" : "CSE 140 Artificial Intelligence",
+    "Credits" : "5",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : "Narges Norouzi, Marilyn Walker, Lise Getoor, Yang The Staff",
+    "QuarterOffered" : "Winter, Spring",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): CSE 101."
+  },
+{
+    "ClassDescription" : "Introduction to machine learning algorithms and their applications. Topics include classification learning, density estimation and Bayesian learning regression, and online learning. Provides introduction to standard learning methods such as neural networks, decision trees, boosting, and nearest neighbor techniques. (Formerly CMPS 142.)",
+    "ClassName" : "CSE 142 Machine Learning",
+    "Credits" : "5",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : "Manfred Warmuth, David Helmbold, Snigdha Chaturvedi, Yang Liu, Xin \"Eric\" Wang",
+    "QuarterOffered" : "Fall, Winter, Spring",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): CSE 101; and AM 30, or MATH 22, or MATH 23A; and STAT 131 or CSE 107."
+  },
+{
+    "ClassDescription" : "Introduces the theory and practice of natural language processing (NLP)--the creation of computer programs that can understand, generate, and learn natural language. Introduces the three major subfields of NLP: syntax (the structure of a sentence); semantics (the  explicit meaning of a single sentence); and pragmatics (the implicit meaning of a sentence when it is used in a specific discourse). Projects focus on the techniques useful for a particular application area, alternating in different years. Project application areas include information extraction, narrative understanding, sentiment analysis, dialogue systems, and question answering. (Formerly CMPS 143.)",
+    "ClassName" : "CSE 143 Introduction to Natural Language Processing",
+    "Credits" : "5",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : " The Staff, Marilyn Walker",
+    "QuarterOffered" : "Spring",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): CSE 101, and CSE 107 or STAT 131. Python competence equivalent to CSE 30 is highly recommended."
+  },
+{
+    "ClassDescription" : "Provides a practical and project-oriented introduction to machine learning, with an emphasis on neural networks and deep learning. Starts with a discussion of the foundational pieces of statistical inference, then introduces the basic elements of machine learning: loss functions and gradient descent. Using these, presents logistic regression, or one-layer networks, and then moves on to more complex models: deep neural networks, convolutional networks for image recognition, and recurrent networks and LSTM for temporal and sequence data. Also covers the basics of dataset preparation and visualization and the performance characterization of the models created. Includes weekly homework and a final project that can be done in groups. (Formerly CMPS 144.)",
+    "ClassName" : "CSE 144 Applied Machine Learning",
+    "Credits" : "5",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : "Luca De Alfaro, Narges Norouzi, Benedict Paten, Josh Stuart, David Haussler, hangCi Xie",
+    "QuarterOffered" : "Fall, Winter",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): CSE 101. Enrollment is restricted to juniors and seniors."
+  },
+{
+    "ClassDescription" : "Covers the techniques, algorithms, and applications of data mining, including data preprocessing, data exploration, classification, clustering, mining text, and sequential and social data. (Formerly TIM 145.)",
+    "ClassName" : "CSE 145 Introduction to Data Mining",
+    "Credits" : "5",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : "Yi Zhang",
+    "QuarterOffered" : "Fall",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): CSE 15 and CSE 15L or CSE 30 or CSE 13S; and AM 30 or MATH 22 or MATH 23A; and STAT 5 or CSE 107 or STAT 131; and AM 10 or MATH 21; and CSE 16 or ECON 113. Enrollment restricted to juniors and seniors. Graduate students by permission of instructor."
+  },
+{
+    "ClassDescription" : "Provides an introduction to data-driven and algorithmic decision making, and ethical frameworks for evaluating automated systems. Emphasis on algorithmic literacy, critical analysis, and fundamental limitations of automated decision making. Covers concepts including predictive and causal modeling. Discusses bias, fairness, interpretability, privacy, and accountability. Finally, discusses notions of autonomy and algorithmic auditing.",
+    "ClassName" : "CSE 146 Ethics and Algorithms",
+    "Credits" : "5",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : "Lise Getoor",
+    "QuarterOffered" : "Spring",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): CSE 101; and CSE 107 or STAT 131. CSE 142 and CSE 140 are recommended."
+  },
+{
+    "ClassDescription" : "Addresses issues arising in organizing communications among autonomous computers. Network models and conceptual layers; Internet-working; characteristics of transmission media; switching techniques (packet switching, circuit switching, cell switching); medium access control (MAC) protocols and local area networks; error-control strategies and link-level protocols; routing algorithms for bridges and routers; congestion control mechanisms; transport protocols; application of concepts to practical wireless and wireline networks and standard protocol architectures. Students who have completed CSE 80N can take this course for credit.",
+    "ClassName" : "CSE 150 Introduction to Computer Networks",
+    "Credits" : "5",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : "Chen Quian, Katia Obraczka, Chris The Staff",
+    "QuarterOffered" : "Fall, Winter, Spring",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): CSE 16 and CSE 12; and CSE 30, or CSE 15 and CSE 15L. Concurrent enrollment in CSE 150L is required."
+  },
+{
+    "ClassDescription" : "Illustrates the concepts covered in CSE 150 and provides students with hands-on experience in computer networks.",
+    "ClassName" : "CSE 150L Introduction to Computer Networks Laboratory",
+    "Credits" : "2",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : "Chris Parsa, Katia Obraczka, Chen Qian",
+    "QuarterOffered" : "Fall, Winter, Spring",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): CSE 16 and CSE 12; and CSE 30  or CSE 15 and CSE 15L. Concurrent enrollment in CSE 150 is required."
+  },
+{
+    "ClassDescription" : "Provides an in-depth coverage of fundamental topics introduced in course 150 including routing, transport, and internetworking. Also introduces advanced concepts not covered in CSE 150 including wireless, application-layer services, security, etc. (Formerly  Computer Engineering 151.)",
+    "ClassName" : "CSE 151 Advanced Computer Networks",
+    "Credits" : "5",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : " The Staff, Bradley Smith, Jose Garcia-Luna-Aceves",
+    "QuarterOffered" : "Winter",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): CSE 150. Concurrent enrollment in CSE 151L is required."
+  },
+{
+    "ClassDescription" : "Laboratory illustrating the concepts covered in CSE 151: provides students with hands-on experience in computer networks. (Formerly Computer Engineering 151L.)",
+    "ClassName" : "CSE 151L Advanced Computer Networks Laboratory",
+    "Credits" : "2",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : " The Staff, Bradley Smith, Jose Garcia-Luna-Aceves",
+    "QuarterOffered" : "Winter",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): CSE 150 and CSE 150L. Concurrent enrollment in CSE 151 is required."
+  },
+{
+    "ClassDescription" : "Course focuses on the design and analysis of protocols for computer communication. Topics include: the safety, liveliness, and performance of communication protocols for medium access control (MAC); link control; routing and switching; multicasting; and end-to-end transport. Students cannot receive credit for this course and CSE 250B.",
+    "ClassName" : "CSE 152 Principles of Computer Communication",
+    "Credits" : "5",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : "Jose Garcia-Luna-Aceves",
+    "QuarterOffered" : "No information",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): CSE 107, CSE 150, and CSE 150L."
+  },
+{
+    "ClassDescription" : "Methods and tools used for network programming. Topics include: operating system (OS) support for network protocols; inter-process communication (IPC) facilities, such as pipes, sockets, and remote procedure call (RPC); design of client and server sides of network applications; network security; and programming projects. (Formerly Computer Engineering 156.)",
+    "ClassName" : "CSE 156 Network Programming",
+    "Credits" : "5",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : " The Staff, Mehrdad Parsa, Anujan Varma",
+    "QuarterOffered" : "Winter",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : ",Prerequisites: CSE 150, CSE 150L and CSE 101. Concurrent enrollment in course CSE 156L is required."
+  },
+ {
+    "ClassDescription" : "Laboratory sequence illustrating concepts taught in CSE 156. Students learn use of network programming tools and methods via programming exercises. (Formerly Computer Engineering 156L.)",
+    "ClassName" : "CSE 156L Network Programming Laboratory",
+    "Credits" : "2",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : " The Staff, Mehrdad Parsa, Anujan Varma",
+    "QuarterOffered" : "Winter",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisites: CSE 150, CSE 150L, and CSE 101. Concurrent enrollment in CSE 156 is required."
+  },
+{
+    "ClassDescription" : "Introduces the key concepts and techniques in the design of Internet of Things (IoT). Topics include dominant architectures and protocols for IoT, wireless infrastructure for IoT, hardware and software development methodologies, embedded software design for IoT, cloud software for IoT, and network and system security. Students work in teams on a project to design, prototype, and test a complete IoT system.",
+    "ClassName" : "CSE 157 Internet of Things",
+    "Credits" : "7",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : "Anujan Varma",
+    "QuarterOffered" : "Winter",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): CSE 121 and CSE 121L and CSE 150 and CSE 150L."
+  },
+{
+    "ClassDescription" : "Introduction to applications of discrete mathematical systems. Topics include sets, functions, relations, graphs, predicate calculus, mathematical proof methods (induction, contraposition, contradiction), counting methods (permutations, combinations), and recurrences. Examples are drawn from computer science and computer engineering. Knowledge of computer programming is useful before taking this course. Students who do not have prior programing experience are strongly recommended to take Computer Science 5C, 5J, or 5P before taking this course.",
+    "ClassName" : "CSE 16 Applied Discrete Mathematics",
+    "Credits" : "5",
+    "GeneralEducationCode" : "MF",
+    "Professor(s)" : "Tracy Larrabee, Martine Schlag, Owen Arden, Chen Qian, Alvaro Cardenas",
+    "QuarterOffered" : "Fall, Winter, Spring, Summer",
+    "Requirements" : "Prerequisite(s): MATH 19A or MATH 19B or MATH 11B or AM 11B or AM 15B or ECON 11B."
+  },
+{
+    "ClassDescription" : "Introduces techniques of modeling, transformation, and rendering for computer-generated imagery. Topics: 2D/3D primitives, projections, matrix composition, and shading algorithms. Programming assignments and major project required. Students cannot receive credit for both this course and course 260 in quarters when they are offered concurrently. Mastery of materials in the prerequisite courses will be verified with a quiz or assignment during the first two weeks of the course. (Formerly Computer Science 160.)",
+    "ClassName" : "CSE 160 Introduction to Computer Graphics",
+    "Credits" : "5",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : "Alex Pang, James Davis",
+    "QuarterOffered" : "Fall, Winter",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): CSE 101 and MATH 21 or AM 10. Concurrent enrollment in CSE 160L is required."
+  },
+{
+    "ClassDescription" : "Complements CSE 160, gaining additional competence with a number of important software development tools, graphics libraries, and graphical user interfaces. Topics include OpenGL, WebGL, rubberbanding, picking, sliders, buttons, dialog, event handling, double buffering, lighting, shading, materials, and textures. The topic list may be updated to reflect technological changes. (Formerly CMPS 160L.)",
+    "ClassName" : "CSE 160L Introduction to Computer Graphics Laboratory",
+    "Credits" : "2",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : "Alex Pang, James Davis",
+    "QuarterOffered" : "Fall, Winter",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Concurrent enrollment in CSE 160 is required."
+  },
+{
+    "ClassDescription" : "Concepts and methods for data analysis, information and scientific visualization, and effective communication of technical data. Topics include: mathematical foundations; scalar, vector, and tensor field visualization; multivariate visualization; and tree and graph visualizations. Applications are drawn from social-network analysis; environmental and space science; and medical imaging. Evaluation based on examinations, programming exercises, and a project. (Formerly CMPS 161.)",
+    "ClassName" : "CSE 161 Introduction to Data Visualization",
+    "Credits" : "5",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : "Alex Pang, Suresh Lodha",
+    "QuarterOffered" : "No information",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): CSE 160 or equivalent. Concurrent enrollment in CSE 161L is required."
+  },
+{
+    "ClassDescription" : "Complements CSE 161. Students gain additional competence with a number of important software development tools and techniques. Included are Paraview,  Visualization Toolkit (VTK), and Insight Toolkit (ITK). Students get hands-on experience with designing transfer functions, isosurfacing, direct volume rendering, vector-field visualization techniques, as well as methods for dealing with non-spatial data. (Formerly CMPS 161L.)",
+    "ClassName" : "CSE 161L Data Visualization Laboratory",
+    "Credits" : "2",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : "Alex Pang, Suresh Lodha",
+    "QuarterOffered" : "No information",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Concurrent enrollment in CSE 161 is required."
+  },
+{
+    "ClassDescription" : "Covers concepts and methods for modeling and rendering static and dynamic scenes Topics include: mathematical foundations (e.g., splines and numerical integration; global illumination models; texture mapping; morphing; physically based animation; behavioral animations; and procedural animations. Evaluation based on examinations, programming exercises, and a project. (Formerly CMPS 162.)",
+    "ClassName" : "CSE 162 Advanced Computer Graphics and Animation",
+    "Credits" : "5",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : "Alex Pang, James Davis",
+    "QuarterOffered" : "No information",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): CSE 160 or equivalent. Concurrent enrollment in CSE 162L is required."
+  },
+{
+    "ClassDescription" : "Complements CSE 162. Students gain additional competence in a hands-on computational laboratory setting. Representative examples include topics, such as interactive curve and surface design; shaders for advanced effects; crowd and behavioral animation; experiments with particle systems; facial animation; and motion and planning. (Formerly CMPS 162L.)",
+    "ClassName" : "CSE 162L Advanced Computer Graphics and Animation Laboratory",
+    "Credits" : "2",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : "Alex Pang, James Davis",
+    "QuarterOffered" : "No information",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): concurrent enrollment in CSE 162 is required."
+  },
+{
+    "ClassDescription" : "Presents the basics of open-source programming tools to perform data analysis and create interactive visualizations and maps for the web, data integrity and scraping, statistical computation, simple and novel visualizations, and geomapping. The examples are drawn from social science, public policy, and data journalism. (Formerly CMPS 165.)",
+    "ClassName" : "CSE 163 Data Programming for Visualization",
+    "Credits" : "5",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : "Suresh Lodha",
+    "QuarterOffered" : "No information",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): CSE 101."
+  },
+{
+    "ClassDescription" : "Theory and hands-on practice to understand what makes user interfaces usable and accessible to diverse individuals. Covers human senses and memory and their design implications, requirement solicitation, user-centered design and prototyping techniques, and expert and user evaluations. Interdisciplinary course for social science and engineering majors. Students cannot receive credit for this course and CSE 265 or DANM 231. (Formerly Computer Engineering 131.)",
+    "ClassName" : "CSE 165 Human-Computer Interaction",
+    "Credits" : "5",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : "No information",
+    "QuarterOffered" : "No information",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): CSE 15."
+  },
+{
+    "ClassDescription" : "Provides hands-on knowledge and experience with modern mobile computing platforms for sensing and interactions tasks. Students learn how to create usable applications on a sensor-laden, mobile computing platform with adequate level of user interface.",
+    "ClassName" : "CSE 167 Mobile Sensing and Interaction",
+    "Credits" : "5",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : "Roberto Manduchi",
+    "QuarterOffered" : "No information",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): CSE 13S; or CSE 13E or ECE 13; or CSE 15 and CSE 15L; and PHYS 5A or PHYS 6A; and AM 10 or MATH 21."
+  },
+{
+    "ClassDescription" : "Covers the concepts and methods needed to develop augmented reality (AR) and virtual reality (VR) applications. Topics include 3D modeling, graphics rendering, image compositing, occlusion handling, sensors, computer vision and image analysis, toolkits for AR, different display options, dynamics, interaction, and navigation. Prerequisite(s): CSE 160 and CSE 160L. Some knowledge of mobile platforms (e.g., CSE 118 or CSE 167) is helpful, but not required. Enrollment is by instructor permission. Enrollment is restricted to juniors and seniors. (Formerly CMPS 168.)",
+    "ClassName" : "CSE 168 Introduction to Augmented Reality and Virtual Reality",
+    "Credits" : "7",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : "Alex Pang, James Davis",
+    "QuarterOffered" : "Fall",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): CSE 13S; or CSE 13E or ECE 13; or CSE 15 and CSE 15L; and PHYS 5A or PHYS 6A; and AM 10 or MATH 21."
+  },
+{
+    "ClassDescription" : "Introduction to the concepts, approaches, tools, and methodology of database design. Covers the entity-relationship model, the relational model, relational algebra, relational calculus, commercial languages (such as SQL and QBE), functional dependencies, normal forms, and design theory. Other topics may include knowledge-bases, constraint databases, and alternative database models. Students that have taken and passed CSE 182 may not take CSE 180 for credit. (Formerly CMPS 180.)",
+    "ClassName" : "CSE 180 Database Systems I",
+    "Credits" : "5",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : " The Staff, Sheldon Finkelstein",
+    "QuarterOffered" : "Fall, Winter, Spring",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): CSE 101."
+  },
+{
+    "ClassDescription" : "Introduction to the architecture and implementation of database systems. Topics covered include data storage, tree and hash indexes, storage management, query evaluation and optimization, transaction management, concurrency control, recovery, and XML data management. (Formerly CMPS 181.)",
+    "ClassName" : "CSE 181 Database Systems II",
+    "Credits" : "5",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : " The Staff, Sheldon Finkelstein",
+    "QuarterOffered" : "Spring",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): CSE 180."
+  },
+{
+    "ClassDescription" : "Concepts, approaches, tools, and methodology of database design. Topics include the entity-relationship model; the relational data model; normal forms; commercial languages such as SQL (SQL constraints, SQL triggers, and update languages); query-by-example (QBE); XML data model, and XML query language (XQuery); as well as relational database-management support for XML and object-relational features in database-management systems. Involves a database -application development project. Students that have taken and passed CSE 180 cannot receive credit for CSE 182.",
+    "ClassName" : "CSE 182 Introduction to Database Management Systems",
+    "Credits" : "5",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : "Sheldon Finkelstein",
+    "QuarterOffered" : "Spring",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): CSE 15 and CSE 15L or CSE 13E or CSE 13S or ECE 13. Course intended for non-majors; computer science majors should enroll in CSE 180."
+  },
+{
+    "ClassDescription" : "The World-Wde Web is one of the main mechanisms by which computer applications are delivered to users. This course introduces the design of Web applications.  Students learn the main technologies involved, and build web applications as part of homework assignments and group class projects.(Formerly CMPS 183.)",
+    "ClassName" : "CSE 183 Web Applications",
+    "Credits" : "5",
+    "GeneralEducationCode" : "PR-E",
+    "Professor(s)" : " The Staff, Jim Whitehead, Luca De Alfaro, Richard Jullig, David Harrison",
+    "QuarterOffered" : "Winter",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): CSE 15 and CSE 15L, or CMPM 35, or CSE 101."
+  },
+{
+    "ClassDescription" : "Python basics; data extraction from CSV, JSON, XML, Excel, PDF, encoded text files; data cleaning, finding duplicates, missing data, fuzzy matching; data exploration, joining, aggregating, separating, correlation, clustering; web scraping, APIs, scraping data from social media, open data network. (Formerly CMPS 184.)",
+    "ClassName" : "CSE 184 Data Wrangling and Web Scraping",
+    "Credits" : "5",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : "Suresh Lodha",
+    "QuarterOffered" : "No information",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): CSE 101."
+  },
+{
+    "ClassDescription" : "Writing by engineers and computer scientists to technical audiences. Writing exercises include: cover letter and resume for job application, tutorial writing, grant proposal, document specification, literature review, and a final technical report. Two oral presentations are also required, an in-class presentation and a poster presentation. Students also receive instruction in the use of UC library and journal database resources, and in the writing of a statement of purpose for graduate school application. Also offered as CSE 185S. (Formerly Computer Engineering 185, Technical Writing for Computer Engineers.)",
+    "ClassName" : "CSE 185E Technical Writing for Computer Science and Engineering",
+    "Credits" : "5",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : "Gerald Moulds",
+    "QuarterOffered" : "Fall, Winter, Spring",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): satisfaction of Entry Level Writing and Composition requirements; and CSE 12 or CSE 15 or CSE 30 or BME 160 or by permission of the instructor. Enrollment is restricted to computer engineering, bioengineering, bioinformatics, biomolecular engineering and bioinformatics, or network and digital technology majors."
+  },
+{
+    "ClassDescription" : "Weekly talks by industry experts, university researchers, field practitioners, and video presentations provide an in-depth exposure to a specific or a broad area of computer science and technology. Topics include emerging ideas, opportunities, challenges, and future of the industry. (Formerly CMPS 191.)",
+    "ClassName" : "CSE 191 Computer Science and Technology Seminar",
+    "Credits" : "2",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : " The Staff, Suresh Lodha, James Davis, Marilyn Walker",
+    "QuarterOffered" : "No information",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): satisfaction of Entry Level Writing and Composition requirements; and CSE 12 or CSE 15 or CSE 30 or BME 160 or by permission of the instructor. Enrollment is restricted to computer engineering, bioengineering, bioinformatics, biomolecular engineering and bioinformatics, or network and digital technology majors."
+  },
+{
+    "ClassDescription" : "Students hold tutoring hours, run a lab, or lead discussion section in conjunction with a regularly offered course and under close supervision by the course's instructor. Weekly meetings with a regular faculty member to discuss teaching techniques, pedagogy, sensitivity to students' needs, maintaining a comfortable learning environment, and strategies for handling difficult situations. Students submit a report on their teaching experience. Enrollment by permission of instructor and restricted to sophomores, juniors, and seniors. (Formerly CMPS 192.)",
+    "ClassName" : "CSE 192 Supervised Student Teaching/Tutoring",
+    "Credits" : "5",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : "David Helmbold",
+    "QuarterOffered" : "No information",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): satisfaction of Entry Level Writing and Composition requirements; and CSE 12 or CSE 15 or CSE 30 or BME 160 or by permission of the instructor. Enrollment is restricted to computer engineering, bioengineering, bioinformatics, biomolecular engineering and bioinformatics, or network and digital technology majors."
+  },
+{
+    "ClassDescription" : "Students hold tutoring hours, run a lab, or lead discussion section in conjunction with a regularly offered course and under close supervision by the course's instructor. Weekly meetings with a regular faculty member to discuss teaching techniques, pedagogy, sensitivity to students' needs, maintaining a comfortable learning environment, and strategies for handling difficult situations. Students submit a report on their teaching experience. Enrollment by permission of instructor and restricted to sophomores, juniors, and seniors. (Formerly CMPS 192F.)",
+    "ClassName" : "CSE 192F Supervised Student Teaching/Tutoring",
+    "Credits" : "2",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : "David Helmbold",
+    "QuarterOffered" : "No information",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): satisfaction of Entry Level Writing and Composition requirements; and CSE 12 or CSE 15 or CSE 30 or BME 160 or by permission of the instructor. Enrollment is restricted to computer engineering, bioengineering, bioinformatics, biomolecular engineering and bioinformatics, or network and digital technology majors."
+  },
+{
+    "ClassDescription" : "Provides for individual programs of study with specific academic objectives carried out under the direction of a faculty member of the Computer Engineering Department and a willing sponsor at the field site using resources not normally available on campus. Credit is based on the presentation of evidence of achieving the objectives by submitting a written and oral presentation. May not be repeated for credit. Students submit petition to sponsoring agency.",
+    "ClassName" : "CSE 193 Field Study",
+    "Credits" : "5",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : "No information",
+    "QuarterOffered" : "Fall, Winter, Spring",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): satisfaction of Entry Level Writing and Composition requirements; and CSE 12 or CSE 15 or CSE 30 or BME 160 or by permission of the instructor. Enrollment is restricted to computer engineering, bioengineering, bioinformatics, biomolecular engineering and bioinformatics, or network and digital technology majors."
+  },
+{
+    "ClassDescription" : "Provides for individual programs of study with specific academic objectives carried out under the direction of a faculty member of the Computer Engineering Department and a willing sponsor at the field site using resources not normally available on campus. Credit is based on the presentation of evidence of achieving the objectives by submitting a written and oral presentation. May not be repeated for credit. Students submit petition to sponsoring agency.",
+    "ClassName" : "CSE 193F Field Study",
+    "Credits" : "2",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : "No information",
+    "QuarterOffered" : "Fall, Winter, Spring",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): satisfaction of Entry Level Writing and Composition requirements; and CSE 12 or CSE 15 or CSE 30 or BME 160 or by permission of the instructor. Enrollment is restricted to computer engineering, bioengineering, bioinformatics, biomolecular engineering and bioinformatics, or network and digital technology majors."
+  },
+{
+    "ClassDescription" : "A program of independent study arranged between a group of students and a faculty member. Students submit petition to sponsoring agency.",
+    "ClassName" : "CSE 194 Group Tutorial",
+    "Credits" : "5",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : "No information",
+    "QuarterOffered" : "Fall, Winter, Spring",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): satisfaction of Entry Level Writing and Composition requirements; and CSE 12 or CSE 15 or CSE 30 or BME 160 or by permission of the instructor. Enrollment is restricted to computer engineering, bioengineering, bioinformatics, biomolecular engineering and bioinformatics, or network and digital technology majors."
+  },
+{
+    "ClassDescription" : "A program of independent study arranged between a group of students and a faculty member. Students submit petition to sponsoring agency.",
+    "ClassName" : "CSE 194F Group Tutorial",
+    "Credits" : "2",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : "No information",
+    "QuarterOffered" : "Fall, Winter, Spring",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): satisfaction of Entry Level Writing and Composition requirements; and CSE 12 or CSE 15 or CSE 30 or BME 160 or by permission of the instructor. Enrollment is restricted to computer engineering, bioengineering, bioinformatics, biomolecular engineering and bioinformatics, or network and digital technology majors."
+  },
+{
+    "ClassDescription" : "Students submit petition to sponsoring agency. Prerequisite(s): satisfaction of the Entry Level Writing and Composition requirements. Computer Engineering majors, CSE 123A or CSE 129A.",
+    "ClassName" : "CSE 195 Senior Thesis Research",
+    "Credits" : "5",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : "No information",
+    "QuarterOffered" : "Fall, Winter, Spring",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): satisfaction of Entry Level Writing and Composition requirements; and CSE 12 or CSE 15 or CSE 30 or BME 160 or by permission of the instructor. Enrollment is restricted to computer engineering, bioengineering, bioinformatics, biomolecular engineering and bioinformatics, or network and digital technology majors."
+  },
+{
+    "ClassDescription" : "Students submit petition to sponsoring agency. Consent of instructor required. Prerequisite: CSE 123A.",
+    "ClassName" : "CSE 195F Senior Thesis Research",
+    "Credits" : "2",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : "No information",
+    "QuarterOffered" : "Fall, Winter, Spring",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): satisfaction of Entry Level Writing and Composition requirements; and CSE 12 or CSE 15 or CSE 30 or BME 160 or by permission of the instructor. Enrollment is restricted to computer engineering, bioengineering, bioinformatics, biomolecular engineering and bioinformatics, or network and digital technology majors."
+  },
+{
+    "ClassDescription" : "Students submit petition to sponsoring agency.",
+    "ClassName" : "CSE 198 Individual Study or Research",
+    "Credits" : "5",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : "No information",
+    "QuarterOffered" : "Fall, Winter, Spring",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): satisfaction of Entry Level Writing and Composition requirements; and CSE 12 or CSE 15 or CSE 30 or BME 160 or by permission of the instructor. Enrollment is restricted to computer engineering, bioengineering, bioinformatics, biomolecular engineering and bioinformatics, or network and digital technology majors."
+  },
+{
+    "ClassDescription" : "Students submit petition to sponsoring agency.",
+    "ClassName" : "CSE 198F Individual Study or Research",
+    "Credits" : "2",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : "No information",
+    "QuarterOffered" : "Fall, Winter, Spring",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): satisfaction of Entry Level Writing and Composition requirements; and CSE 12 or CSE 15 or CSE 30 or BME 160 or by permission of the instructor. Enrollment is restricted to computer engineering, bioengineering, bioinformatics, biomolecular engineering and bioinformatics, or network and digital technology majors."
+  },
+{
+    "ClassDescription" : "For fourth-year students majoring in computer engineering. Students submit petition to sponsoring agency.",
+    "ClassName" : "CSE 199 Tutorial",
+    "Credits" : "5",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : "No information",
+    "QuarterOffered" : "Fall, Winter, Spring",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): satisfaction of Entry Level Writing and Composition requirements; and CSE 12 or CSE 15 or CSE 30 or BME 160 or by permission of the instructor. Enrollment is restricted to computer engineering, bioengineering, bioinformatics, biomolecular engineering and bioinformatics, or network and digital technology majors."
+  },
+{
+    "ClassDescription" : "For fourth-year students majoring in computer engineering. Students submit petition to sponsoring agency.",
+    "ClassName" : "CSE 199F Tutorial",
+    "Credits" : "2",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : "No information",
+    "QuarterOffered" : "Fall, Winter, Spring",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): satisfaction of Entry Level Writing and Composition requirements; and CSE 12 or CSE 15 or CSE 30 or BME 160 or by permission of the instructor. Enrollment is restricted to computer engineering, bioengineering, bioinformatics, biomolecular engineering and bioinformatics, or network and digital technology majors."
+  },
+{
+  "ClassDescription" : "Provides students with Python programming skills and the ability to design programs and read Python code. Topics include data types, control flow, methods and advanced functions, built-in data structures, and introduction to OOP. No prior programming experience is required. Students may not receive credit for CSE 20 after receiving credit for CSE 30. Students with prior programming experience (especially in Python) are encouraged to take CSE Testout Exam to be evaluated for their readiness to take CSE 30 directly: https://undergrad.soe.ucsc.edu/cse-20-testout-exam.",
+    "ClassName" : "CSE 20 Beginning Programming in Python",
+    "Credits" : "5",
+    "GeneralEducationCode" : "MF",
+    "Professor(s)" : "Narges Alvaro, Narges Norouzi, Tracy Larrabee, Faisal Nawab, Patrick Tantalo, Benedict Paten, Marilyn Walker",
+    "QuarterOffered" : "Fall, Winter, Spring",
+    "Requirements" : "Prerequisite(s): MATH 19A or MATH 19B or MATH 11B or AM 11B or AM 15B or ECON 11B."
+  },
+ {
+    "ClassDescription" : "Provides an introduction to computers. Personal computing is emphasized, and students are introduced to word processing, spreadsheets, database management, graphics, and programming. Covers fundamentals of computing and current and future uses of computer technology, PC hardware, Windows operating system, applications software, networking and the Internet, and developments in the computer industry.  Designed for students with little or no experience using computers. Students cannot receive credit for this course and Computer Science 2. (Formerly Computer Engineering 3.)",
+    "ClassName" : "CSE 3 Personal Computer Concepts: Software and Hardware",
+    "Credits" : "5",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : "Gerald Moulds",
+    "QuarterOffered" : "Fall, Winter, Spring"
+  },
+{
+    "ClassDescription" : "Introduction to software development in Python focusing on structuring software in terms of objects endowed with primitive operations. Introduces concepts and techniques via a sequence of concrete case studies. Coursework consists of programming assignments and a final examination. Note that CSE 30 assumes some Python experience, students trained in a different language should self-study Python to prepare for CSE 30. See <a href=\"https://undergrad.soe.ucsc.edu/cse-20-testout-exam\" rel=\"noopener noreferrer\" target=\"_blank\">CSE Testout Exam</a> for resources and further information.",
+    "ClassName" : "CSE 30 Programming Abstractions: Python",
+    "Credits" : "7",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : "L. De Alfaro, P. Alvaro, D. Bailey, L. Kuper, A. Pang",
+    "QuarterOffered" : "Fall, Winter, Spring",
+    "Requirements" : "Prerequisite(s): CSE 20 or BME 160; and MATH 3 or MATH 11A or MATH 19A or AM 3 or AM 11A or ECON 11A, or a score of 400 or higher on the mathematics placement examination (MPE)."
+  },
+{
+    "ClassDescription" : "Introduction to the basic mathematical concepts and programming abstractions required for modern machine learning, data science, and empirical science. The mathematical foundations include basic probability, linear algebra, and optimization. The programming abstractions include data manipulation and visualization. The principles of empirical analysis, evaluation, critique and reproducibility are emphasized. Mathematical and programming abstractions are grounded in empirical studies including data-driven evidential reasoning, predictive modeling, and causal analysis.",
+    "ClassName" : "CSE 40 Machine Learning Basics: Data Analysis and Empirical Methods",
+    "Credits" : "5",
+    "GeneralEducationCode" : "SR",
+    "Professor(s)" : "Lise Getoor, The Staff ",
+    "QuarterOffered" : "Spring",
+    "Requirements" : "Prerequisite(s): MATH 19B or MATH 20B, and CSE 30."
+  },
+{
+    "ClassDescription" : "Overview of human-centered technology and of its potential for increasing the quality of life and independence of disabled individuals. A substantial portion of the course is devoted to studying physical, psychological, and psychosocial aspects of disability. Topics include: diversity and integration, legislation, accessibility, and universal design. (Formerly Computer Engineering 80A.)",
+    "ClassName" : "CSE 80A Universal Access: Disability, Technology, and Society",
+    "Credits" : "5",
+    "GeneralEducationCode" : "PE-T",
+    "Professor(s)" : "Roberto Manduchi, Sri Kurniawan",
+    "QuarterOffered" : "Fall",
+    "Requirements" : "Prerequisite(s): MATH 19B or MATH 20B, and CSE 30."
+  },
+{
+    "ClassDescription" : "Course examines: social data analytics--veracity, consistency, uncertainty, volume; statistical computation--misuse, bias, dispersion, correlation, regressions, differential scales, normal distributions, factor and cluster analysis, extrapolation, inference, simple programming; visual representations--communication, critique and design of infographics; applications--environment, energy, economics, education, empowerment. (Formerly Computer Science 80L.)",
+    "ClassName" : "CSE 80L Social Data Analytics and Visualization",
+    "Credits" : "5",
+    "GeneralEducationCode" : "SR",
+    "Professor(s)" : "Suresh Lodha",
+    "QuarterOffered" : "No information",
+    "Requirements" : "Prerequisite(s): MATH 19B or MATH 20B, and CSE 30."
+  },
+{
+    "ClassDescription" : "Introduction to the evolution, technological basis, and services of the Internet, with descriptions of its underlying communications structure, routing algorithms, peer-to-peer hierarchy, reliability, and packet switching. Network security, mail, multimedia and data compression issues, HTML, and digital images. Students who have completed CSE 150 cannot receive credit for this course. (Formerly Computer Engineering 80N.)",
+    "ClassName" : "CSE 80N Introduction to Networking and the Internet",
+    "Credits" : "5",
+    "GeneralEducationCode" : "PE-T",
+    "Professor(s)" : "Chris Parsa, Tracy Larrabee, Patrick Mantey, Chen Qian",
+    "QuarterOffered" : "Fall, Winter, Spring",
+    "Requirements" : "Prerequisite(s): MATH 19B or MATH 20B, and CSE 30."
+  },
+{
+    "ClassDescription" : "Introduction to social networks and game theory. Topics include the structure of social networks; the world wide web; the flow of information and behavior through networks; and the principles behind modern web search and search-ad placement. (Formerly Computer Science 17.)",
+    "ClassName" : "CSE 80S Social Networks",
+    "Credits" : "5",
+    "GeneralEducationCode" : "SR",
+    "Professor(s)" : "Phokion Kolaitis, Lise Getoor",
+    "QuarterOffered" : "No information",
+    "Requirements" : "Prerequisite(s): MATH 3 or MATH 11A; or AM 3 or AM 6 or AM 11A or AM 15A; or ECON 11A; or score on math placement exam of 300 or higher."
+  },
+ {
+    "ClassDescription" : "Provides a means for a small group of students to study a particular topic in consultation with a faculty sponsor. Students submit petition to sponsoring agency.",
+    "ClassName" : "CSE 94 Group Tutorial",
+    "Credits" : "5",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : "No information",
+    "QuarterOffered" : "Fall, Winter, Spring",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): MATH 3 or MATH 11A; or AM 3 or AM 6 or AM 11A or AM 15A; or ECON 11A; or score on math placement exam of 300 or higher."
+  },
+ {
+    "ClassDescription" : "Provides a means for a small group  of students to study a particular topic in consultation with a faculty sponsor. Students submit petition to sponsoring agency.",
+    "ClassName" : "CSE 94F Group Tutorial",
+    "Credits" : "2",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : "No information",
+    "QuarterOffered" : "Fall, Winter, Spring",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): MATH 3 or MATH 11A; or AM 3 or AM 6 or AM 11A or AM 15A; or ECON 11A; or score on math placement exam of 300 or higher."
+  },
+ {
+    "ClassDescription" : "Students submit petition to sponsoring agency.",
+    "ClassName" : "CSE 99 Tutorial",
+    "Credits" : "5",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : "No information",
+    "QuarterOffered" : "Fall, Winter, Spring",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): MATH 3 or MATH 11A; or AM 3 or AM 6 or AM 11A or AM 15A; or ECON 11A; or score on math placement exam of 300 or higher."
+  },
+{
+    "ClassDescription" : "Students submit petition to sponsoring agency.",
+    "ClassName" : "CSE 99F Tutorial",
+    "Credits" : "2",
+    "GeneralEducationCode" : "None",
+    "Professor(s)" : "No information",
+    "QuarterOffered" : "Fall, Winter, Spring",
+    "Repeatableforcredit" : "Yes",
+    "Requirements" : "Prerequisite(s): MATH 3 or MATH 11A; or AM 3 or AM 6 or AM 11A or AM 15A; or ECON 11A; or score on math placement exam of 300 or higher."
+  }]

@@ -7,7 +7,7 @@ import Dashboard from './components/Dashboard';
 import { AuthProvider } from './contexts/AuthContext';
 import RowAndColumnSpacing from './components/DbTester';
 import HowItWorks from './components/How-it-works';
-
+import Courseselction from './components/Courseselction';
 function App() {
   
   return (
@@ -22,7 +22,7 @@ function App() {
               <Route exact path="/Home" component={Dashboard} />
               <Route exact path="/How-it-works" component={HowItWorks} />
               <Route exact path="/DBtester" component={RowAndColumnSpacing} />
-
+              <Route exact path="/Courseselction" component={Courseselction} />
             </Switch>
           </div>
         </div>
