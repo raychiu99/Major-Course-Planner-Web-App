@@ -16,7 +16,13 @@ import { useAuth } from '../contexts/AuthContext'
 import { useState } from 'react';
 import { Container } from '@mui/material';
 
+import AccountCard from "./AccountSettingsCard";
+import SearchBar from "./SearchBar";
+
 const theme = createTheme();
+
+
+
 
 export default function Dashboard() {
     let dashInfo = { // TODO: Replace with actual info
@@ -28,12 +34,20 @@ export default function Dashboard() {
     return (
         <ThemeProvider theme={theme}>
             <Container>
-                <Grid container spacing={2} >
+                <div style={{display: 'flex',  justifyContent:'center', height: '12vh', paddingTop: '5vh'}}>
+                    <h1> Welcome Back, usr.firstname usr.lastname! </h1>
+                </div>
+
+                <div style={{display: 'flex',  justifyContent:'center', height: '20vh'}}>
+                    <SearchBar />
+                </div>
+
+                <Grid container spacing={4} >
                     <Grid item xs={4} direction="column">
                         <Paper style={{ height: "100%" }}>TEST</Paper>
                     </Grid>
                     <Grid item xs={8}>
-                        <Grid container spacing={2}>
+                        <Grid container spacing={4}>
                             <Grid item xs={6}>
                                 <Paper>TEST</Paper>
                             </Grid>
@@ -44,7 +58,7 @@ export default function Dashboard() {
                                 <Paper>TEST</Paper>
                             </Grid>
                             <Grid item xs={6}>
-                                <Paper>test</Paper>
+                                <AccountCard />
                             </Grid>
                         </Grid>
                     </Grid>
