@@ -38,10 +38,6 @@ export default function Dashboard() {
                     <h1> Welcome Back, usr.firstname usr.lastname! </h1>
                 </div>
 
-                <div style={{ display: 'flex', justifyContent: 'center', height: '20vh' }}>
-                    <SearchBar />
-                </div>
-
                 <Grid container spacing={4} >
                     <Grid item xs={4} direction="column">
                         <LinkCard text={'Test'} path={'/Test'} />
