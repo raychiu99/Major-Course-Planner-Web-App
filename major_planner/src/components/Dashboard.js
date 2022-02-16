@@ -16,7 +16,7 @@ import { useAuth } from '../contexts/AuthContext'
 import { useState } from 'react';
 import { Container } from '@mui/material';
 
-import AccountCard from "./AccountSettingsCard";
+import LinkCard from "./LinkCard";
 import SearchBar from "./SearchBar";
 
 const theme = createTheme();
@@ -34,31 +34,31 @@ export default function Dashboard() {
     return (
         <ThemeProvider theme={theme}>
             <Container>
-                <div style={{display: 'flex',  justifyContent:'center', height: '12vh', paddingTop: '5vh'}}>
+                <div style={{ display: 'flex', justifyContent: 'center', height: '12vh', paddingTop: '5vh' }}>
                     <h1> Welcome Back, usr.firstname usr.lastname! </h1>
                 </div>
 
-                <div style={{display: 'flex',  justifyContent:'center', height: '20vh'}}>
+                <div style={{ display: 'flex', justifyContent: 'center', height: '20vh' }}>
                     <SearchBar />
                 </div>
 
                 <Grid container spacing={4} >
                     <Grid item xs={4} direction="column">
-                        <Paper style={{ height: "100%" }}>TEST</Paper>
+                        <LinkCard text={'Test'} path={'/Test'} />
                     </Grid>
                     <Grid item xs={8}>
                         <Grid container spacing={4}>
                             <Grid item xs={6}>
-                                <Paper>TEST</Paper>
+                                <LinkCard text={'Test'} path={'/Test'} />
                             </Grid>
                             <Grid item xs={6}>
-                                <Paper>test</Paper>
+                                <LinkCard text={'Test'} path={'/Test'} />
                             </Grid>
                             <Grid item xs={6}>
-                                <Paper>TEST</Paper>
+                                <LinkCard text={'Test'} path={'/Test'} />
                             </Grid>
                             <Grid item xs={6}>
-                                <AccountCard />
+                                <LinkCard text={'Account Setting'} path={'/AccountSettings'} />
                             </Grid>
                         </Grid>
                     </Grid>
