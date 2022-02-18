@@ -46,7 +46,19 @@ function Home() {
             }}
           >
             <h2> How It Works </h2>
-            <p> text </p>
+            <p> Hi, Banana Slugs!  
+              <br/><br/>
+              We aim to create a awesome website to help all banana slugs plan their courses out. 
+              This app can help recommend class for next quarter based on your status and classes you took. 
+              <br/><br/>
+              To access all of the functions of this website, you need to create and login into a account. 
+              After input all of the class you taken and the class you are taking this quarter, the “Next Quarter Planner” 
+              page can give you some recommendations for next quarter. 
+              <br/><br/>
+              Good luck on your College path!
+              <br/>
+              
+              Made by banana slugs, for UCSC students. </p>
           </Box>
         </Grid>
       </Grid>
