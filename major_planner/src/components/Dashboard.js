@@ -12,19 +12,19 @@ import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { useAuth } from '../contexts/AuthContext'
-import { useState } from 'react';
 import { Container } from '@mui/material';
 
 import LinkCard from "./LinkCard";
 import SearchBar from "./SearchBar";
-
+import {useUser} from '../contexts/UserContext';
 const theme = createTheme();
 
 
 
 
 export default function Dashboard() {
+    const {firstName} = useUser();
+    const {lastName} = useUser();
     let dashInfo = { // TODO: Replace with actual info
         major: 'Computer Science',
         status: 'Senior',
@@ -35,7 +35,7 @@ export default function Dashboard() {
         <ThemeProvider theme={theme}>
             <Container>
                 <div style={{ display: 'flex', justifyContent: 'center', height: '12vh', paddingTop: '5vh' }}>
-                    <h1> Welcome Back, usr.firstname usr.lastname! </h1>
+                    <h1> Welcome Back, {firstName} {lastName}! </h1>
                 </div>
 
                 <Grid container spacing={4} >

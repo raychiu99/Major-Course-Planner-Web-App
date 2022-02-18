@@ -8,25 +8,28 @@ import { AuthProvider } from './contexts/AuthContext';
 import RowAndColumnSpacing from './components/DbTester';
 import HowItWorks from './components/How-it-works';
 import Courseselction from './components/Courseselction';
+import { UserProvider } from './contexts/UserContext';
 function App() {
   
   return (
     <AuthProvider>
-      <Router>
-        <div className="App">
-          <Navbar />
-          <div className="Content">
-            <Switch>
-              <Route exact path="/" component={SignIn} />
-              <Route exact path="/SignUp" component={SignUp} />
-              <Route exact path="/Home" component={Dashboard} />
-              <Route exact path="/How-it-works" component={HowItWorks} />
-              <Route exact path="/DBtester" component={RowAndColumnSpacing} />
-              <Route exact path="/Courseselction" component={Courseselction} />
-            </Switch>
+      <UserProvider>
+        <Router>
+          <div className="App">
+            <Navbar />
+            <div className="Content">
+              <Switch>
+                <Route exact path="/" component={SignIn} />
+                <Route exact path="/SignUp" component={SignUp} />
+                <Route exact path="/Home" component={Dashboard} />
+                <Route exact path="/How-it-works" component={HowItWorks} />
+                <Route exact path="/DBtester" component={RowAndColumnSpacing} />
+                <Route exact path="/Courseselction" component={Courseselction} />
+              </Switch>
+            </div>
           </div>
-        </div>
-      </Router>
+        </Router>
+      </UserProvider>
     </AuthProvider>
   );
 }

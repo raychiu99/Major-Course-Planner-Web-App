@@ -2,7 +2,7 @@ import React, {useContext, useState, useEffect} from 'react';
 import {auth} from '../firebase-config'
 import { createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  onAuthStateChanged } from 'firebase/auth';
+  onAuthStateChanged} from 'firebase/auth';
 const AuthContext = React.createContext();
 
 export function AuthProvider({children}){
@@ -18,6 +18,7 @@ export function AuthProvider({children}){
     console.log('Signing in with credentials: ', email, password);
     return signInWithEmailAndPassword(auth, email, password);
   }
+  
   /** useEffect Hook makes it so that it only does it once,
       rather than during every render */
   useEffect(() => {

@@ -12,30 +12,31 @@ import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import {useAuth} from '../contexts/AuthContext'
+import {useAuth} from '../contexts/AuthContext';
 import { useState } from 'react';
 import { getDatabase, ref, set } from "firebase/database";
 const theme = createTheme();
 
 export default function SignUp() {
     const {signUp} = useAuth();
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
+    const [userEmail, setUserEmail] = useState('');
+    const [userFirstName, setUserFirstName] = useState('');
+    const [userLastName, setUserLastName] = useState('');
+    const [userPassword, setUserPassword] = useState('');
     const db = getDatabase();
     const handleSubmit = async(event) => {
       event.preventDefault();
       try {
-        const user = await signUp(email, password, firstName, lastName);
-        console.log('email: ', email, 'password: ', password, 'userId: ', user.user.uid, firstName, lastName, user);
+        const user = await signUp(userEmail, userPassword);
+        // console.log('email: ', email, 'password: ', password, 'userId: ', user.user.uid, firstName, lastName, user);
+        // console.log('currentUser: ', currentUser);
         set(ref(db,'Users/'+user.user.uid), {
-          firstName: firstName,
-          lastName: lastName,
-          email: email 
+          firstName: userFirstName,
+          lastName: userLastName,
+          email: userEmail 
         });
       } catch (error) {
-        console.log('THERES AN ERROR');
+        console.log('THERES AN ERROR: ', error);
       }
     };
   return (
@@ -82,7 +83,7 @@ export default function SignUp() {
                     fullWidth
                     id="firstName"
                     label="First Name"
-                    onChange={(event) => setFirstName(event.target.value)}
+                    onChange={(event) => setUserFirstName(event.target.value)}
                     autoFocus
                   />
                 </Grid>
@@ -93,7 +94,7 @@ export default function SignUp() {
                     id="lastName"
                     label="Last Name"
                     name="lastName"
-                    onChange={(event) => setLastName(event.target.value)}
+                    onChange={(event) => setUserLastName(event.target.value)}
                     autoComplete="family-name"
                   />
                 </Grid>
@@ -105,7 +106,7 @@ export default function SignUp() {
                     label="Email Address"
                     name="email"
                     autoComplete="email"
-                    onChange={(event) => setEmail(event.target.value)}
+                    onChange={(event) => setUserEmail(event.target.value)}
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -117,7 +118,7 @@ export default function SignUp() {
                     type="password"
                     id="password"
                     autoComplete="new-password"
-                    onChange = {(event) => setPassword(event.target.value)}
+                    onChange = {(event) => setUserPassword(event.target.value)}
                   />
                 </Grid>
               </Grid>
