@@ -8,7 +8,7 @@ import { CardActionArea } from '@mui/material';
 
 export default function LinkCard({ text, path }) {
   return (
-    <Card style={{ height: "100%" }} variant="outlined">
+    <Card style={{ height: "100%" }}>
       <CardActionArea style={{ height: "100%" }} href={path}>
         <CardContent style={{ height: "100%" }}>
           <Typography gutterBottom variant="h5" component="div" align="center">

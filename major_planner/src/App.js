@@ -4,13 +4,15 @@ import SignIn from './components/SignIn';
 import SignUp from "./components/SignUp";
 import Navbar from "./components/Navbar";
 import Dashboard from './components/Dashboard';
-import { AuthProvider } from './contexts/AuthContext';
 import RowAndColumnSpacing from './components/DbTester';
 import HowItWorks from './components/How-it-works';
 import Courseselction from './components/Courseselction';
+import AccountSettings from './components/AccountSettings';
+
+import { AuthProvider } from './contexts/AuthContext';
 import { UserProvider } from './contexts/UserContext';
 function App() {
-  
+
   return (
     <AuthProvider>
       <UserProvider>
@@ -25,6 +27,7 @@ function App() {
                 <Route exact path="/How-it-works" component={HowItWorks} />
                 <Route exact path="/DBtester" component={RowAndColumnSpacing} />
                 <Route exact path="/Courseselction" component={Courseselction} />
+                <Route exact path="/AccountSettings" component={AccountSettings} />
               </Switch>
             </div>
           </div>
