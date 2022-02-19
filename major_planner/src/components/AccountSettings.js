@@ -12,7 +12,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useAuth } from '../contexts/AuthContext';
 import { useState } from 'react';
 import { getDatabase, ref, set } from "firebase/database";
-import { Container } from '@mui/material';
+import { Autocomplete, Container } from '@mui/material';
 
 const theme = createTheme();
 
@@ -84,13 +84,21 @@ export default function AccountSettings() {
                             <Box component="form" noValidate onSubmit={handleUpdateAcademicStatus} sx={{ mt: 3 }}>
                                 <Grid container spacing={2}>
                                     <Grid item xs={12}>
-                                        Major Placeholder
+                                        <Autocomplete disableClearable
+                                            defaultValue='Undeclared'
+                                            options={['Undeclared', 'TEST1', 'TEST2']}
+                                            renderInput={(params) => <TextField {...params} label='Major'></TextField>} />
                                     </Grid>
                                     <Grid item xs={12}>
-                                        Seniority Placeholder
+                                        <Autocomplete
+                                            options={['Freshman', 'Sophomore', 'Junior', 'Senior']}
+                                            renderInput={(params) => <TextField {...params} label='Seniority'></TextField>} />
                                     </Grid>
                                     <Grid item xs={12}>
-                                        Catalog Placeholder
+                                        <Autocomplete disableClearable
+                                            defaultValue='2021-2022'
+                                            options={['2021-2022', '2020-2021', '2018-2019']}
+                                            renderInput={(params) => <TextField {...params} label='Catalog'></TextField>} />
                                     </Grid>
                                 </Grid>
                                 <Button
