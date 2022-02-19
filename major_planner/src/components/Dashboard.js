@@ -48,13 +48,13 @@ export default function Dashboard() {
                                 <LinkCard text={'Test'} path={'/Test'} />
                             </Grid>
                             <Grid item xs={6}>
-                                <LinkCard text={'Test'} path={'/Test'} />
+                                <LinkCard text={'Next Quarter Planner'} path={'/NextQuarterPlanner'} />
                             </Grid>
                             <Grid item xs={6}>
                                 <LinkCard text={'Test'} path={'/Test'} />
                             </Grid>
                             <Grid item xs={6}>
-                                <LinkCard text={'Account Setting'} path={'/AccountSettings'} />
+                                <LinkCard text={'Account Settings'} path={'/AccountSettings'} />
                             </Grid>
                         </Grid>
                     </Grid>
