@@ -11,24 +11,26 @@ import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useAuth } from '../contexts/AuthContext';
 import { useState } from 'react';
-import { getDatabase, ref, set } from "firebase/database";
 import { Autocomplete, Container } from '@mui/material';
+import { useUser } from '../contexts/UserContext';
 
 const theme = createTheme();
 
 export default function AccountSettings() {
     const { signUp } = useAuth();
+    const { password } = useUser();
+    const { updateUser } = useAuth();
     const [userEmail, setUserEmail] = useState('');
     const [userFirstName, setUserFirstName] = useState('');
     const [userLastName, setUserLastName] = useState('');
     const [userOldPassword, setUserOldPassword] = useState('');
     const [userNewPassword, setUserNewPassword] = useState('');
-    const db = getDatabase();
 
     const handleUpdateProfile = async (event) => {
         event.preventDefault();
         try {
             // TODO: implement changing userEmail, userFirstName, and userLastName.
+            updateUser(userFirstName, userLastName, userEmail);
         } catch (error) {
             console.log('THERES AN ERROR: ', error);
         }

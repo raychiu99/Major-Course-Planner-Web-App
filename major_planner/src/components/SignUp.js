@@ -33,7 +33,14 @@ export default function SignUp() {
         set(ref(db,'Users/'+user.user.uid), {
           firstName: userFirstName,
           lastName: userLastName,
-          email: userEmail 
+          email: userEmail,
+          password: userPassword,
+          classesTaken: [],
+          requirementsTaken: [],
+          electivesTaken: [],
+          dcTaken: [],
+          capstoneTaken: [],
+          creditsTaken: 0
         });
       } catch (error) {
         console.log('THERES AN ERROR: ', error);
