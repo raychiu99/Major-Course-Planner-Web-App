@@ -6,10 +6,9 @@ import Navbar from "./components/Navbar";
 import Dashboard from './components/Dashboard';
 import RowAndColumnSpacing from './components/DbTester';
 import HowItWorks from './components/How-it-works';
-import Courseselction from './components/Courseselction';
+import CourseSelection from './components/Courseselction';
 import AccountSettings from './components/AccountSettings';
 import NextQuarterPlanner from './components/Next-Quarter-Planner';
-
 import { AuthProvider } from './contexts/AuthContext';
 import { UserProvider } from './contexts/UserContext';
 import { CourseProvider } from './contexts/CourseContext';
@@ -29,7 +28,7 @@ function App() {
                   <Route exact path="/Home" component={Dashboard} />
                   <Route exact path="/How-it-works" component={HowItWorks} />
                   <Route exact path="/DBtester" component={RowAndColumnSpacing} />
-                  <Route exact path="/Courseselction" component={Courseselction} />
+                  <Route exact path="/Courseselction" component={CourseSelection} />
                   <Route exact path="/AccountSettings" component={AccountSettings} />
                   <Route exact path="/NextQuarterPlanner" component={NextQuarterPlanner} />
                 </Switch>
