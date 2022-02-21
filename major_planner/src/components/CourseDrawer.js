@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
@@ -16,10 +16,16 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
+import IconButton from '@mui/material/IconButton';
+
+
+import DeleteIcon from '@mui/icons-material/Delete';
+
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-export default function TemporaryDrawer() {
+export default function TmpDrawer(props) {
+
   const [state, setState] = React.useState({
     top: false,
     left: false,
@@ -35,86 +41,68 @@ export default function TemporaryDrawer() {
     setState({ ...state, [anchor]: open });
   };
 
+
+  const handleClick = (classObj) => {
+    let index = props.classArr.indexOf(classObj);
+    props.classArr.splice(index,1);
+  }
+
   const list = (anchor) => (
     <Box
       sx={{justifyContent: 'center', display: 'flex', 
-        flexDirection: 'column', width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 280 }}
+        flexDirection: 'column', width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 280}}
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
-      <div style={{ display: 'flex', justifyContent: 'center', height: '12vh', paddingTop: '2vh', fontSize: '14px'}}>
+      <div style={{ display: 'flex', justifyContent: 'center', height: '10vh', paddingTop: '4vh', fontSize: '14px'}}>
         <h1> Classes Selected </h1>
       </div>
       
-      <div style={{ display: 'flex', justifyContent: 'center', paddingTop: '2vh'}}>
-        
-        <Card
-          sx={{ height: '100%', display: 'flex', flexDirection: 'column', width:'90%' }}
-        >
-          <CardContent sx={{ flexGrow: 1 }}>
-            <Typography gutterBottom variant="h5" component="h2">
-              Heading
-            </Typography>
-            <Typography>
-              This is a media card. You can use this section to describe the
-              content.
-            </Typography>
-          </CardContent>
-          <CardActions>
-            <Button size="small">View</Button>
-            <Button size="small">Edit</Button>
-          </CardActions>
-        </Card>
 
+      <div style={{ display: 'flex', justifyContent: 'center', paddingTop: '2vh', flexDirection: 'column'}}>
+        <Container>
+          <Grid container spacing={3}>
+            {props.classArr.map((card) => (          
+              <Grid item key={card}>
+                <Card
+                  sx={{ height: '100%', width:'240px'}}
+                >
+                  
+                  <CardActions>
+                    <div style={{height: '0px', paddingLeft: '180px' , display: 'flex'}}>
+                      <IconButton aria-label="delete" size="large"
+                        onClick = {() => {handleClick(card[0])}}
+                      >
+                        <DeleteIcon />
+                      </IconButton>
+                    </div>
+                  </CardActions>
+                  <CardContent sx={{ flexGrow: 1 }}>
+                    <div style={{ display: 'flex', justifyContent: 'left', height: '41px' }}>
+                      <h1> {card[0]} </h1>
+                    </div>
+
+                    <div style={{ display: 'flex', justifyContent: 'left', paddingBottom: '3px' }}>
+                      <h4>{card[1]["Class Name"].replace(/^([^ ]+ ){2}/, '')}</h4>
+                    </div>
+
+                    <div style={{ display: 'flex', justifyContent: 'left' }}>
+                      Credits: {card[1]["Credits"]}
+                    </div>
+                    
+                  </CardContent>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
       </div>
       
-      <div style={{ display: 'flex', justifyContent: 'center', paddingTop: '2vh'}}>
-        
-        <Card
-          sx={{ height: '100%', display: 'flex', flexDirection: 'column', width:'90%' }}
-        >
-          <CardContent sx={{ flexGrow: 1 }}>
-            <Typography gutterBottom variant="h5" component="h2">
-              Heading
-            </Typography>
-            <Typography>
-              This is a media card. You can use this section to describe the
-              content.
-            </Typography>
-          </CardContent>
-          <CardActions>
-            <Button size="small">View</Button>
-            <Button size="small">Edit</Button>
-          </CardActions>
-        </Card>    
-
-      </div>
-
-      <div style={{ display: 'flex', justifyContent: 'center', paddingTop: '2vh'}}>
-        
-        <Card
-          sx={{ height: '100%', display: 'flex', flexDirection: 'column', width:'90%' }}
-        >
-          <CardContent sx={{ flexGrow: 1 }}>
-            <Typography gutterBottom variant="h5" component="h2">
-              Heading
-            </Typography>
-            <Typography>
-              This is a media card. You can use this section to describe the
-              content.
-            </Typography>
-          </CardContent>
-          <CardActions>
-            <Button size="small">View</Button>
-            <Button size="small">Edit</Button>
-          </CardActions>
-        </Card>    
-
-      </div>
-
-      <footer style={{ display: 'flex', justifyContent: 'center', paddingTop: '16vh', fontSize: '15px'}}>
-        Total: X credits
+      <footer style={{ display: 'flex', paddingBottom: '8px', paddingLeft: '100px' , position: 'fixed', bottom: '0' }}>
+        <Button variant="contained" href="/home">
+          Submit
+        </Button>
       </footer>
 
     </Box>
