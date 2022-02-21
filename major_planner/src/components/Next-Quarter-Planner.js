@@ -16,6 +16,8 @@ import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
+import CourseDrawer from './CourseDrawer'
+
 function Copyright() {
   return (
     <Typography variant="body2" color="text.secondary" align="center">
@@ -37,6 +39,9 @@ export default function Album() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
+
+      <CourseDrawer />
+
       <div style={{ display: 'flex', justifyContent: 'center', height: '12vh', paddingTop: '4vh', fontSize: '24px'}}>
         <h1> Class Planner </h1>
       </div>
@@ -45,7 +50,7 @@ export default function Album() {
         <h2> Major: filler  Status: filler  Year: filler </h2>
       </div>
 
-      <div style={{ display: 'flex', justifyContent: 'center', height: '12vh' }}>
+      <div style={{ display: 'flex', justifyContent: 'center', height: '10vh' }}>
         <h3> filler credits until graduation </h3>
       </div>
 
@@ -54,16 +59,7 @@ export default function Album() {
       </div>
 
       <main>
-        {/* Hero unit */}
-        <Box
-          sx={{
-            bgcolor: 'background.paper',
-            pt: 8,
-            pb: 6,
-          }}
-        >
-          
-        </Box>
+        
         <Container sx={{ py: 8 }} maxWidth="md">
           {/* End hero unit */}
           <Grid container spacing={4}>
@@ -72,15 +68,6 @@ export default function Album() {
                 <Card
                   sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
                 >
-                  <CardMedia
-                    component="img"
-                    sx={{
-                      // 16:9
-                      pt: '56.25%',
-                    }}
-                    image="https://source.unsplash.com/random"
-                    alt="random"
-                  />
                   <CardContent sx={{ flexGrow: 1 }}>
                     <Typography gutterBottom variant="h5" component="h2">
                       Heading
@@ -100,22 +87,7 @@ export default function Album() {
           </Grid>
         </Container>
       </main>
-      {/* Footer */}
-      <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
-        <Typography variant="h6" align="center" gutterBottom>
-          Footer
-        </Typography>
-        <Typography
-          variant="subtitle1"
-          align="center"
-          color="text.secondary"
-          component="p"
-        >
-          Something here to give the footer a purpose!
-        </Typography>
-        <Copyright />
-      </Box>
-      {/* End footer */}
+      
     </ThemeProvider>
   );
 }
