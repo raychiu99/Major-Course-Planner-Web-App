@@ -15,9 +15,8 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import {useAuth} from '../contexts/AuthContext';
 import { useState } from 'react';
 import { getDatabase, ref, set } from "firebase/database";
-import {Link} from 'react-router-dom';
+import {Link,useHistory} from 'react-router-dom';
 const theme = createTheme();
-
 export default function SignUp() {
     const {signUp} = useAuth();
     const [userEmail, setUserEmail] = useState('');
@@ -25,6 +24,7 @@ export default function SignUp() {
     const [userLastName, setUserLastName] = useState('');
     const [userPassword, setUserPassword] = useState('');
     const db = getDatabase();
+    const history = useHistory();
     const handleSubmit = async(event) => {
       event.preventDefault();
       try {
@@ -43,6 +43,7 @@ export default function SignUp() {
           capstoneTaken: [],
           creditsTaken: 0
         });
+        history.push("/")
       } catch (error) {
         console.log('THERES AN ERROR: ', error);
       }

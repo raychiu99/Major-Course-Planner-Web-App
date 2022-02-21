@@ -4,18 +4,13 @@ import Autocomplete from '@mui/material/Autocomplete';
 
 export default function ComboBox() {
   return (
-    <div className="Course">
-      <h1>START BY ADDING THE CLASS YOU'VE TAKEN</h1>
     <Autocomplete
       disablePortal
       id="combo-box-demo"
       options={cseclasses}
       sx={{ width: 500 }}
-      renderInput={(params) => <TextField {...params} label="Classes" />}
+      renderInput={(params) => <TextField {...params} label="Class" />}
     />
-    
-    </div>
-    
   );
 }
 

@@ -18,6 +18,12 @@ export default function BasicList(props) {
   const {insertAllCourses} = useCourse();
   const dbRef = ref(getDatabase());
   const [classesTaken, setClassesTaken] = useState([]);
+  const [name, setnewlist] = useState([]);
+  const handleremove= (classObj) => { 
+    const newList = classesTaken.filter((className) => className!== classObj);
+    setClassesTaken(newList);
+    console.log(newList,classesTaken);
+  }
   React.useEffect (() => {
     insertAllCourses(props.classArr);
     function fetchCourses(){
@@ -34,7 +40,7 @@ export default function BasicList(props) {
     fetchCourses();
   }, [insertAllCourses,props.classArr, dbRef, currentUser.uid]); 
   console.log('Classes taken arr', classesTaken);
-
+  
   
   return (
     <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
@@ -44,7 +50,7 @@ export default function BasicList(props) {
           <b>Classes Taken</b>
           {classesTaken.map((className) => {
             return(
-              <ListItem key = {className}>
+              <ListItem key = {className} ><button type="button" onClick = {() => {handleremove(className)}}>x</button> 
               <ListItemText primary={className}/>
               </ListItem>
             );
