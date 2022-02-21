@@ -5,7 +5,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
+//import Link from '@mui/material/Link';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
@@ -14,19 +14,21 @@ import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import {useAuth} from '../contexts/AuthContext'
 import { useState } from 'react';
+import {Link,useHistory} from 'react-router-dom';
 const theme = createTheme();
 
 export default function SignIn() {
   const {signIn} = useAuth();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, getemail] = useState('');
+  const [password , getpassword] = useState('');
+  const history = useHistory();
   const handleSubmit = async(event) => {
     event.preventDefault();
     try {
-      await signIn(email, password);
-      console.log('email: ', email, 'password: ', password);
+      await signIn(email, password)
+      history.push("/Courseselction")
     } catch (error) {
-      console.log('THERES AN ERROR');
+      console.log('THERES AN ERROR')
     }
   };
 
@@ -62,35 +64,32 @@ export default function SignIn() {
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
-              Sign in
+              Sign In
             </Typography>
-            <Box component="form" noValidate sx={{ mt: 1 }}>
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
-                onChange={(event) => setEmail(event.target.value)}
-                autoFocus
-              />
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-                onChange = {(event) => setPassword(event.target.value)}
-              />
-              <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
-                label="Remember me"
-              />
+            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+                <Grid item xs={12}>
+                  <TextField
+                    required
+                    fullWidth
+                    id="email"
+                    label="Email Address"
+                    name="email"
+                    autoComplete="email"
+                    onChange={(event) => getemail(event.target.value)}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    required
+                    fullWidth
+                    name="password"
+                    label="Password"
+                    type="password"
+                    id="password"
+                    autoComplete="new-password"
+                    onChange = {(event) => getpassword(event.target.value)}
+                  />
+                </Grid>
               <Button
                 type="submit"
                 fullWidth
@@ -100,10 +99,15 @@ export default function SignIn() {
               >
                 Sign In
               </Button>
+              <div classname = "sss">
+                Need an account? <Link to ="/SignUp">SignUp</Link>
+              </div>
             </Box>
           </Box>
         </Grid>
       </Grid>
+      
     </ThemeProvider>
+    
   );
 }
