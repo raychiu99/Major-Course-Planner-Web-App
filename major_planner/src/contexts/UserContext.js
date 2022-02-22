@@ -22,6 +22,10 @@ export function UserProvider({ children }) {
   const [email, setEmail] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
+  const [major, setMajor] = useState('Undeclared');
+  const [seniority, setSeniority] = useState('Unknown');
+  const [catalog, setCatalog] = useState('Unknown');
+  const [currentClasses, setCurrentClasses] = useState([]);
   const [classesTaken, setClassesTaken] = useState([]);
   const [requirementsTaken, setRequirementsTaken] = useState([]);
   const [electivesTaken, setElectivesTaken] = useState([]);
@@ -34,15 +38,19 @@ export function UserProvider({ children }) {
   useEffect(() => {
     if (currentUser) {
       function fetchUser() {
-        console.log('current user in user context',currentUser);
+        console.log('current user in user context', currentUser);
         get(child(dbRef, 'Users/' + currentUser.uid)).then((snapshot) => {
           if (snapshot.exists()) {
             console.log('snapshot: ', snapshot.val());
             setFirstName(snapshot.val().firstName);
             setLastName(snapshot.val().lastName);
+            setMajor(snapshot.val().major);
+            setSeniority(snapshot.val().seniority);
+            setCatalog(snapshot.val().catalog);
+            setCurrentClasses(currentClasses => [...currentClasses, snapshot.val().currentClasses]);
             setPassword(snapshot.val().password);
             setEmail(snapshot.val().email);
-            setClassesTaken(classesTaken => [...classesTaken,snapshot.val().classesTaken]);
+            setClassesTaken(classesTaken => [...classesTaken, snapshot.val().classesTaken]);
             setRequirementsTaken(requirementsTaken => [...requirementsTaken, snapshot.val().requirementsTaken]);
             setElectivesTaken(electivesTaken => [...electivesTaken, snapshot.val().electivesTaken]);
             setCapstoneTaken(capstoneTaken => [...capstoneTaken, snapshot.val().capstoneTaken]);
@@ -59,8 +67,10 @@ export function UserProvider({ children }) {
     }
   }, [dbRef, currentUser]);
   return (
-    <UserContext.Provider value={{ email, firstName, lastName, classesTaken, requirementsTaken,
-    password, electivesTaken, capstoneTaken, dcTaken, creditsTaken}}>
+    <UserContext.Provider value={{
+      email, firstName, lastName, major, seniority, catalog, currentClasses, classesTaken, requirementsTaken,
+      password, electivesTaken, capstoneTaken, dcTaken, creditsTaken
+    }}>
       {children}
     </UserContext.Provider>
   );

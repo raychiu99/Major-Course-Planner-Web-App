@@ -1,35 +1,35 @@
 import * as React from 'react';
-import Avatar from '@mui/material/Avatar';
+import { useState } from 'react';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { useAuth } from '../contexts/AuthContext';
-import { useState } from 'react';
 import { Autocomplete, Container } from '@mui/material';
+import { useAuth } from '../contexts/AuthContext';
 import { useUser } from '../contexts/UserContext';
+import { get, update } from 'firebase/database';
 
 const theme = createTheme();
 
 export default function AccountSettings() {
-    const { signUp } = useAuth();
-    const { password } = useUser();
-    const { updateUser } = useAuth();
+    const { updateUser, updateUserPassword, updateAcademicStatus } = useAuth();
+    const { major, seniority, catalog } = useUser();
+    const [newMajor, setNewMajor] = useState(major);
+    const [newSeniority, setNewSeniority] = useState(seniority);
+    const [newCatalog, setNewCatalog] = useState(catalog);
     const [userEmail, setUserEmail] = useState('');
     const [userFirstName, setUserFirstName] = useState('');
     const [userLastName, setUserLastName] = useState('');
     const [userOldPassword, setUserOldPassword] = useState('');
     const [userNewPassword, setUserNewPassword] = useState('');
+    const [userNewPasswordConfirm, setUserNewPasswordConfirm] = useState('');
 
     const handleUpdateProfile = async (event) => {
         event.preventDefault();
         try {
-            // TODO: implement changing userEmail, userFirstName, and userLastName.
             updateUser(userFirstName, userLastName, userEmail);
         } catch (error) {
             console.log('THERES AN ERROR: ', error);
@@ -39,7 +39,7 @@ export default function AccountSettings() {
     const handleUpdatePassword = async (event) => {
         event.preventDefault();
         try {
-            // TODO: implement changing userPassword.
+            updateUserPassword(userOldPassword, userNewPassword, userNewPasswordConfirm);
         } catch (error) {
             console.log('THERES AN ERROR: ', error);
         }
@@ -48,8 +48,7 @@ export default function AccountSettings() {
     const handleUpdateAcademicStatus = async (event) => {
         event.preventDefault();
         try {
-            // TODO: implement changing current major, seniority (freshman, sophomore, etc),
-            // and catalog.
+            updateAcademicStatus(newMajor, newSeniority, newCatalog);
         } catch (error) {
             console.log('THERES AN ERROR: ', error);
         }
@@ -87,20 +86,24 @@ export default function AccountSettings() {
                                 <Grid container spacing={2}>
                                     <Grid item xs={12}>
                                         <Autocomplete disableClearable
-                                            defaultValue='Undeclared'
-                                            options={['Undeclared', 'TEST1', 'TEST2']}
-                                            renderInput={(params) => <TextField {...params} label='Major'></TextField>} />
+                                            defaultValue={major}
+                                            options={['Undeclared', 'Computer Science (BS)']}
+                                            renderInput={(params) => <TextField {...params} label='Major'></TextField>}
+                                            onChange={(ev, val) => { newMajor = val }} />
                                     </Grid>
                                     <Grid item xs={12}>
                                         <Autocomplete
+                                            defaultValue={seniority}
                                             options={['Freshman', 'Sophomore', 'Junior', 'Senior']}
-                                            renderInput={(params) => <TextField {...params} label='Seniority'></TextField>} />
+                                            renderInput={(params) => <TextField {...params} label='Seniority'></TextField>}
+                                            onChange={(ev, val) => { newSeniority = val }} />
                                     </Grid>
                                     <Grid item xs={12}>
                                         <Autocomplete disableClearable
-                                            defaultValue='2021-2022'
+                                            defaultValue={catalog}
                                             options={['2021-2022', '2020-2021', '2018-2019']}
-                                            renderInput={(params) => <TextField {...params} label='Catalog'></TextField>} />
+                                            renderInput={(params) => <TextField {...params} label='Catalog'></TextField>}
+                                            onChange={(ev, val) => { newCatalog = val }} />
                                     </Grid>
                                 </Grid>
                                 <Button
@@ -243,6 +246,17 @@ export default function AccountSettings() {
                                             type="password"
                                             id="newPassword"
                                             onChange={(event) => setUserNewPassword(event.target.value)}
+                                        />
+                                    </Grid>
+                                    <Grid item xs={12}>
+                                        <TextField
+                                            required
+                                            fullWidth
+                                            name="newPasswordConfirm"
+                                            label="Confirm New Password"
+                                            type="password"
+                                            id="newPasswordConfirm"
+                                            onChange={(event) => setUserNewPasswordConfirm(event.target.value)}
                                         />
                                     </Grid>
                                 </Grid>
