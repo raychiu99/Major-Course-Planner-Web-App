@@ -43,7 +43,7 @@ export default function SignUp() {
           capstoneTaken: [],
           creditsTaken: 0
         });
-        history.push("/")
+        history.push("/SelectRequirements")
       } catch (error) {
         console.log('THERES AN ERROR: ', error);
       }
@@ -137,6 +137,7 @@ export default function SignUp() {
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
                 onSubmit={handleSubmit}
+                
               >
                 Sign Up
               </Button>

@@ -5,6 +5,7 @@ import Autocomplete from '@mui/material/Autocomplete';
 export default function ComboBox() {
   return (
     <Autocomplete
+      onChange={(event,value) => console.log(value)}
       disablePortal
       id="combo-box-demo"
       options={cseclasses}
