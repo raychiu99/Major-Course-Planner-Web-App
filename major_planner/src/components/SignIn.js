@@ -26,7 +26,7 @@ export default function SignIn() {
     event.preventDefault();
     try {
       await signIn(email, password)
-      history.push("/Courseselction")
+      history.push("/Courseselection")
     } catch (error) {
       console.log('THERES AN ERROR')
     }
