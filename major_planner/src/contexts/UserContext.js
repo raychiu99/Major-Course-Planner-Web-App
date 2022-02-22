@@ -23,8 +23,8 @@ export function UserProvider({ children }) {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [major, setMajor] = useState('Undeclared');
-  const [seniority, setSeniority] = useState('Unknown');
-  const [catalog, setCatalog] = useState('Unknown');
+  const [seniority, setSeniority] = useState('Unspecified');
+  const [catalog, setCatalog] = useState('Unspecified');
   const [currentClasses, setCurrentClasses] = useState([]);
   const [classesTaken, setClassesTaken] = useState([]);
   const [requirementsTaken, setRequirementsTaken] = useState([]);

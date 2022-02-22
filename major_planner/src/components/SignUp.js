@@ -3,51 +3,53 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-//import Link from '@mui/material/Link';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import {useAuth} from '../contexts/AuthContext';
+import { useAuth } from '../contexts/AuthContext';
 import { useState } from 'react';
 import { getDatabase, ref, set } from "firebase/database";
-import {Link,useHistory} from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 const theme = createTheme();
+
 export default function SignUp() {
-    const {signUp} = useAuth();
-    const [userEmail, setUserEmail] = useState('');
-    const [userFirstName, setUserFirstName] = useState('');
-    const [userLastName, setUserLastName] = useState('');
-    const [userPassword, setUserPassword] = useState('');
-    const db = getDatabase();
-    const history = useHistory();
-    const handleSubmit = async(event) => {
-      event.preventDefault();
-      try {
-        const user = await signUp(userEmail, userPassword);
-        // console.log('email: ', email, 'password: ', password, 'userId: ', user.user.uid, firstName, lastName, user);
-        // console.log('currentUser: ', currentUser);
-        set(ref(db,'Users/'+user.user.uid), {
-          firstName: userFirstName,
-          lastName: userLastName,
-          email: userEmail,
-          password: userPassword,
-          classesTaken: [],
-          requirementsTaken: [],
-          electivesTaken: [],
-          dcTaken: [],
-          capstoneTaken: [],
-          creditsTaken: 0
-        });
-        history.push("/SelectRequirements")
-      } catch (error) {
-        console.log('THERES AN ERROR: ', error);
-      }
-    };
+  const { signUp } = useAuth();
+  const [userEmail, setUserEmail] = useState('');
+  const [userFirstName, setUserFirstName] = useState('');
+  const [userLastName, setUserLastName] = useState('');
+  const [userPassword, setUserPassword] = useState('');
+  const db = getDatabase();
+  const history = useHistory();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const user = await signUp(userEmail, userPassword);
+      // console.log('email: ', email, 'password: ', password, 'userId: ', user.user.uid, firstName, lastName, user);
+      // console.log('currentUser: ', currentUser);
+      set(ref(db, 'Users/' + user.user.uid), {
+        firstName: userFirstName,
+        lastName: userLastName,
+        email: userEmail,
+        password: userPassword,
+        major: 'Undeclared',
+        seniority: 'Unspecified',
+        catalog: 'Unspecified',
+        currentClasses: [],
+        classesTaken: [],
+        requirementsTaken: [],
+        electivesTaken: [],
+        dcTaken: [],
+        capstoneTaken: [],
+        creditsTaken: 0
+      });
+      history.push("/SelectRequirements")
+    } catch (error) {
+      console.log('THERES AN ERROR: ', error);
+    }
+  };
   return (
     <ThemeProvider theme={theme}>
       <Grid container component="main" sx={{ height: '100vh' }}>
@@ -127,7 +129,7 @@ export default function SignUp() {
                     type="password"
                     id="password"
                     autoComplete="new-password"
-                    onChange = {(event) => setUserPassword(event.target.value)}
+                    onChange={(event) => setUserPassword(event.target.value)}
                   />
                 </Grid>
               </Grid>
@@ -137,19 +139,17 @@ export default function SignUp() {
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
                 onSubmit={handleSubmit}
-                
+
               >
                 Sign Up
               </Button>
-              <div classname = "sss">
-                Already have an account? <Link to ="/">SignIn</Link>
+              <div classname="sss">
+                Already have an account? <Link to="/">Sign In</Link>
               </div>
             </Box>
           </Box>
         </Grid>
       </Grid>
-      
     </ThemeProvider>
-    
   );
 }
