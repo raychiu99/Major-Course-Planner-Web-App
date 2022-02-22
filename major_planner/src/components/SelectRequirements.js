@@ -282,17 +282,20 @@ export default function SelectRequirements() {
         
       > 
         <DialogTitle>
-          <Typography variant = 'h4' align = 'center'>Choose An option</Typography>
+          <Typography variant = 'h2' align = 'center'>Choose An option</Typography>
         </DialogTitle>
           <DialogContent style = {{height:'300px', width: '600px', textAlign:'center',
-            marginTop:'120px'}}>
+            marginTop:'30px'}}>
             <Stack direction="row" spacing={4}>
               <Button color = 'primary' variant='contained' onClick = {()=> (insertAllCourses(tookAllReqsObj),
-            history.push("/Courseselction"))}>I HAVE TAKEN ALL LOWER REQUIREMENTS</Button>
+            history.push("/Courseselction"))}>I HAVE TAKEN ALL LOWER DIVISION REQUIREMENTS</Button>
               <Button color = 'success' variant='contained' onClick = {()=> (history.push("/Courseselction"))}>
-                I HAVE TAKEN NO LOWER REQUIREMENTS</Button>
-              <Button color = 'primary' variant='contained' onClick={()=>setOpen(!open)}>I HAVE TAKEN SOME LOWER REQUIREMENTS</Button>
+                I HAVE TAKEN NO LOWER DIVISION REQUIREMENTS</Button>
+              <Button color = 'primary' variant='contained' onClick={()=>setOpen(!open)}>I HAVE TAKEN SOME LOWER DIVISION REQUIREMENTS</Button>
             </Stack>
+            <Typography variant='h6'
+            style = {{paddingTop: '30px'}}
+            >Please note that lower division courses are all those courses with course number less than 100 and select math and applied mathematics classes.</Typography>
           </DialogContent>
       </Dialog>
     <div style={{ display: 'flex', justifyContent: 'center', height: '10vh', paddingTop: '1.5vh', fontSize: '24px'}}>
