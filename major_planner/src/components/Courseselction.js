@@ -21,7 +21,8 @@ function Course(){
     };
     fetchCourses();
 }, [dbRef]);
-  const name = Object.entries(courses).map((key,val) => {<li key = {key}>{key[1]['Class Name']}</li>})
+  const name = Object.entries(courses);
+  console.log(name[0]);
   const [searchterm, setsearchterm] = useState("");
   const handleToggle = () => {
     toggleTakenClasses(!showTakenClasses);
@@ -70,7 +71,6 @@ function Course(){
         })}
         <button onClick = {() => {handleToggle()}}>DONE</button>
       {(showTakenClasses === true) ? <BasicList classArr = {takenClassArr}/> : <></>}
-      
     </div>
   );
 }

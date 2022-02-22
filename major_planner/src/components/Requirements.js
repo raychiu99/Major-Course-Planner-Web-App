@@ -13,21 +13,33 @@ import { useUser } from '../contexts/UserContext';
 import { useAuth } from '../contexts/AuthContext';
 import { ClassNames } from '@emotion/react';
 import { get, getDatabase, ref, query, child, orderByChild } from "firebase/database";
+import Paper from '@mui/material/Paper';
+import Stack from '@mui/material/Stack';
+import { styled } from '@mui/material/styles';
+const Item = styled(Paper)(({ theme }) => ({
+  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  textAlign: 'center',
+  color: theme.palette.text.secondary,
+}));
 export default function BasicList(props) {
   const {currentUser} = useAuth();
   const {insertAllCourses} = useCourse();
   const dbRef = ref(getDatabase());
   const [classesTaken, setClassesTaken] = useState([]);
-  const [name, setnewlist] = useState([]);
   const handleremove= (classObj) => { 
     const newList = classesTaken.filter((className) => className!== classObj);
     setClassesTaken(newList);
     console.log(newList,classesTaken);
   }
   React.useEffect (() => {
+    console.log('test1: ', props);
+    console.log('test1: ', props.classArr);
     insertAllCourses(props.classArr);
     function fetchCourses(){
       get(child(dbRef, 'Users/'+currentUser.uid)).then((snapshot) => {
+        console.log('test1: ', snapshot);
         if(snapshot.exists()) {
           setClassesTaken(snapshot.val().classesTaken);
         } else {
@@ -50,13 +62,17 @@ export default function BasicList(props) {
           <b>Classes Taken</b>
           {classesTaken.map((className) => {
             return(
+              <React.Fragment key={className}>
+              <Stack direction="row" spacing={2}>
               <ListItem key = {className} ><button type="button" onClick = {() => {handleremove(className)}}>x</button> 
-              <ListItemText primary={className}/>
+              
+              <Item>{className}</Item>
               </ListItem>
+              </Stack>
+              </React.Fragment>
             );
           })}
         </List> : <></> }
-        
       </nav>
       <Divider />
     </Box>

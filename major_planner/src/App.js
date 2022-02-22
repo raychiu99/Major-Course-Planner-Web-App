@@ -10,6 +10,7 @@ import Course from './components/Courseselction';
 import AccountSettings from './components/AccountSettings';
 import NextQuarterPlanner from './components/Next-Quarter-Planner';
 import SelectRequirements from './components/SelectRequirements';
+import Courseselection from './components/Courseselection';
 import { AuthProvider } from './contexts/AuthContext';
 import { UserProvider } from './contexts/UserContext';
 import { CourseProvider } from './contexts/CourseContext';
@@ -33,6 +34,7 @@ function App() {
                   <Route exact path="/Courseselction" component={Course} />
                   <Route exact path="/AccountSettings" component={AccountSettings} />
                   <Route exact path="/NextQuarterPlanner" component={NextQuarterPlanner} />
+                  <Route exact path="/Courseselection" component={Courseselection} />
                 </Switch>
               </div>
             </div>
