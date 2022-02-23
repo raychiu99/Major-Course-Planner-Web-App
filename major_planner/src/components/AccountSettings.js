@@ -26,6 +26,10 @@ export default function AccountSettings() {
     const [userNewPassword, setUserNewPassword] = useState('');
     const [userNewPasswordConfirm, setUserNewPasswordConfirm] = useState('');
 
+    const majorOpts = ['Undeclared', 'Computer Science (BS)'];
+    const seniorityOpts = ['Unspecified', 'Freshman', 'Sophomore', 'Junior', 'Senior'];
+    const catalogOpts = ['Unspecified', '2021-2022', '2020-2021', '2018-2019'];
+
     const handleUpdateProfile = async (event) => {
         event.preventDefault();
         try {
@@ -86,22 +90,22 @@ export default function AccountSettings() {
                                 <Grid container spacing={2}>
                                     <Grid item xs={12}>
                                         <Autocomplete disableClearable autoSelect
-                                            defaultValue={major}
-                                            options={['Undeclared', 'Computer Science (BS)']}
+                                            value={major}
+                                            options={majorOpts}
                                             renderInput={(params) => <TextField {...params} label='Major'></TextField>}
                                             onChange={(ev, val) => { setNewMajor(val); }} />
                                     </Grid>
                                     <Grid item xs={12}>
                                         <Autocomplete disableClearable autoSelect
-                                            defaultValue={seniority}
-                                            options={['Unspecified', 'Freshman', 'Sophomore', 'Junior', 'Senior']}
+                                            value={seniority}
+                                            options={seniorityOpts}
                                             renderInput={(params) => <TextField {...params} label='Seniority'></TextField>}
                                             onChange={(ev, val) => { setNewSeniority(val); }} />
                                     </Grid>
                                     <Grid item xs={12}>
                                         <Autocomplete disableClearable autoSelect
-                                            defaultValue={catalog}
-                                            options={['Unspecified', '2021-2022', '2020-2021', '2018-2019']}
+                                            value={catalog}
+                                            options={catalogOpts}
                                             renderInput={(params) => <TextField {...params} label='Catalog'></TextField>}
                                             onChange={(ev, val) => { setNewCatalog(val); }} />
                                     </Grid>
@@ -170,7 +174,7 @@ export default function AccountSettings() {
                                         <TextField
                                             required
                                             fullWidth
-                                            defaultValue={userFirstName}
+                                            value={firstName}
                                             id="firstName"
                                             label="First Name"
                                             name="firstName"
@@ -182,7 +186,7 @@ export default function AccountSettings() {
                                         <TextField
                                             required
                                             fullWidth
-                                            defaultValue={userLastName}
+                                            value={lastName}
                                             id="lastName"
                                             label="Last Name"
                                             name="lastName"
@@ -194,7 +198,7 @@ export default function AccountSettings() {
                                         <TextField
                                             required
                                             fullWidth
-                                            defaultValue={userEmail}
+                                            value={email}
                                             id="email"
                                             label="Email Address"
                                             name="email"

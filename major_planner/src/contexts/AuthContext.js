@@ -33,7 +33,8 @@ export function AuthProvider({ children }) {
     });*/
     update(ref(db, 'Users/' + auth.currentUser.uid), {
       firstName: first,
-      lastName: last
+      lastName: last,
+      email: mail
     });
   }
   function updateUserPassword(oldPassword, newPassword, newPasswordConfirm) {
