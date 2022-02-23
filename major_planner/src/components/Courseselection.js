@@ -24,7 +24,6 @@ useEffect(() => {
   fetchCourses();
 }, [dbRef]);
 const cao = Object.entries(courses);
-
 const handleToggle = () => {
   toggleTakenClasses(!showTakenClasses);
 }

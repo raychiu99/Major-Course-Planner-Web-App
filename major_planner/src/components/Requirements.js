@@ -16,6 +16,7 @@ import { get, getDatabase, ref, query, child, orderByChild } from "firebase/data
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
 import { styled } from '@mui/material/styles';
+import Grid from '@mui/material/Grid';
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
   ...theme.typography.body2,
@@ -28,51 +29,47 @@ export default function BasicList(props) {
   const {insertAllCourses} = useCourse();
   const dbRef = ref(getDatabase());
   const [classesTaken, setClassesTaken] = useState([]);
+  const [anew, setdelete] = useState(props.classArr);
+
   const handleremove= (classObj) => { 
     const newList = classesTaken.filter((className) => className!== classObj);
     setClassesTaken(newList);
-    console.log(newList,classesTaken);
-  }
+    for (let index in props.classArr){
+      if (props.classArr[index][0] == classObj){  
+        props.classArr.splice(index,1);
+        console.log('Classes taken arr',props.classArr);
+      }
+    }
+}
   React.useEffect (() => {
-    console.log('test1: ', props);
-    console.log('test1: ', props.classArr);
-    insertAllCourses(props.classArr);
-    function fetchCourses(){
-      get(child(dbRef, 'Users/'+currentUser.uid)).then((snapshot) => {
-        console.log('test1: ', snapshot);
-        if(snapshot.exists()) {
-          setClassesTaken(snapshot.val().classesTaken);
-        } else {
-          setClassesTaken(undefined);
-        }
-      }).catch((error) => {
-      console.log(error);
-      });
-    };
-    fetchCourses();
-  }, [insertAllCourses,props.classArr, dbRef, currentUser.uid]); 
+    for (let index in props.classArr){
+      if (classesTaken.indexOf(props.classArr[index][0]) < 0){     
+        const classObj = props.classArr[index][0];
+        setClassesTaken(classesTaken=>[...classesTaken,classObj]);
+      }
+    } 
+  }, [props.classArr]); 
   console.log('Classes taken arr', classesTaken);
-  
-  
   return (
     <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
       <nav aria-label="main mailbox folders">
         {(classesTaken !== undefined) ?
         <List>
           <b>Classes Taken</b>
-          {classesTaken.map((className) => {
-            return(
-              <React.Fragment key={className}>
-              <Stack direction="row" spacing={2}>
-              <ListItem key = {className} ><button type="button" onClick = {() => {handleremove(className)}}>x</button> 
-              
+          <Box sx={{ flexGrow: 1 }}>
+          <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 10, sm: 8, md: 12 }}>
+          {classesTaken.map((className) => { 
+              return (
+              <Grid item xs={2} sm={4} md={4} >
+              <button type="button" onClick = {() => {handleremove(className)}}>x</button> 
               <Item>{className}</Item>
-              </ListItem>
-              </Stack>
-              </React.Fragment>
-            );
+              </Grid> 
+               );
           })}
+          </Grid>
+          </Box>
         </List> : <></> }
+        <button onClick = {() => {insertAllCourses(props.classArr)}}>DONE</button>
       </nav>
       <Divider />
     </Box>
