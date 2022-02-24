@@ -43,8 +43,12 @@ export default function TmpDrawer(props) {
 
 
   const handleClick = (classObj) => {
-    let index = props.classArr.indexOf(classObj);
-    props.classArr.splice(index,1);
+    for (let index in props.classArr){
+      if (props.classArr[index][0] == classObj){  
+        props.classArr.splice(index,1);
+        console.log('Classes taken arr',props.classArr);
+      }
+    }
   }
 
   const list = (anchor) => (
