@@ -4,7 +4,11 @@ import Autocomplete from '@mui/material/Autocomplete';
 import BasicList from './Requirements.js';
 import { useState, useEffect } from 'react';
 import { get, getDatabase, ref, query, child, orderByChild } from "firebase/database";
+import Button from '@mui/material/Button';
+import Grid from '@mui/material/Grid';
+import {Link,useHistory} from 'react-router-dom';
 export default function ComboBox() {
+const history = useHistory();
 const [courses, setCourses] = useState([]);
 const [takenClassArr, setTakenClassArr] = useState([]);
 const [showTakenClasses, toggleTakenClasses] = useState(false);
@@ -28,7 +32,7 @@ const handleToggle = () => {
   toggleTakenClasses(!showTakenClasses);
 }
 const handleClick = (classname,sname) => {
-  console.log('Pushing into classes taken: ', takenClassArr);
+
   let isTaken = false;
   for (let index in takenClassArr){
     if (takenClassArr[index][0].indexOf(sname) >= 0){
@@ -38,10 +42,11 @@ const handleClick = (classname,sname) => {
   }
     if (!isTaken) {
       for (let index in cao){
-        if (cao[index][1]['Class Name'] == classname){
+        if (cao[index][1]['Class Name'] === classname){
           console.log('Pushing into classes taken: ', takenClassArr);
           const classObj = cao[index];
           setTakenClassArr(takenClassArr => [...takenClassArr, classObj]);
+          console.log(takenClassArr)
         }
       }
     }
@@ -51,22 +56,52 @@ const handleClick = (classname,sname) => {
   }
   return (
     <div className="Course">
-    <h1>START BY ADDING THE CLASS YOU'VE TAKEN</h1>
-    <Autocomplete
-      disablePortal
-      id="combo-box-demo"
-      options={cseclasses}
-      sx={{ width: 500 }}
-      onChange={(event,value) =>{ {(value!= null) ? handleClick(value.label,value.name) : <></>}}}
-      renderInput={(params) => <TextField {...params} label="Class" />}
-    />
-    <BasicList classArr = {takenClassArr}/> 
+      <h1>START BY ADDING THE CLASS YOU'VE TAKEN</h1>
+      <Autocomplete
+          disablePortal
+          id="combo-box-demo"
+          options={cseclasses}
+          sx={{ width: 500 }}
+          onChange={(event,value) =>{ {(value != null) ? handleClick(value.label,value.name) : <></>}}}
+          renderInput={(params) => <TextField {...params} label="Class" />}
+        />
+    <Grid container className="Course" rowSpacing= {1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+    sx={{mt:'10%'}}>
+      <Grid item xs = {4}>
+      <BasicList classArr = {takenClassArr}/> 
+      <Button color = 'primary' variant='contained' onClick = {() => (
+      tookAllReqs.map((className) => (
+        handleClick(className.label, className.name)
+      )))}
+      sx={{maxWidth:'100%'}}> I HAVE TAKEN ALL LOWER DIVISION COURSES </Button>
+    </Grid>
+    
+    
+    </Grid>
     </div>
   );
 }
-
+const tookAllReqs = [
+  {  name : 'MATH 19A',label : 'MATH 19A Calculus for Science, Engineering, and Mathematics'},
+  {  name : 'MATH 19B',label : 'MATH 19B Calculus for Science, Engineering, and Mathematics'},
+  {  name: 'AM 10', label : 'AM 10 Mathematical Methods for Engineers I'},
+  {  name : 'AM 30', label : 'AM 30 Multivariate Calculus for Engineers'},
+  {  name : 'CSE 16', label : 'CSE 16 Applied Discrete Mathematics'},
+  {  name : 'CSE 20', label : 'CSE 20 Beginning Programming in Python'},
+  {  name : 'CSE 30', label: 'CSE 30 Programming Abstractions: Python'},
+  {  name : 'CSE 12', label : 'CSE 12 Computer Systems and Assembly Language and Lab'},
+  {  name : 'CSE 13S', label : 'CSE 13S Computer Systems and C Programming'},
+];
 // Top 100 films as rated by IMDb users. http://www.imdb.com/chart/top
 const cseclasses = [
+  {  name : 'MATH 19A',label : 'MATH 19A Calculus for Science, Engineering, and Mathematics'},
+  {  name : 'MATH 19B',label : 'MATH 19B Calculus for Science, Engineering, and Mathematics'},
+  {  name : 'MATH 20A',label : 'MATH 20A Honors Calculus'},
+  {  name : 'MATH 20B',label : 'MATH 20B Honors Calculus'},
+  {  name : 'MATH 21', label : 'MATH 21 Linear Algebra'},
+  {  name : 'MATH 23A', label : 'MATH 23A Vector Calculus'},
+  {  name: 'AM 10', label : 'AM 10 Mathematical Methods for Engineers I'},
+  {  name : 'AM 30', label : 'AM 30 Multivariate Calculus for Engineers'},
   {  name : 'AM 114', label : 'AM 114 Introduction to Dynamical Systems'},
   {  name : 'AM 147', label : 'AM 147 Computational Methods and Applications'},
   {  name : 'CMPM 120', label : 'CMPM 120 Game Development Experience'},

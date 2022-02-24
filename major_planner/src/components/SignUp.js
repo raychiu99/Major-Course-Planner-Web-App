@@ -45,7 +45,7 @@ export default function SignUp() {
         capstoneTaken: [],
         creditsTaken: 0
       });
-      history.push("/SelectRequirements")
+      history.push("/Courseselection")
     } catch (error) {
       console.log('THERES AN ERROR: ', error);
     }

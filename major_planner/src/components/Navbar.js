@@ -1,15 +1,17 @@
 const Navbar = () => {
 	return (
-		<nav className="navbar">
+		<div class = 'navbar-container' style={{textAlign:'center'}}>
+		<nav className="navbar" style={{display: 'inline-block', textAlign:'center'}}>
 			<h1>Major Course Planner</h1>
-			<div className="links">
+			<div className="links" style={{textAlign:'center'}}>
 				<a href="/How-it-works">How It Works</a>
 				<a href="/SignUp">Sign Up</a>
 				<a href="/">Log In</a>
-				<a href="/home">Tmp1</a>
-				<a href="/Courseselction">Tmp2</a>
+				<a href="/home">Home</a>
+				<a href="/Courseselection">Course Entry</a>
 			</div>
 		</nav>
+		</div>
 	);
 }
 
