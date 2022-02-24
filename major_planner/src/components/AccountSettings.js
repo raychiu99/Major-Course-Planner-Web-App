@@ -7,28 +7,76 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { Autocomplete, Container } from '@mui/material';
+import { Autocomplete, Container, List, ListItem, ListItemText } from '@mui/material';
+import { getDatabase, get, ref, child } from 'firebase/database';
 import { useAuth } from '../contexts/AuthContext';
 import { useUser } from '../contexts/UserContext';
 
 const theme = createTheme();
 
 export default function AccountSettings() {
-    const { updateUser, updateUserPassword, updateAcademicStatus } = useAuth();
+    const majorOpts = ['Undeclared', 'Computer Science (BS)'];
+    const seniorityOpts = ['Unspecified', 'Freshman', 'Sophomore', 'Junior', 'Senior'];
+    const catalogOpts = ['Unspecified', '2021-2022', '2020-2021', '2018-2019'];
+    const deptOpts = ['ACEN-Academic-English', 'AM-Applied-Mathematics', 'ANTH-Anthropology', 'APLX-Applied-Linguistics',
+        'ARBC-Arabic', 'ART-Art', 'ARTG-Art-and-Design-Games-and-Playable-Media', 'ASTR-Astronomy-and-Astrophysics',
+        'BIOC-Biochemistry-and-Molecular-Biology', 'BIOE-Biology-Ecology-and-Evolutionary',
+        'BIOL-Biology-Molecular-Cell-and-Developmental', 'BME-Biomolecular-Engineering', 'CHEM-Chemistry-and-Biochemistry',
+        'CHIN-Chinese', 'CLNI-College-Nine', 'CLST-Classical-Studies', 'CLTE-College-Ten', 'CMMU-Community-Studies',
+        'CMPM-Computational-Media', 'COWL-Cowell-College', 'CRES-Critical-Race-and-Ethnic-Studies',
+        'CRSN-Carson-College', 'CRWN-Crown-College', 'CSE-Computer-Science-and-Engineering',
+        'CSP-Coastal-Science-and-Policy', 'DANM-Digital-Arts-and-New-Media', 'EART-Earth-Sciences',
+        'ECE-Electrical-and-Computer-Engineering', 'ECON-Economics', 'EDUC-Education', 'ENVS-Environmental-Studies',
+        'ESCI-Environmental-Sciences', 'FILM-Film-and-Digital-Media', 'FMST-Feminist-Studies', 'FREN-French',
+        'GAME-Games-and-Playable-Media', 'GERM-German', 'GRAD-Graduate', 'GREE-Greek',
+        'HAVC-History-of-Art-and-Visual-Culture', 'HEBR-Hebrew', 'HISC-History-of-Consciousness', 'HIS-History',
+        'HCI-Human-Computer-Interaction', 'ITAL-Italian', 'JAPN-Japanese', 'JWST-Jewish-Studies',
+        'KRSG-Kresge-College', 'LAAD-Languages', 'LALS-Latin-American-and-Latino-Studies', 'LATN-Latin',
+        'LGST-Legal-Studies', 'LING-Linguistics', 'LIT-Literature', 'MATH-Mathematics', 'MERR-Merrill-College',
+        'METX-Microbiology-and-Environmental-Toxicology', 'MUSC-Music', 'NLP-Natural-Language-Processing',
+        'OAKS-Oakes-College', 'OCEA-Ocean-Sciences', 'PBS-Physical-Biological-Sciences', 'PERS-Persian',
+        'PHIL-Philosophy', 'PHYE-Physical-Education', 'PHYS-Physics', 'POLI-Politics', 'PORT-Portuguese',
+        'PRTR-Porter-College', 'PSYC-Psychology', 'PUNJ-Punjabi', 'RUSS-Russian', 'SCIC-Science-Communication',
+        'SOCD-Social-Documentation', 'SOCY-Sociology', 'SPAN-Spanish', 'SPHS-Spanish-for-Heritage-Speakers', 'STAT-Statistics',
+        'STEV-Stevenson-College', 'THEA-Theater-Arts', 'TIM-Technology-Information-Management', 'UCDC-UCDC', 'WRIT-Writing',
+        'YIDD-Yiddish'];
+
+    const { updateUser, updateUserPassword, updateAcademicStatus, updateCurrentClasses } = useAuth();
     const { firstName, lastName, email, major, seniority, catalog, currentClasses } = useUser();
+
     const [newMajor, setNewMajor] = useState(major);
     const [newSeniority, setNewSeniority] = useState(seniority);
     const [newCatalog, setNewCatalog] = useState(catalog);
+
+    const [selectedDept, setSelectedDept] = useState('CSE-Computer-Science-and-Engineering');
+    const [classOpts, setClassOpts] = useState([]);
+    const [selectedClass, setSelectedClass] = useState('');
+    const [newCurrentClasses, setNewCurrentClasses] = useState(currentClasses);
+
     const [userEmail, setUserEmail] = useState(email);
     const [userFirstName, setUserFirstName] = useState(firstName);
     const [userLastName, setUserLastName] = useState(lastName);
+
     const [userOldPassword, setUserOldPassword] = useState('');
     const [userNewPassword, setUserNewPassword] = useState('');
     const [userNewPasswordConfirm, setUserNewPasswordConfirm] = useState('');
 
-    const majorOpts = ['Undeclared', 'Computer Science (BS)'];
-    const seniorityOpts = ['Unspecified', 'Freshman', 'Sophomore', 'Junior', 'Senior'];
-    const catalogOpts = ['Unspecified', '2021-2022', '2020-2021', '2018-2019'];
+    const dbRef = ref(getDatabase());
+
+    function fetchClasses() {
+        get(child(dbRef, 'Faculties/' + selectedDept)).then((snapshot) => {
+            if (snapshot.exists()) {
+                setClassOpts(Object.keys(snapshot.val()));
+            } else {
+                setClassOpts(undefined);
+            }
+        }).catch((error) => {
+            console.log(error);
+        });
+    };
+    React.useEffect(() => {
+        fetchClasses();
+    }, [selectedDept]);
 
     const handleUpdateProfile = async (event) => {
         event.preventDefault();
@@ -61,7 +109,7 @@ export default function AccountSettings() {
     const handleUpdateCurrentClasses = async (event) => {
         event.preventDefault();
         try {
-            // TODO: implement changing current classes.
+            handleUpdateCurrentClasses(newCurrentClasses);
         } catch (error) {
             console.log('THERES AN ERROR: ', error);
         }
@@ -136,10 +184,38 @@ export default function AccountSettings() {
                             <Box component="form" noValidate onSubmit={handleUpdateCurrentClasses} sx={{ mt: 3 }}>
                                 <Grid container spacing={2}>
                                     <Grid item xs={12}>
-                                        Class Selector Placeholder
+                                        <Autocomplete disableClearable autoSelect
+                                            options={deptOpts}
+                                            value={selectedDept}
+                                            renderInput={(params) => <TextField {...params} label='Department'></TextField>}
+                                            onChange={(ev, val) => { setSelectedDept(val); setSelectedClass(undefined); }} />
+                                    </Grid>
+                                    <Grid item xs={8}>
+                                        <Autocomplete disableClearable autoSelect
+                                            onIn
+                                            options={classOpts}
+                                            value={selectedClass}
+                                            renderInput={(params) => <TextField {...params} label='Class'></TextField>}
+                                            onChange={(ev, val) => { setSelectedClass(val); }} />
+                                    </Grid>
+                                    <Grid item xs={4}>
+                                        <Button
+                                            type="submit"
+                                            fullWidth
+                                            variant="contained"
+                                            sx={{ mt: 3, mb: 2 }}
+                                            onSubmit={handleUpdateCurrentClasses}
+                                        >
+                                            Add
+                                        </Button>
                                     </Grid>
                                     <Grid item xs={12}>
-                                        Current Class List Placeholder
+                                        <List>
+                                            {newCurrentClasses.reduce((l, c) => {
+                                                l.push((<ListItem><ListItemText primary={c} /></ListItem>));
+                                                return l;
+                                            }, [])}
+                                        </List>
                                     </Grid>
                                 </Grid>
                                 <Button

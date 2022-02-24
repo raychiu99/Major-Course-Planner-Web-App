@@ -51,12 +51,17 @@ export function AuthProvider({ children }) {
     return succeded;
   }
   function updateAcademicStatus(newMajor, newSeniority, newCatalog) {
-    console.log('Current user: ', auth.currentUser, newMajor, newSeniority, newCatalog);
     const db = getDatabase();
     update(ref(db, 'Users/' + auth.currentUser.uid), {
       major: newMajor,
       seniority: newSeniority,
       catalog: newCatalog
+    });
+  }
+  function updateCurrentClasses(classes) {
+    const db = getDatabase();
+    update(ref(db, 'Users/' + auth.currentUser.uid), {
+      currentClasses: classes
     });
   }
 
