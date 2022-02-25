@@ -50,7 +50,8 @@ export default function SignIn() {
             backgroundPosition: 'center',
           }}
         />
-        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+      
+        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={3} square >
           <Box
             sx={{
               my: 8,
@@ -67,6 +68,7 @@ export default function SignIn() {
               Sign In
             </Typography>
             <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+            <Grid container spacing={2}>
                 <Grid item xs={12}>
                   <TextField
                     required
@@ -90,6 +92,7 @@ export default function SignIn() {
                     onChange = {(event) => getpassword(event.target.value)}
                   />
                 </Grid>
+                </Grid>
               <Button
                 type="submit"
                 fullWidth
@@ -103,6 +106,7 @@ export default function SignIn() {
                 Need an account? <Link to ="/SignUp">SignUp</Link>
               </div>
             </Box>
+            
           </Box>
         </Grid>
       </Grid>

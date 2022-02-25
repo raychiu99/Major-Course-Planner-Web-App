@@ -1,6 +1,6 @@
 const Navbar = () => {
 	return (
-		<div class = 'navbar-container' style={{textAlign:'center'}}>
+		<div class = 'navbar-container' style={{ backgroundColor:'#f2ecde', textAlign:'center'}}>
 		<nav className="navbar" style={{display: 'inline-block', textAlign:'center'}}>
 			<h1>Major Course Planner</h1>
 			<div className="links" style={{textAlign:'center'}}>

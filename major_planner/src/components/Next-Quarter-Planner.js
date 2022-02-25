@@ -83,10 +83,10 @@ export default function Planner() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-
+      <div style={{backgroundColor:'#fefcf8'}}>
       <CourseDrawer classArr = {takenClassArr}/>
 
-      <div style={{ display: 'flex', justifyContent: 'center', height: '10vh', paddingTop: '1.5vh', fontSize: '24px'}}>
+      <div style={{display: 'flex', justifyContent: 'center', height: '10vh', paddingTop: '1.5vh', fontSize: '24px'}}>
         <h1> Class Planner </h1>
       </div>
 
@@ -141,7 +141,7 @@ export default function Planner() {
           </Grid>
         </Container>
       </main>
-      
+      </div>
     </ThemeProvider>
   );
 }

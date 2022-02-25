@@ -117,7 +117,8 @@ export default function AccountSettings() {
 
     return (
         <ThemeProvider theme={theme}>
-            <Container>
+            <div style={{backgroundColor:'#fefcf0'}}>
+            <Container style={{backgroundColor:'#fefcf0'}}>
                 <Grid container component="main">
                     <CssBaseline />
                     {/* Academic settings */}
@@ -356,6 +357,7 @@ export default function AccountSettings() {
                     </Grid>
                 </Grid>
             </Container>
+            </div>
         </ThemeProvider>
     );
 }

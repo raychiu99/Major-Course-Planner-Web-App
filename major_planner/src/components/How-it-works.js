@@ -35,7 +35,7 @@ function Home() {
             backgroundPosition: 'center',
           }}
         />
-        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={3} square style={{backgroundColor:'#fefcf0'}}>
           <Box
             sx={{
               my: 8,
@@ -43,6 +43,7 @@ function Home() {
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
+              bgcolor:'#fefcf0',
             }}
           >
             <h2> How It Works </h2>

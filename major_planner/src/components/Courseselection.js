@@ -55,18 +55,20 @@ const handleClick = (classname,sname) => {
     }
   }
   return (
-    <div className="Course">
+    <div className="Course" style={{height:'100vh',backgroundColor:'#fefcf0'}}>
+      <div style={{height:'13vh', justifyContent:'center',paddingTop: '3vh' }}>
       <h1>START BY ADDING THE CLASS YOU'VE TAKEN</h1>
+      </div>
       <Autocomplete
           disablePortal
           id="combo-box-demo"
           options={cseclasses}
-          sx={{ width: 500 }}
+          sx={{ width: 500 ,height:'50'}}
           onChange={(event,value) =>{ {(value != null) ? handleClick(value.label,value.name) : <></>}}}
-          renderInput={(params) => <TextField {...params} label="Class" />}
+          renderInput={(params) => <TextField {...params} label="Look up the classes by course code" />}
         />
-    <Grid container className="Course" rowSpacing= {1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}
-    sx={{mt:'10%'}}>
+    <Grid container className="Course" rowSpacing= {1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} style={{backgroundColor:'#fefcf0'}}
+    sx={{mt:'10%',height:'100%'}}>
       <Grid item xs = {4}>
       <BasicList classArr = {takenClassArr}/> 
       <Button color = 'primary' variant='contained' onClick = {() => (
