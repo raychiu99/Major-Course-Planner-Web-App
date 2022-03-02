@@ -109,7 +109,7 @@ export default function AccountSettings() {
     const handleUpdateCurrentClasses = async (event) => {
         event.preventDefault();
         try {
-            handleUpdateCurrentClasses(newCurrentClasses);
+            updateCurrentClasses(newCurrentClasses);
         } catch (error) {
             console.log('THERES AN ERROR: ', error);
         }
@@ -117,246 +117,245 @@ export default function AccountSettings() {
 
     return (
         <ThemeProvider theme={theme}>
-            <div style={{backgroundColor:'#fefcf0'}}>
-            <Container style={{backgroundColor:'#fefcf0'}}>
-                <Grid container component="main">
-                    <CssBaseline />
-                    {/* Academic settings */}
-                    <Grid item xs={12} sm={6}>
-                        <Box
-                            sx={{
-                                my: 8,
-                                mx: 4,
-                                display: 'flex',
-                                flexDirection: 'column',
-                                alignItems: 'center',
-                            }}
-                        >
-                            <Typography component="h1" variant="h5">
-                                Academic Status
-                            </Typography>
-                            <Box component="form" noValidate onSubmit={handleUpdateAcademicStatus} sx={{ mt: 3 }}>
-                                <Grid container spacing={2}>
-                                    <Grid item xs={12}>
-                                        <Autocomplete disableClearable autoSelect
-                                            value={major}
-                                            options={majorOpts}
-                                            renderInput={(params) => <TextField {...params} label='Major'></TextField>}
-                                            onChange={(ev, val) => { setNewMajor(val); }} />
+            <div style={{ backgroundColor: '#fefcf0' }}>
+                <Container style={{ backgroundColor: '#fefcf0' }}>
+                    <Grid container component="main">
+                        <CssBaseline />
+                        {/* Academic settings */}
+                        <Grid item xs={12} sm={6}>
+                            <Box
+                                sx={{
+                                    my: 8,
+                                    mx: 4,
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    alignItems: 'center',
+                                }}
+                            >
+                                <Typography component="h1" variant="h5">
+                                    Academic Status
+                                </Typography>
+                                <Box component="form" noValidate onSubmit={handleUpdateAcademicStatus} sx={{ mt: 3 }}>
+                                    <Grid container spacing={2}>
+                                        <Grid item xs={12}>
+                                            <Autocomplete disableClearable autoSelect
+                                                value={major}
+                                                options={majorOpts}
+                                                renderInput={(params) => <TextField {...params} label='Major'></TextField>}
+                                                onChange={(ev, val) => { setNewMajor(val); }} />
+                                        </Grid>
+                                        <Grid item xs={12}>
+                                            <Autocomplete disableClearable autoSelect
+                                                value={seniority}
+                                                options={seniorityOpts}
+                                                renderInput={(params) => <TextField {...params} label='Seniority'></TextField>}
+                                                onChange={(ev, val) => { setNewSeniority(val); }} />
+                                        </Grid>
+                                        <Grid item xs={12}>
+                                            <Autocomplete disableClearable autoSelect
+                                                value={catalog}
+                                                options={catalogOpts}
+                                                renderInput={(params) => <TextField {...params} label='Catalog'></TextField>}
+                                                onChange={(ev, val) => { setNewCatalog(val); }} />
+                                        </Grid>
                                     </Grid>
-                                    <Grid item xs={12}>
-                                        <Autocomplete disableClearable autoSelect
-                                            value={seniority}
-                                            options={seniorityOpts}
-                                            renderInput={(params) => <TextField {...params} label='Seniority'></TextField>}
-                                            onChange={(ev, val) => { setNewSeniority(val); }} />
-                                    </Grid>
-                                    <Grid item xs={12}>
-                                        <Autocomplete disableClearable autoSelect
-                                            value={catalog}
-                                            options={catalogOpts}
-                                            renderInput={(params) => <TextField {...params} label='Catalog'></TextField>}
-                                            onChange={(ev, val) => { setNewCatalog(val); }} />
-                                    </Grid>
-                                </Grid>
-                                <Button
-                                    type="submit"
-                                    fullWidth
-                                    variant="contained"
-                                    sx={{ mt: 3, mb: 2 }}
-                                    onSubmit={handleUpdateAcademicStatus}
-                                >
-                                    Save
-                                </Button>
+                                    <Button
+                                        type="submit"
+                                        fullWidth
+                                        variant="contained"
+                                        sx={{ mt: 3, mb: 2 }}
+                                        onSubmit={handleUpdateAcademicStatus}
+                                    >
+                                        Save
+                                    </Button>
+                                </Box>
                             </Box>
-                        </Box>
-                        <Box
-                            sx={{
-                                my: 8,
-                                mx: 4,
-                                display: 'flex',
-                                flexDirection: 'column',
-                                alignItems: 'center',
-                            }}
-                        >
-                            <Typography component="h1" variant="h5">
-                                Current Classes
-                            </Typography>
-                            <Box component="form" noValidate onSubmit={handleUpdateCurrentClasses} sx={{ mt: 3 }}>
-                                <Grid container spacing={2}>
-                                    <Grid item xs={12}>
-                                        <Autocomplete disableClearable autoSelect
-                                            options={deptOpts}
-                                            value={selectedDept}
-                                            renderInput={(params) => <TextField {...params} label='Department'></TextField>}
-                                            onChange={(ev, val) => { setSelectedDept(val); setSelectedClass(undefined); }} />
+                            <Box
+                                sx={{
+                                    my: 8,
+                                    mx: 4,
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    alignItems: 'center',
+                                }}
+                            >
+                                <Typography component="h1" variant="h5">
+                                    Current Classes
+                                </Typography>
+                                <Box component="form" noValidate sx={{ mt: 3 }}>
+                                    <Grid container spacing={2}>
+                                        <Grid item xs={12}>
+                                            <Autocomplete disableClearable autoSelect
+                                                options={deptOpts}
+                                                value={selectedDept}
+                                                renderInput={(params) => <TextField {...params} label='Department'></TextField>}
+                                                onChange={(ev, val) => { setSelectedDept(val); setSelectedClass(undefined); }} />
+                                        </Grid>
+                                        <Grid item xs={8}>
+                                            <Autocomplete disableClearable autoSelect
+                                                options={classOpts}
+                                                value={selectedClass}
+                                                renderInput={(params) => <TextField {...params} label='Class'></TextField>}
+                                                onChange={(ev, val) => { setSelectedClass(val); }} />
+                                        </Grid>
+                                        <Grid item xs={4}>
+                                            <Button
+                                                type="submit"
+                                                fullWidth
+                                                variant="contained"
+                                                sx={{ mt: 3, mb: 2 }}
+                                                onSubmit={(event) => { setNewCurrentClasses([...newCurrentClasses, selectedClass]); }}
+                                            >
+                                                Add
+                                            </Button>
+                                        </Grid>
+                                        <Grid item xs={12}>
+                                            <List>
+                                                {newCurrentClasses.reduce((l, c) => {
+                                                    l.push((<ListItem><ListItemText primary={c} /></ListItem>));
+                                                    return l;
+                                                }, [])}
+                                            </List>
+                                        </Grid>
                                     </Grid>
-                                    <Grid item xs={8}>
-                                        <Autocomplete disableClearable autoSelect
-                                            onIn
-                                            options={classOpts}
-                                            value={selectedClass}
-                                            renderInput={(params) => <TextField {...params} label='Class'></TextField>}
-                                            onChange={(ev, val) => { setSelectedClass(val); }} />
-                                    </Grid>
-                                    <Grid item xs={4}>
-                                        <Button
-                                            type="submit"
-                                            fullWidth
-                                            variant="contained"
-                                            sx={{ mt: 3, mb: 2 }}
-                                            onSubmit={handleUpdateCurrentClasses}
-                                        >
-                                            Add
-                                        </Button>
-                                    </Grid>
-                                    <Grid item xs={12}>
-                                        <List>
-                                            {newCurrentClasses.reduce((l, c) => {
-                                                l.push((<ListItem><ListItemText primary={c} /></ListItem>));
-                                                return l;
-                                            }, [])}
-                                        </List>
-                                    </Grid>
-                                </Grid>
-                                <Button
-                                    type="submit"
-                                    fullWidth
-                                    variant="contained"
-                                    sx={{ mt: 3, mb: 2 }}
-                                    onSubmit={handleUpdateCurrentClasses}
-                                >
-                                    Save
-                                </Button>
+                                    <Button
+                                        type="submit"
+                                        fullWidth
+                                        variant="contained"
+                                        sx={{ mt: 3, mb: 2 }}
+                                        onSubmit={handleUpdateCurrentClasses}
+                                    >
+                                        Save
+                                    </Button>
+                                </Box>
                             </Box>
-                        </Box>
+                        </Grid>
+                        {/* Profile and password settings */}
+                        <Grid item xs={12} sm={6}>
+                            <Box
+                                sx={{
+                                    my: 8,
+                                    mx: 4,
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    alignItems: 'center',
+                                }}
+                            >
+                                <Typography component="h1" variant="h5">
+                                    Profile
+                                </Typography>
+                                <Box component="form" noValidate onSubmit={handleUpdateProfile} sx={{ mt: 3 }}>
+                                    <Grid container spacing={2}>
+                                        <Grid item xs={12} sm={6}>
+                                            <TextField
+                                                required
+                                                fullWidth
+                                                value={firstName}
+                                                id="firstName"
+                                                label="First Name"
+                                                name="firstName"
+                                                autoComplete="given-name"
+                                                onChange={(event) => setUserFirstName(event.target.value)}
+                                            />
+                                        </Grid>
+                                        <Grid item xs={12} sm={6}>
+                                            <TextField
+                                                required
+                                                fullWidth
+                                                value={lastName}
+                                                id="lastName"
+                                                label="Last Name"
+                                                name="lastName"
+                                                autoComplete="family-name"
+                                                onChange={(event) => setUserLastName(event.target.value)}
+                                            />
+                                        </Grid>
+                                        <Grid item xs={12}>
+                                            <TextField
+                                                required
+                                                fullWidth
+                                                value={email}
+                                                id="email"
+                                                label="Email Address"
+                                                name="email"
+                                                autoComplete="email"
+                                                onChange={(event) => setUserEmail(event.target.value)}
+                                            />
+                                        </Grid>
+                                    </Grid>
+                                    <Button
+                                        type="submit"
+                                        fullWidth
+                                        variant="contained"
+                                        sx={{ mt: 3, mb: 2 }}
+                                        onSubmit={handleUpdateProfile}
+                                    >
+                                        Save
+                                    </Button>
+                                </Box>
+                            </Box>
+                            <Box
+                                sx={{
+                                    my: 8,
+                                    mx: 4,
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    alignItems: 'center',
+                                }}
+                            >
+                                <Typography component="h1" variant="h5">
+                                    Change Password
+                                </Typography>
+                                <Box component="form" noValidate onSubmit={handleUpdatePassword} sx={{ mt: 3 }}>
+                                    <Grid container spacing={2}>
+                                        <Grid item xs={12}>
+                                            <TextField
+                                                required
+                                                fullWidth
+                                                name="oldPassword"
+                                                label="Old Password"
+                                                type="password"
+                                                id="oldPassword"
+                                                onChange={(event) => setUserOldPassword(event.target.value)}
+                                            />
+                                        </Grid>
+                                        <Grid item xs={12}>
+                                            <TextField
+                                                required
+                                                fullWidth
+                                                name="newPassword"
+                                                label="New Password"
+                                                type="password"
+                                                id="newPassword"
+                                                onChange={(event) => setUserNewPassword(event.target.value)}
+                                            />
+                                        </Grid>
+                                        <Grid item xs={12}>
+                                            <TextField
+                                                required
+                                                fullWidth
+                                                name="newPasswordConfirm"
+                                                label="Confirm New Password"
+                                                type="password"
+                                                id="newPasswordConfirm"
+                                                onChange={(event) => setUserNewPasswordConfirm(event.target.value)}
+                                            />
+                                        </Grid>
+                                    </Grid>
+                                    <Button
+                                        type="submit"
+                                        fullWidth
+                                        variant="contained"
+                                        sx={{ mt: 3, mb: 2 }}
+                                        onSubmit={handleUpdatePassword}
+                                    >
+                                        Save
+                                    </Button>
+                                </Box>
+                            </Box>
+                        </Grid>
                     </Grid>
-                    {/* Profile and password settings */}
-                    <Grid item xs={12} sm={6}>
-                        <Box
-                            sx={{
-                                my: 8,
-                                mx: 4,
-                                display: 'flex',
-                                flexDirection: 'column',
-                                alignItems: 'center',
-                            }}
-                        >
-                            <Typography component="h1" variant="h5">
-                                Profile
-                            </Typography>
-                            <Box component="form" noValidate onSubmit={handleUpdateProfile} sx={{ mt: 3 }}>
-                                <Grid container spacing={2}>
-                                    <Grid item xs={12} sm={6}>
-                                        <TextField
-                                            required
-                                            fullWidth
-                                            value={firstName}
-                                            id="firstName"
-                                            label="First Name"
-                                            name="firstName"
-                                            autoComplete="given-name"
-                                            onChange={(event) => setUserFirstName(event.target.value)}
-                                        />
-                                    </Grid>
-                                    <Grid item xs={12} sm={6}>
-                                        <TextField
-                                            required
-                                            fullWidth
-                                            value={lastName}
-                                            id="lastName"
-                                            label="Last Name"
-                                            name="lastName"
-                                            autoComplete="family-name"
-                                            onChange={(event) => setUserLastName(event.target.value)}
-                                        />
-                                    </Grid>
-                                    <Grid item xs={12}>
-                                        <TextField
-                                            required
-                                            fullWidth
-                                            value={email}
-                                            id="email"
-                                            label="Email Address"
-                                            name="email"
-                                            autoComplete="email"
-                                            onChange={(event) => setUserEmail(event.target.value)}
-                                        />
-                                    </Grid>
-                                </Grid>
-                                <Button
-                                    type="submit"
-                                    fullWidth
-                                    variant="contained"
-                                    sx={{ mt: 3, mb: 2 }}
-                                    onSubmit={handleUpdateProfile}
-                                >
-                                    Save
-                                </Button>
-                            </Box>
-                        </Box>
-                        <Box
-                            sx={{
-                                my: 8,
-                                mx: 4,
-                                display: 'flex',
-                                flexDirection: 'column',
-                                alignItems: 'center',
-                            }}
-                        >
-                            <Typography component="h1" variant="h5">
-                                Change Password
-                            </Typography>
-                            <Box component="form" noValidate onSubmit={handleUpdatePassword} sx={{ mt: 3 }}>
-                                <Grid container spacing={2}>
-                                    <Grid item xs={12}>
-                                        <TextField
-                                            required
-                                            fullWidth
-                                            name="oldPassword"
-                                            label="Old Password"
-                                            type="password"
-                                            id="oldPassword"
-                                            onChange={(event) => setUserOldPassword(event.target.value)}
-                                        />
-                                    </Grid>
-                                    <Grid item xs={12}>
-                                        <TextField
-                                            required
-                                            fullWidth
-                                            name="newPassword"
-                                            label="New Password"
-                                            type="password"
-                                            id="newPassword"
-                                            onChange={(event) => setUserNewPassword(event.target.value)}
-                                        />
-                                    </Grid>
-                                    <Grid item xs={12}>
-                                        <TextField
-                                            required
-                                            fullWidth
-                                            name="newPasswordConfirm"
-                                            label="Confirm New Password"
-                                            type="password"
-                                            id="newPasswordConfirm"
-                                            onChange={(event) => setUserNewPasswordConfirm(event.target.value)}
-                                        />
-                                    </Grid>
-                                </Grid>
-                                <Button
-                                    type="submit"
-                                    fullWidth
-                                    variant="contained"
-                                    sx={{ mt: 3, mb: 2 }}
-                                    onSubmit={handleUpdatePassword}
-                                >
-                                    Save
-                                </Button>
-                            </Box>
-                        </Box>
-                    </Grid>
-                </Grid>
-            </Container>
+                </Container>
             </div>
         </ThemeProvider>
     );

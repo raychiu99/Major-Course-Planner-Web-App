@@ -1,16 +1,16 @@
 const Navbar = () => {
 	return (
-		<div class = 'navbar-container' style={{ backgroundColor:'#f2ecde', textAlign:'center'}}>
-		<nav className="navbar" style={{display: 'inline-block', textAlign:'center'}}>
-			<h1>Major Course Planner</h1>
-			<div className="links" style={{textAlign:'center'}}>
-				<a href="/How-it-works">How It Works</a>
-				<a href="/SignUp">Sign Up</a>
-				<a href="/">Log In</a>
-				<a href="/home">Home</a>
-				<a href="/Courseselection">Course Entry</a>
-			</div>
-		</nav>
+		<div className='navbar-container' style={{ backgroundColor: '#f2ecde', textAlign: 'center' }}>
+			<nav className="navbar" style={{ display: 'inline-block', textAlign: 'center' }}>
+				<h1>Major Course Planner</h1>
+				<div className="links" style={{ textAlign: 'center' }}>
+					<a href="/How-it-works">How It Works</a>
+					<a href="/SignUp">Sign Up</a>
+					<a href="/">Log In</a>
+					<a href="/home">Home</a>
+					<a href="/Courseselection">Course Entry</a>
+				</div>
+			</nav>
 		</div>
 	);
 }
