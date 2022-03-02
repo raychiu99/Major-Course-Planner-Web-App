@@ -37,12 +37,12 @@ export default function SignUp() {
         major: 'Undeclared',
         seniority: 'Unspecified',
         catalog: 'Unspecified',
-        currentClasses: [],
-        classesTaken: [],
-        requirementsTaken: [],
-        electivesTaken: [],
-        dcTaken: [],
-        capstoneTaken: [],
+        currentClasses: 0,
+        classesTaken: 0,
+        requirementsTaken: 0,
+        electivesTaken: 0,
+        dcTaken: 0,
+        capstoneTaken: 0,
         creditsTaken: 0
       });
       history.push("/Courseselection")
