@@ -298,8 +298,8 @@ export function CourseProvider({children}){
         recommendations.push('CSE 120')
       }
       // For now just add the first 4 elements of the filtered array
-      // If cse 101 Has been taken already then recommend any of the requirements
-      if (filteredArr.indexOf('CSE 101') < 0){
+      // If cse 101 Has been taken already then recommend any of the upper division requirements
+      if (recommendations.indexOf('CSE 101') < 0){
         while (recommendations.length < 6 && filteredArr.length > 0) {
           recommendations.push(filteredArr[0]);
           filteredArr.splice(0,1);

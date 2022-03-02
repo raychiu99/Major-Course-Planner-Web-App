@@ -55,7 +55,7 @@ export default function BasicList(props) {
   }, [props.classArr]); 
   console.log('Classes taken arr', classesTaken);
   return (
-    <Box sx={{ width: '100%', maxWidth: 800, bgcolor: 'background.paper' }}>
+    <Box sx={{ width: '100%', maxWidth: 800, bgcolor: 'background.paper', backgroundColor:'#fefcf0' }}>
       <nav aria-label="main mailbox folders">
         {(classesTaken !== undefined) ?
         <List>
@@ -63,8 +63,8 @@ export default function BasicList(props) {
           <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 10, sm: 8, md: 12 }}>
           {classesTaken.map((className) => { 
               return (
-              <Grid item xs={2} sm={4} md={4} >
-                <ListItem divider={true}>
+              <Grid item xs={2} sm={4} md={4}>
+                <ListItem divider={true} sx={{backgroundColor:'#fefcd0'}}>
                 <ListItemText>{className}</ListItemText>
                 <IconButton type="button" onClick = {() => {handleremove(className)}}>
                 <DeleteIcon/>

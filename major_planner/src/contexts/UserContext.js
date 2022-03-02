@@ -41,7 +41,7 @@ export function UserProvider({ children }) {
         console.log('current user in user context', currentUser);
         get(child(dbRef, 'Users/' + currentUser.uid)).then((snapshot) => {
           if (snapshot.exists()) {
-            console.log('snapshot: ', snapshot.val());
+            console.log('snapshot in user context: ', snapshot.val());
             setFirstName(snapshot.val().firstName);
             setLastName(snapshot.val().lastName);
             setMajor(snapshot.val().major);
@@ -50,11 +50,11 @@ export function UserProvider({ children }) {
             setCurrentClasses(currentClasses => [...currentClasses, snapshot.val().currentClasses]);
             setPassword(snapshot.val().password);
             setEmail(snapshot.val().email);
-            setClassesTaken(classesTaken => [...classesTaken, snapshot.val().classesTaken]);
-            setRequirementsTaken(requirementsTaken => [...requirementsTaken, snapshot.val().requirementsTaken]);
-            setElectivesTaken(electivesTaken => [...electivesTaken, snapshot.val().electivesTaken]);
-            setCapstoneTaken(capstoneTaken => [...capstoneTaken, snapshot.val().capstoneTaken]);
-            setDcTaken(dcTaken => [...dcTaken, snapshot.val().dcTaken]);
+            setClassesTaken(snapshot.val().classesTaken);
+            setRequirementsTaken(snapshot.val().requirementsTaken);
+            setElectivesTaken(snapshot.val().electivesTaken);
+            setCapstoneTaken(snapshot.val().capstoneTaken);
+            setDcTaken(snapshot.val().dcTaken);
             setCreditsTaken(snapshot.val().creditsTaken);
           } else {
             console.log('no data');

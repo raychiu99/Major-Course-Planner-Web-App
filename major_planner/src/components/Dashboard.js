@@ -15,7 +15,7 @@ const theme = createTheme();
 
 export default function Dashboard() {
     const { firstName, lastName, major, seniority, catalog } = useUser();
-
+    console.log(firstName, lastName, major, seniority, catalog )
     return ( 
     <div style={{backgroundColor:'#fefcf0',height:'100vh'}}>
         <ThemeProvider theme={theme}>

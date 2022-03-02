@@ -17,15 +17,16 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import IconButton from '@mui/material/IconButton';
-
-
+import { Link, useHistory } from 'react-router-dom';
+import { useCourse } from '../contexts/CourseContext';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 export default function TmpDrawer(props) {
-
+  const {insertAllCourses} = useCourse();
+  const history = useHistory();
   const [state, setState] = React.useState({
     top: false,
     left: false,
@@ -49,6 +50,11 @@ export default function TmpDrawer(props) {
         console.log('Classes taken arr',props.classArr);
       }
     }
+  }
+
+  const handleSubmit = () => {
+    insertAllCourses(props.classArr);
+    history.push('/home');
   }
 
   const list = (anchor) => (
@@ -104,7 +110,7 @@ export default function TmpDrawer(props) {
       </div>
       
       <footer style={{ display: 'flex', paddingBottom: '8px', paddingLeft: '100px' , position: 'fixed', bottom: '0' }}>
-        <Button variant="contained" href="/home">
+        <Button variant="contained" onClick = {()=> {handleSubmit()}}>
           Submit
         </Button>
       </footer>

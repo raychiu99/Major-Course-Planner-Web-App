@@ -8,7 +8,7 @@ import RowAndColumnSpacing from './components/DbTester';
 import HowItWorks from './components/How-it-works';
 import Course from './components/Courseselction';
 import AccountSettings from './components/AccountSettings';
-import NextQuarterPlanner from './components/Next-Quarter-Planner';
+import Planner from './components/Next-Quarter-Planner';
 import SelectRequirements from './components/SelectRequirements';
 import Courseselection from './components/Courseselection';
 import { AuthProvider } from './contexts/AuthContext';
@@ -33,7 +33,7 @@ function App() {
                   <Route exact path="/DBtester" component={RowAndColumnSpacing} />
                   <Route exact path="/Courseselction" component={Course} />
                   <Route exact path="/AccountSettings" component={AccountSettings} />
-                  <Route exact path="/NextQuarterPlanner" component={NextQuarterPlanner} />
+                  <Route exact path="/NextQuarterPlanner" component={Planner} />
                   <Route exact path="/Courseselection" component={Courseselection} />
                 </Switch>
               </div>
