@@ -66,6 +66,7 @@ export function UserProvider({ children }) {
       fetchUser();
     }
   }, [dbRef, currentUser]);
+
   return (
     <UserContext.Provider value={{
       email, firstName, lastName, major, seniority, catalog, currentClasses, classesTaken, requirementsTaken,

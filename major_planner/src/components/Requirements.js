@@ -75,7 +75,7 @@ export default function BasicList(props) {
           })}
           </Grid>
         </List> : <></> }
-        <Button color = 'secondary' variant='contained' onClick = {() => {insertAllCourses(props.classArr);
+        <Button color = 'secondary' variant='contained' onClick = {() => {insertAllCourses(props.classArr, props.userCourseObj, props.setUserCourseObj);
         history.push("/home")
         }}
         sx={{mt: '5%', mb:'2%'}}

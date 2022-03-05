@@ -7,7 +7,7 @@ import { get, getDatabase, ref, query, child, orderByChild } from "firebase/data
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import {Link,useHistory} from 'react-router-dom';
-export default function ComboBox() {
+export default function ComboBox(props) {
 const history = useHistory();
 const [courses, setCourses] = useState([]);
 const [takenClassArr, setTakenClassArr] = useState([]);
@@ -70,7 +70,7 @@ const handleClick = (classname,sname) => {
     <Grid container className="Course" rowSpacing= {1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} style={{backgroundColor:'#fefcf0'}}
     sx={{mt:'10%',height:'100%'}}>
       <Grid item xs = {4}>
-      <BasicList classArr = {takenClassArr}/> 
+      <BasicList classArr = {takenClassArr} userCourseObj = {props.userCourseObj} setUserCourseObj = {props.setUserCourseObj}/> 
       <Button color = 'primary' variant='contained' onClick = {() => (
       tookAllReqs.map((className) => (
         handleClick(className.label, className.name)

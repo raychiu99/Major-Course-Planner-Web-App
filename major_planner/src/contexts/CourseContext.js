@@ -7,15 +7,15 @@ const CourseContext = React.createContext();
 export function useCourse() {
     return useContext(CourseContext);
 }
-export function CourseProvider({children}){
-
+export function CourseProvider({children}, props){
   const db = getDatabase();
+  const dbRef = ref(getDatabase())
   const { currentUser } = useAuth();
-  const [classes, setClasses] = useState([]);
+  // const [classesTakenArr, setClasses] = useState([]);
   const [requirements, setRequirements] = useState([]);
-  const [electives, setElectives] = useState([]);
-  const [dc, setDc] = useState([]);
-  const [capstone, setCapstone] = useState([]);
+  const [electivesTakenArr, setElectives] = useState([]);
+  const [dcTakenArr, setDc] = useState([]);
+  const [capstoneTakenArr, setCapstone] = useState([]);
   const [credits, setCredits] = useState(0);
   let {classesTaken} = useUser();
   let {dcTaken} = useUser();
@@ -68,8 +68,8 @@ export function CourseProvider({children}){
     "CSE 162(L)", "CSE 163", "CSE 168", "CSE 181",
     "CSE 183", "CSE 184", "CMPM 172", "ECE 118"
     ];
-    function insertAllCourses (courseObj){
-      console.log('coures Object in insertAll Courses',courseObj);
+    function insertAllCourses (courseObj, userCourseObj, setUserCourseObj){
+      console.log('coures Object in insertAll Courses',userCourseObj);
       // let totalCount = 0;
       for (let index in courseObj){
         // Avoid adding duplicates
@@ -81,12 +81,14 @@ export function CourseProvider({children}){
           } else {
             classesTaken = [courseObj[index][0]];
           }
+          
           // studentClassObj.classesTaken.push(courseObj[index][0]);
           setReqCompleted(studentClassObj, courseObj[index][0]);
           setElectivesTaken(studentClassObj, courseObj[index][0]);
           setOtherElectives(studentClassObj, courseObj[index][0]);
           setDCReqs(studentClassObj, courseObj[index][0]);
           setCapstoneReqs(studentClassObj, courseObj[index][0]);
+         
           if (Array.isArray(requirementsTaken) && studentClassObj.requirementsTaken[0] !== undefined) {
             requirementsTaken.push(courseObj[index][0]);
           } else if (studentClassObj.requirementsTaken[0] !== undefined){
@@ -112,8 +114,22 @@ export function CourseProvider({children}){
           }
           // totalCredits = parseInt(creditsTaken)
           // console.log('Total Credits: ', totalCredits);
+          // setClasses(classesTaken);
+          setDc(dcTaken);
+          setCapstone(capstoneTaken);
+          setElectives(electivesTaken);
           totalCredits += parseInt(courseObj[index][1].Credits);
           studentClassObj.creditsTaken = totalCredits;
+          let tempObj = {};
+          tempObj.classesTakenArr = classesTaken;
+          tempObj.electivesTakenArr = electivesTaken;
+          tempObj.dcTakenArr = dcTaken;
+          tempObj.capstoneTakenArr = capstoneTaken;
+          console.log('storing in local storage', JSON.stringify(tempObj))
+          window.localStorage.setItem('user-info', JSON.stringify(tempObj));
+
+          
+          
           update(ref(db,'Users/'+currentUser.uid), {
           classesTaken:  classesTaken,
           requirementsTaken: requirementsTaken,
@@ -188,17 +204,22 @@ export function CourseProvider({children}){
           obj.capstoneTaken.push(classTaken);
         }
     }
-    function recommendCourses() {
+    function recommendCourses(userCourseObj) {
+      const retObj = JSON.parse(localStorage.getItem('user-info'));
+      console.log('Local Storage Object: ', retObj);
       let recommendedArr = []
       let reqsRecArr = [];
       let dcRecArr = [];
       let capstoneRecArr = [];
       let electivesRecArr = [];
-      if(classesTaken.length > 0){
-        recommendRequirements(reqsRecArr)
-        recommendDC(dcRecArr);
-        recommendCapstone(capstoneRecArr);
-        recommendElectives(electivesRecArr)
+      if(retObj.classesTakenArr.length > 0){
+        recommendRequirements(reqsRecArr,retObj)
+        if (classesTaken.indexOf('CSE 101') >= 0){
+          recommendDC(dcRecArr,retObj);
+          recommendCapstone(capstoneRecArr,retObj);
+          recommendElectives(electivesRecArr, retObj)
+        }
+        
         recommendedArr.push(reqsRecArr);
         recommendedArr.push(dcRecArr);
         recommendedArr.push(capstoneRecArr);
@@ -208,17 +229,18 @@ export function CourseProvider({children}){
       console.log('Recommendations: ', recommendedArr)
       return recommendedArr;
     }
-    function recommendRequirements(recommendations) {
+    function recommendRequirements(recommendations, userCourseObj) {
+      console.log('Classes taken by user: ', userCourseObj.classesTakenArr)
       // classesTaken = array of arrays
       // classesTaken[0] = array containing classes
       // Don't recommend requirements that have already been taken
-      const filteredArr = csReqs.filter((className) => classesTaken.indexOf(className) < 0);
+      const filteredArr = csReqs.filter((className) => userCourseObj.classesTakenArr.indexOf(className) < 0);
       // Filter classes that dont need to be taken from requirements
       // You need to take math 19A OR math 20A so it wouldn't make sense to recommend 20A if 19A was taken or viceversa
       // Not sure if I should make it into two if statements where filtering for 19A abd 19B
       // Cant take math 20B if you dont take math 20A
       
-      if (classesTaken.indexOf('MATH 19A') >= 0){
+      if (userCourseObj.classesTakenArr.indexOf('MATH 19A') >= 0){
         const index = filteredArr.indexOf('MATH 20A');
         if (index >= 0){
           filteredArr.splice(index,1);
@@ -230,21 +252,21 @@ export function CourseProvider({children}){
         }
       }
       // No need to take math 19A if you took the equivalent class already (MATH 20A)
-      else if (classesTaken.indexOf('MATH 20A') >= 0) {
+      else if (userCourseObj.classesTakenArr.indexOf('MATH 20A') >= 0) {
         const index = filteredArr.indexOf('MATH 19A');
         if (index >= 0){
           filteredArr.splice(index,1);
         }
       }
       // Recommend either AM  10 or MATH 21
-      let index = classesTaken.indexOf('AM 10');
+      let index = userCourseObj.classesTakenArr.indexOf('AM 10');
       if (index >= 0) {
         let removeClassIdx = filteredArr.indexOf('MATH 21');
         if (removeClassIdx >= 0) {
           filteredArr.splice(removeClassIdx,1);
         }
       }
-      index = classesTaken.indexOf('MATH 21');
+      index = userCourseObj.classesTakenArr.indexOf('MATH 21');
       if (index >= 0) {
         let removeClassIdx = filteredArr.indexOf('AM 10');
         if (removeClassIdx >= 0) {
@@ -252,14 +274,14 @@ export function CourseProvider({children}){
         }
       }
       // Recommend either AM 30 or MATH 23A
-      index = classesTaken.indexOf('AM 30');
+      index = userCourseObj.classesTakenArr.indexOf('AM 30');
       if (index >= 0) {
         let removeClassIdx = filteredArr.indexOf('MATH 23A');
         if (removeClassIdx >= 0) {
           filteredArr.splice(removeClassIdx,1);
         }
       }
-      index = classesTaken.indexOf('MATH 23A');
+      index = userCourseObj.classesTakenArr.indexOf('MATH 23A');
       if (index >= 0) {
         let removeClassIdx = filteredArr.indexOf('AM 30');
         if (removeClassIdx >= 0) {
@@ -275,14 +297,20 @@ export function CourseProvider({children}){
         }
       })
       index = filteredArr.indexOf('MATH 19B');
-      if (index >= 0){
+      // If math 19A or math 20A needs to be taken then you can't recommend math 19b as it needs either one of those classes
+      if (index >= 0 && (filteredArr.indexOf('MATH 19A') >= 0 || filteredArr.indexOf('MATH 20A')>= 0)){
+        
+        filteredArr.splice(index, 1);
+      } else if (index >= 0) {
         recommendations.push('MATH 19B');
         filteredArr.splice(index, 1);
       }
       index = filteredArr.indexOf('MATH 20B');
-      if (index >= 0){
-        recommendations.push('MATH 20B');
+      if (index >= 0 && filteredArr.indexOf('MATH 20A')>= 0){
         filteredArr.splice(index, 1);
+      } else if (index >= 0 && filteredArr.indexOf('MATH 20A') < 0) {
+        filteredArr.splice(index, 1);
+        recommendations.push('MATH 20B');
       }
       index = filteredArr.indexOf('CSE 101');
       // At this point we have only pushed the requirements need for CSE 101 to the recommendation array
@@ -307,7 +335,7 @@ export function CourseProvider({children}){
       }
     }
     
-    function recommendDC(recommendations) {
+    function recommendDC(recommendations, userCourseObj) {
       if (Array.isArray(dcTaken) === false) {
         for (const dcClass of dcReqs){ 
           recommendations.push(dcClass);
@@ -315,7 +343,7 @@ export function CourseProvider({children}){
       }
     }
 
-    function recommendCapstone(recommendations) {
+    function recommendCapstone(recommendations, userCourseObj) {
       if (Array.isArray(capstoneTaken) === false) {
         
         for (let i = 0; i < 6; i++){
@@ -328,7 +356,7 @@ export function CourseProvider({children}){
       }
     }
 
-    function recommendElectives(recommendations) {
+    function recommendElectives(recommendations, userCourseObj) {
       
       for (let i = 0; i < 3; i++){
         let randomizedItem = electiveReqs[Math.floor(Math.random() * electiveReqs.length)];
@@ -345,8 +373,8 @@ export function CourseProvider({children}){
     }
 
     return (
-      <CourseContext.Provider value = {{insertAllCourses,  recommendCourses,classes, requirements,
-        electives, dc, capstone, credits }}>
+      <CourseContext.Provider value = {{insertAllCourses,  recommendCourses, requirements,
+        electivesTakenArr, dcTakenArr, capstoneTakenArr, credits }}>
         {children}
       </CourseContext.Provider>
     );

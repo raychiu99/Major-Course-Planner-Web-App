@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-
 import SignIn from './components/SignIn';
 import SignUp from "./components/SignUp";
 import Navbar from "./components/Navbar";
@@ -9,13 +8,21 @@ import HowItWorks from './components/How-it-works';
 import Course from './components/Courseselction';
 import AccountSettings from './components/AccountSettings';
 import Planner from './components/Next-Quarter-Planner';
-import SelectRequirements from './components/SelectRequirements';
 import Courseselection from './components/Courseselection';
 import { AuthProvider } from './contexts/AuthContext';
 import { UserProvider } from './contexts/UserContext';
 import { CourseProvider } from './contexts/CourseContext';
+import { useEffect, useState } from 'react';
 function App() {
+  const [userCourseObj, setUserCourseObj] = useState( () => {
+    const initialState = {classesTakenArr: [],
+      dcTakenArr: [],
+      capstoneTakenArr:[],
+      electivesTakenArr:[]}
+    return initialState;
+  });
 
+  console.log(userCourseObj)
   return (
     <AuthProvider>
       <UserProvider>
@@ -27,14 +34,19 @@ function App() {
                 <Switch>
                   <Route exact path="/" component={SignIn} />
                   <Route exact path="/SignUp" component={SignUp} />
-                  <Route exact path="/SelectRequirements" component={SelectRequirements}/>
                   <Route exact path="/Home" component={Dashboard} />
                   <Route exact path="/How-it-works" component={HowItWorks} />
                   <Route exact path="/DBtester" component={RowAndColumnSpacing} />
-                  <Route exact path="/Courseselction" component={Course} />
                   <Route exact path="/AccountSettings" component={AccountSettings} />
-                  <Route exact path="/NextQuarterPlanner" component={Planner} />
-                  <Route exact path="/Courseselection" component={Courseselection} />
+                  <Route exact path="/NextQuarterPlanner">
+                    <Planner userCourseObj = {userCourseObj}
+                    setUserCourseObj = {setUserCourseObj}/>
+                  </Route>
+                  <Route exact path="/Courseselection">
+                    <Courseselection userCourseObj = {userCourseObj}
+                      setUserCourseObj = {setUserCourseObj}
+                    />
+                  </Route>
                 </Switch>
               </div>
             </div>

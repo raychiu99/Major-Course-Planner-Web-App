@@ -26,7 +26,7 @@ export default function Dashboard() {
                 
                 <Container style={{ display: 'flex', justifyContent: 'center', height: '10vh', padding: '50px' }}>
                     <Grid container spacing={3} sx={{ width: '58%', display: 'flex' }}>
-                        <Grid item xs={5} direction="column">
+                        <Grid item xs={5} >
                             <Card style={{ height: "100%" }}>
                                 <CardContent style={{ height: "100%" }}>
                                     <div style={{ display: 'flex', justifyContent: 'center' }}>
