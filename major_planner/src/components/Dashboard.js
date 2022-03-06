@@ -2,9 +2,12 @@ import * as React from 'react';
 import Grid from '@mui/material/Grid';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Container } from '@mui/material';
+import { CardActionArea } from '@mui/material';
+import CardMedia from '@mui/material/CardMedia';
 
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
+import gradcap from "./graduationCap.jpg";
 
 import LinkCard from "./LinkCard";
 import { useUser } from '../contexts/UserContext';
@@ -54,18 +57,24 @@ export default function Dashboard() {
                                 </CardContent>
                             </Card>
                         </Grid>
-                        <Grid item xs={7}>
+                        <Grid item xs={3.5} >
+                            <Card style={{ height: "100%" }}>
+                                <CardActionArea style={{ height: "100%" }} href='/test'>
+                                    <img src={gradcap} width="100%" height="29%"/>
+                                    <CardContent style={{ height: "100"}}>
+                                      <div style={{display:'flex', justifyContent: 'center', height:'100px'}}>
+                                        <h2>Graduation Status</h2>
+                                      </div>
+                                    </CardContent>
+                                </CardActionArea>
+                            </Card>
+                        </Grid>
+                        <Grid item xs={3.5}>
                             <Grid container spacing={3}>
-                                <Grid item xs={6}>
-                                    <LinkCard text={'Progress Checker'} path={'/Test'} />
-                                </Grid>
-                                <Grid item xs={6}>
+                                <Grid item xs={12}>
                                     <LinkCard text={'Next Quarter Planner'} path={'/NextQuarterPlanner'} />
                                 </Grid>
-                                <Grid item xs={6}>
-                                    <LinkCard text={'Update Status'} path={'/Test'} />
-                                </Grid>
-                                <Grid item xs={6}>
+                                <Grid item xs={12}>
                                     <LinkCard text={'Account Settings'} path={'/AccountSettings'} />
                                 </Grid>
                             </Grid>
