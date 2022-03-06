@@ -89,27 +89,28 @@ export function CourseProvider({children}, props){
           setDCReqs(studentClassObj, courseObj[index][0]);
           setCapstoneReqs(studentClassObj, courseObj[index][0]);
          
-          if (Array.isArray(requirementsTaken) && studentClassObj.requirementsTaken[0] !== undefined) {
+          if (Array.isArray(requirementsTaken) && studentClassObj.requirementsTaken[0] !== undefined && studentClassObj.requirementsTaken.indexOf(courseObj[index][0])>=0) {
             requirementsTaken.push(courseObj[index][0]);
-          } else if (studentClassObj.requirementsTaken[0] !== undefined){
+          } else if (studentClassObj.requirementsTaken[0] !== undefined && studentClassObj.requirementsTaken.indexOf(courseObj[index][0])>=0){
             requirementsTaken = [courseObj[index][0]];
           }
 
-          if (Array.isArray(electivesTaken) && studentClassObj.electivesTaken[0] !== undefined) {
+          if (Array.isArray(electivesTaken) && studentClassObj.electivesTaken[0] !== undefined && studentClassObj.electivesTaken.indexOf(courseObj[index][0])>=0) {
             electivesTaken.push(courseObj[index][0]);
-          } else if (studentClassObj.electivesTaken[0] !== undefined){
+          } else if (studentClassObj.electivesTaken[0] !== undefined && studentClassObj.electivesTaken.indexOf(courseObj[index][0])>=0){
             electivesTaken = [courseObj[index][0]];
           }
 
-          if (Array.isArray(dcTaken) && studentClassObj.dcTaken[0] !== undefined) {
+          if (Array.isArray(dcTaken) && studentClassObj.dcTaken[0] !== undefined && studentClassObj.dcTaken.indexOf(courseObj[index][0])>=0) {
             dcTaken.push(courseObj[index][0]);
-          } else if (studentClassObj.dcTaken[0] !== undefined){
+          } else if (studentClassObj.dcTaken[0] !== undefined && studentClassObj.dcTaken.indexOf(courseObj[index][0])>=0){
             dcTaken = [courseObj[index][0]];
           }
 
-          if (Array.isArray(capstoneTaken)&& studentClassObj.capstoneTaken[0] !== undefined) {
+          if (Array.isArray(capstoneTaken)&& studentClassObj.capstoneTaken[0] !== undefined && studentClassObj.capstoneTaken.indexOf(courseObj[index][0])>=0) {
+            console.log('test cap:',studentClassObj.capstoneTaken[0]);
             capstoneTaken.push(courseObj[index][0]);
-          } else if (studentClassObj.capstoneTaken[0] !== undefined){
+          } else if (studentClassObj.capstoneTaken[0] !== undefined && studentClassObj.capstoneTaken.indexOf(courseObj[index][0])>=0){
             capstoneTaken = [courseObj[index][0]];
           }
           // totalCredits = parseInt(creditsTaken)

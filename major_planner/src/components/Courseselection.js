@@ -176,6 +176,7 @@ const cseclasses = [
   {  name : 'CSE 183', label : 'CSE 183 Web Applications'},
   {  name : 'CSE 184', label : 'CSE 184 Data Wrangling and Web Scraping'},
   {  name : 'CSE 185E', label : 'CSE 185E Technical Writing for Computer Science and Engineering'},
+  {  name : 'CSE 185S', label : 'CSE 185S Technical Writing for Computer Science and Engineering'},
   {  name : 'CSE 191', label : 'CSE 191 Computer Science and Technology Seminar'},
   {  name : 'CSE 192', label : 'CSE 192 Supervised Student Teaching/Tutoring'},
   {  name : 'CSE 193', label : 'CSE 193 Field Study'},

@@ -5,7 +5,7 @@ import Navbar from "./components/Navbar";
 import Dashboard from './components/Dashboard';
 import RowAndColumnSpacing from './components/DbTester';
 import HowItWorks from './components/How-it-works';
-import Course from './components/Courseselction';
+import Graduation from './components/Graduation';
 import AccountSettings from './components/AccountSettings';
 import Planner from './components/Next-Quarter-Planner';
 import Courseselection from './components/Courseselection';
@@ -47,6 +47,7 @@ function App() {
                       setUserCourseObj = {setUserCourseObj}
                     />
                   </Route>
+                  <Route exact path="/Graduation" component={Graduation} />
                 </Switch>
               </div>
             </div>

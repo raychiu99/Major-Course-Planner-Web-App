@@ -59,11 +59,11 @@ export default function Dashboard() {
                         </Grid>
                         <Grid item xs={3.5} >
                             <Card style={{ height: "100%" }}>
-                                <CardActionArea style={{ height: "100%" }} href='/test'>
+                                <CardActionArea style={{ height: "100%" }} href='/Graduation'>
                                     <img src={gradcap} width="100%" height="29%"/>
                                     <CardContent style={{ height: "100"}}>
                                       <div style={{display:'flex', justifyContent: 'center', height:'100px'}}>
-                                        <h2>Graduation Status</h2>
+                                          <h2>Graduation Status</h2>
                                       </div>
                                     </CardContent>
                                 </CardActionArea>
