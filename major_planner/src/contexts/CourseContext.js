@@ -37,7 +37,7 @@ export function CourseProvider({children}, props){
     "dcTaken" : [], "capstoneTaken" : [], "creditsTaken" : 0, "otherElectivesTaken" : 0};
     const csReqs = [
         "MATH 19A", "MATH 20A", "MATH 19B", "MATH 20B", "AM 10", "MATH 21",
-        "AM 30", "MATH 23A", "CSE 16", "CSE 20", "CSE 12", "CSE 13S", "CSE 30", "CSE 101", "CSE 120", "CSE 112", "CSE 114A", "CSE 102", "CSE 103", "CSE 130", "CSE 107"
+        "AM 30", "MATH 23A", "CSE 16", "CSE 20", "CSE 12", "CSE 13S", "CSE 13E","CSE 30", "CSE 101", "CSE 120", "CSE 112", "CSE 114A", "CSE 114B","CSE 102", "CSE 103", "CSE 130", "CSE 107","STAT 131"
     ];
     // contains other reqs like the DC requirements
     const allReqs = [

@@ -21,16 +21,19 @@ export default function Grad() {
   const {classesTaken,capstoneTaken,dcTaken,electivesTaken,major, seniority} = useUser();
   const sa1 = () => {
     for(let index in csReqs){
-      if(classesTaken.indexOf(csReqs[index])<0){
+      if(classesTaken.indexOf(csReqs[index])<0 || csReqs[index].includes(classesTaken) == false){
         return false;
       }
     }
     return true;
   }; 
   const taken1 = (key) => {
-      if (classesTaken.indexOf(key)>= 0){     
+    for(let index in classesTaken){
+      if (classesTaken[index] == key || key.includes(classesTaken[index]) == true){     
         return true;
       }
+    }
+    
   }; 
   const sa2 = () => {
     if(capstoneTaken.length >= 1){
@@ -163,8 +166,8 @@ export default function Grad() {
 }
 
 const csReqs = [
-  "MATH 19A", "MATH 20A", "MATH 19B", "MATH 20B", "AM 10", "MATH 21",
-  "AM 30", "MATH 23A", "CSE 16", "CSE 20", "CSE 12", "CSE 13S", "CSE 30", "CSE 101", "CSE 120", "CSE 112", "CSE 114A", "CSE 102", "CSE 103", "CSE 130", "CSE 107"
+  "MATH 19A or MATH 20A", "MATH 19B or MATH 20B", "AM 10 or MATH 21",
+  "AM 30 or MATH 23A", "CSE 16", "CSE 20", "CSE 12", "CSE 13S or CSE 13E", "CSE 30", "CSE 101", "CSE 120", "CSE 112 or CSE 114A or CSE 114B", "CSE 102", "CSE 103", "CSE 130", "CSE 107 or STAT 131"
 ];
 
 const dcReqs = ['CSE 115A','CSE 185E', 'CSE 185S', 'CSE 195(F)'];
