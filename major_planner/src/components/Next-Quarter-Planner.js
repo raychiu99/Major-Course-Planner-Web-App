@@ -82,7 +82,10 @@ export default function Planner() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <div style={{backgroundColor:'#fefcf8'}}>
-      <CourseDrawer classArr = {takenClassArr}/>
+      
+      <div style={{paddingTop: '10px'}}>
+        <CourseDrawer classArr = {takenClassArr}/>
+      </div>
 
       <div style={{display: 'flex', justifyContent: 'center', height: '10vh', paddingTop: '1.5vh', fontSize: '24px'}}>
         <h1> Class Planner </h1>
