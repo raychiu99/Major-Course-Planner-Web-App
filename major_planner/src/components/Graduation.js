@@ -81,18 +81,18 @@ export default function Grad() {
     setOpen3(!open3);
   };
   return (
-    <div className="Course" style={{height:'100vh',backgroundColor:'#fefcf0'}}>
-    <div style={{height:'13vh', justifyContent:'center',paddingTop: '3vh' }}>
-    <h1>Greaduation status</h1>
+    <div className="Graduation" style={{height:'100%',backgroundColor:'#fefcf0'}}>
+    <div style={{display: 'flex', justifyContent: 'center', height: '10vh', paddingTop: '8vh' }}>
+    <h1>Graduation status</h1>
     </div>
-    <div style={{ display: 'flex', justifyContent: 'left', paddingTop: '4px' }}>
+    <div style={{ display: 'flex', justifyContent: 'center', paddingTop: '4px' }}>
       <h4>Major</h4>: {major}
     </div>
-    <div style={{ display: 'flex', justifyContent: 'left', paddingTop: '4px' }}>
+    <div style={{ display: 'flex', justifyContent: 'center', paddingTop: '4px' }}>
       <h4>Status</h4>: {seniority}
     </div>
     <List
-      sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
+      sx={{mt:'10%',height:'100%', bgcolor: '#fefcf0'}}
       component="nav"
       aria-labelledby="nested-list-subheader"
     >
@@ -100,7 +100,7 @@ export default function Grad() {
         <ListItemIcon>
         <ListIcon/>
         </ListItemIcon>
-        <ListItemText primary="Basic requirements"/>
+        <ListItemText primary="Basic requirements" />
         {sa1() ? <Chip label="Satisfied" color="primary" variant="outlined"/>: <Chip label="Not satisfied" color="error" variant="outlined"/>}
         {open ? <ExpandLess /> : <ExpandMore />}
       </ListItemButton>

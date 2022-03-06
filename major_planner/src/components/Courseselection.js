@@ -312,6 +312,7 @@ const cseclasses = [
   {  name : 'MATH 148', label : 'MATH 148 Numerical Analysis'},
   {  name : 'MATH 160', label : 'MATH 160 Mathematical Logic I'},
   {  name : 'MATH 161', label : 'MATH 161 Mathematical Logic II'},
+  {  name : 'STAT 131', label : 'Introduction to Probability Theory'},
   {  name : 'STAT 132', label : 'STAT 132 Classical and Bayesian Inference'},
   {  name : 'STAT 266A', label : 'STAT 266A Data Visualization and Statistical Programming in R'},
   {  name : 'STAT 266B', label : 'STAT 266B Advanced Statistical Programming in R'},
