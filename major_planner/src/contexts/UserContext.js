@@ -38,24 +38,27 @@ export function UserProvider({ children }) {
   useEffect(() => {
     if (currentUser) {
       function fetchUser() {
-        console.log('current user in user context', currentUser);
+        // console.log('current user in user context', currentUser);
         get(child(dbRef, 'Users/' + currentUser.uid)).then((snapshot) => {
           if (snapshot.exists()) {
-            console.log('snapshot in user context: ', snapshot.val());
+            // console.log('snapshot in user context: ', snapshot.val());
             let tempObj = {};
             tempObj.classesTakenArr = snapshot.val().classesTaken;
             tempObj.electivesTakenArr = snapshot.val().electivesTaken;
             tempObj.dcTakenArr = snapshot.val().dcTaken;
             tempObj.capstoneTakenArr = snapshot.val().capstoneTaken;
-            tempObj.requirementsTaken = snapshot.val().requirementsTaken;
-            console.log('storing in local storage', JSON.stringify(tempObj))
+            tempObj.requirementsTakenArr = snapshot.val().requirementsTaken;
+            tempObj.currentClassesArr = snapshot.val().currentClasses;
+            tempObj.creditsTaken = snapshot.val().creditsTaken;
+            tempObj.currentClassesArr = snapshot.val().currentClasses;
+            // console.log('storing in local storage', JSON.stringify(tempObj))
             window.localStorage.setItem('user-info', JSON.stringify(tempObj));
             setFirstName(snapshot.val().firstName);
             setLastName(snapshot.val().lastName);
             setMajor(snapshot.val().major);
             setSeniority(snapshot.val().seniority);
             setCatalog(snapshot.val().catalog);
-            setCurrentClasses(currentClasses => [...currentClasses, snapshot.val().currentClasses]);
+            setCurrentClasses(snapshot.val().currentClasses);
             setPassword(snapshot.val().password);
             setEmail(snapshot.val().email);
             setClassesTaken(snapshot.val().classesTaken);

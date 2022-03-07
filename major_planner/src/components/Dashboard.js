@@ -17,8 +17,9 @@ const theme = createTheme();
 
 
 export default function Dashboard() {
+    const classesObj = JSON.parse(localStorage.getItem('user-info'));
     const { firstName, lastName, major, seniority, catalog } = useUser();
-    console.log(firstName, lastName, major, seniority, catalog )
+    console.log(firstName, lastName, major, seniority, catalog );
     return ( 
     <div style={{backgroundColor:'#fefcf0',height:'100vh'}}>
         <ThemeProvider theme={theme}>
@@ -51,8 +52,13 @@ export default function Dashboard() {
                                     <div style={{ display: 'flex', justifyContent: 'center', paddingTop: '14px', fontSize: '15px', paddingBottom: '8px' }}>
                                         <h3>Current Classes</h3>
                                     </div>
-
-                                    some list here
+                                    {(classesObj.currentClassesArr.length > 0) ?
+                                    classesObj.currentClassesArr.map((className)=>(
+                                        <div key = {className}>
+                                            {className}
+                                        </div>
+                                    ))
+                                    :<></>}
 
                                 </CardContent>
                             </Card>

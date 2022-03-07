@@ -1,7 +1,6 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 import {useAuth} from '../contexts/AuthContext';
-import {useUser} from '../contexts/UserContext';
-import { get, set,getDatabase, ref,update,child } from "firebase/database";
+import { getDatabase, ref,update } from "firebase/database";
 
 const CourseContext = React.createContext();
 export function useCourse() {
@@ -9,35 +8,21 @@ export function useCourse() {
 }
 export function CourseProvider({children}, props){
   const db = getDatabase();
-  const dbRef = ref(getDatabase())
   const { currentUser } = useAuth();
-  // const [classesTakenArr, setClasses] = useState([]);
+  const [classesTakenArr, setClasses] = useState([]);
   const [requirements, setRequirements] = useState([]);
   const [electivesTakenArr, setElectives] = useState([]);
   const [dcTakenArr, setDc] = useState([]);
   const [capstoneTakenArr, setCapstone] = useState([]);
   const [credits, setCredits] = useState(0);
-  let {classesTaken} = useUser();
-  let {dcTaken} = useUser();
-  let {electivesTaken} = useUser();
-  let {capstoneTaken} = useUser();
-  let {email} = useUser();
-  let {firstName} = useUser();
-  let {lastName} = useUser();
-  let {major} = useUser();
-  let {seniority} = useUser();
-  let {catalog} = useUser();
-  let {currentClasses} = useUser();
-  let {password} = useUser();
-  let {requirementsTaken} = useUser();
-  let {creditsTaken} = useUser();
+  const userObj = JSON.parse(localStorage.getItem('user-info'));
   let totalCredits = 0;
     
     let studentClassObj = {"classesTaken" : [], "requirementsTaken" : [],"electivesTaken" : [],
     "dcTaken" : [], "capstoneTaken" : [], "creditsTaken" : 0, "otherElectivesTaken" : 0};
     const csReqs = [
         "MATH 19A", "MATH 20A", "MATH 19B", "MATH 20B", "AM 10", "MATH 21",
-        "AM 30", "MATH 23A", "CSE 16", "CSE 20", "CSE 12", "CSE 13S", "CSE 13E","CSE 30", "CSE 101", "CSE 120", "CSE 112", "CSE 114A", "CSE 114B","CSE 102", "CSE 103", "CSE 130", "CSE 107","STAT 131"
+        "AM 30", "MATH 23A", "CSE 16", "CSE 20", "CSE 12", "CSE 13S","CSE 30", "CSE 101", "CSE 120", "CSE 112", "CSE 114A", "CSE 114B","CSE 102", "CSE 103", "CSE 130", "CSE 107","STAT 131"
     ];
     // contains other reqs like the DC requirements
     const allReqs = [
@@ -68,18 +53,19 @@ export function CourseProvider({children}, props){
     "CSE 162(L)", "CSE 163", "CSE 168", "CSE 181",
     "CSE 183", "CSE 184", "CMPM 172", "ECE 118"
     ];
-    function insertAllCourses (courseObj, userCourseObj, setUserCourseObj){
-      console.log('coures Object in insertAll Courses',userCourseObj);
+    function insertAllCourses (courseObj){
+      
+      
       // let totalCount = 0;
       for (let index in courseObj){
         // Avoid adding duplicates
         // When clicking on the Done button multiple times the values
         // from the current logged in user are being added.
         if (studentClassObj.classesTaken.indexOf(courseObj[index][0]) < 0) {
-          if (Array.isArray(classesTaken)) {
-            classesTaken.push(courseObj[index][0])
+          if (Array.isArray(userObj.classesTakenArr)) {
+            userObj.classesTakenArr.push(courseObj[index][0])
           } else {
-            classesTaken = [courseObj[index][0]];
+            userObj.classesTakenArr = [courseObj[index][0]];
           }
           
           // studentClassObj.classesTaken.push(courseObj[index][0]);
@@ -89,55 +75,56 @@ export function CourseProvider({children}, props){
           setDCReqs(studentClassObj, courseObj[index][0]);
           setCapstoneReqs(studentClassObj, courseObj[index][0]);
          
-          if (Array.isArray(requirementsTaken) && studentClassObj.requirementsTaken[0] !== undefined && studentClassObj.requirementsTaken.indexOf(courseObj[index][0])>=0) {
-            requirementsTaken.push(courseObj[index][0]);
+          if (Array.isArray(userObj.requirementsTakenArr) && studentClassObj.requirementsTaken[0] !== undefined && studentClassObj.requirementsTaken.indexOf(courseObj[index][0])>=0) {
+            userObj.requirementsTakenArr.push(courseObj[index][0]);
           } else if (studentClassObj.requirementsTaken[0] !== undefined && studentClassObj.requirementsTaken.indexOf(courseObj[index][0])>=0){
-            requirementsTaken = [courseObj[index][0]];
+            userObj.requirementsTakenArr = [courseObj[index][0]];
           }
 
-          if (Array.isArray(electivesTaken) && studentClassObj.electivesTaken[0] !== undefined && studentClassObj.electivesTaken.indexOf(courseObj[index][0])>=0) {
-            electivesTaken.push(courseObj[index][0]);
+          if (Array.isArray(userObj.electivesTakenArr) && studentClassObj.electivesTaken[0] !== undefined && studentClassObj.electivesTaken.indexOf(courseObj[index][0])>=0) {
+            userObj.electivesTakenArr.push(courseObj[index][0]);
           } else if (studentClassObj.electivesTaken[0] !== undefined && studentClassObj.electivesTaken.indexOf(courseObj[index][0])>=0){
-            electivesTaken = [courseObj[index][0]];
+            userObj.electivesTakenArr = [courseObj[index][0]];
           }
 
-          if (Array.isArray(dcTaken) && studentClassObj.dcTaken[0] !== undefined && studentClassObj.dcTaken.indexOf(courseObj[index][0])>=0) {
-            dcTaken.push(courseObj[index][0]);
+          if (Array.isArray(userObj.dcTakenArr) && studentClassObj.dcTaken[0] !== undefined && studentClassObj.dcTaken.indexOf(courseObj[index][0])>=0) {
+            userObj.dcTakenArr.push(courseObj[index][0]);
           } else if (studentClassObj.dcTaken[0] !== undefined && studentClassObj.dcTaken.indexOf(courseObj[index][0])>=0){
-            dcTaken = [courseObj[index][0]];
+            userObj.dcTakenArr = [courseObj[index][0]];
           }
 
-          if (Array.isArray(capstoneTaken)&& studentClassObj.capstoneTaken[0] !== undefined && studentClassObj.capstoneTaken.indexOf(courseObj[index][0])>=0) {
+          if (Array.isArray(userObj.capstoneTakenArr)&& studentClassObj.capstoneTaken[0] !== undefined && studentClassObj.capstoneTaken.indexOf(courseObj[index][0])>=0) {
             console.log('test cap:',studentClassObj.capstoneTaken[0]);
-            capstoneTaken.push(courseObj[index][0]);
+            userObj.capstoneTakenArr.push(courseObj[index][0]);
           } else if (studentClassObj.capstoneTaken[0] !== undefined && studentClassObj.capstoneTaken.indexOf(courseObj[index][0])>=0){
-            capstoneTaken = [courseObj[index][0]];
+            userObj.capstoneTakenArr = [courseObj[index][0]];
           }
           // totalCredits = parseInt(creditsTaken)
           // console.log('Total Credits: ', totalCredits);
-          // setClasses(classesTaken);
-          setDc(dcTaken);
-          setCapstone(capstoneTaken);
-          setElectives(electivesTaken);
+          setClasses(studentClassObj.classesTaken);
+          setDc(studentClassObj.dcTaken);
+          setCapstone(studentClassObj.capstoneTaken);
+          setElectives(studentClassObj.electivesTaken);
           totalCredits += parseInt(courseObj[index][1].Credits);
           studentClassObj.creditsTaken = totalCredits;
-          let tempObj = {};
+          /*let tempObj = {};
           tempObj.classesTakenArr = classesTaken;
           tempObj.electivesTakenArr = electivesTaken;
           tempObj.dcTakenArr = dcTaken;
           tempObj.capstoneTakenArr = capstoneTaken;
           console.log('storing in local storage', JSON.stringify(tempObj))
-          window.localStorage.setItem('user-info', JSON.stringify(tempObj));
-
-          
+          window.localStorage.setItem('user-info', JSON.stringify(tempObj));*/
+          console.log('storing in local storage', JSON.stringify(userObj))
+          window.localStorage.setItem('user-info', JSON.stringify(userObj))
           
           update(ref(db,'Users/'+currentUser.uid), {
-          classesTaken:  classesTaken,
-          requirementsTaken: requirementsTaken,
-          electivesTaken: electivesTaken,
-          dcTaken: dcTaken,
-          capstoneTaken: capstoneTaken,
-          creditsTaken: (parseInt(creditsTaken) + totalCredits)
+          classesTaken:  userObj.classesTakenArr,
+          requirementsTaken: userObj.requirementsTakenArr,
+          electivesTaken: userObj.electivesTakenArr,
+          dcTaken: userObj.dcTakenArr,
+          capstoneTaken: userObj.capstoneTakenArr,
+          creditsTaken: (parseInt(userObj.creditsTaken) + totalCredits),
+          currentClasses: userObj.currentClassesArr 
         },{merge : true});
         
         } else {
@@ -168,7 +155,7 @@ export function CourseProvider({children}, props){
             (classTaken >= 'CSE 100' && classTaken <= 'CSE 170' && classTaken !== 'CSE 115A') ||
             (classTaken >= 'CSE 180' && classTaken <= 'CSE 189')) &&
             (allReqs.indexOf(classTaken) < 0 && classTaken.length > 6 &&
-            classTaken.includes('CSE') && classesTaken !== 'CSE 13S')) {
+            classTaken.includes('CSE') && classTaken !== 'CSE 13S')) {
               console.log('pushing elective class: ', classTaken);
               console.log('class taken: ', classTaken, (classTaken.length));
               obj.electivesTaken.push(classTaken);
@@ -207,7 +194,6 @@ export function CourseProvider({children}, props){
     }
     function recommendCourses(userCourseObj) {
       const retObj = JSON.parse(localStorage.getItem('user-info'));
-      console.log('Local Storage Object: ', retObj);
       let recommendedArr = []
       let reqsRecArr = [];
       let dcRecArr = [];
@@ -215,7 +201,7 @@ export function CourseProvider({children}, props){
       let electivesRecArr = [];
       if(retObj.classesTakenArr.length > 0){
         recommendRequirements(reqsRecArr,retObj)
-        if (classesTaken.indexOf('CSE 101') >= 0){
+        if (retObj.classesTakenArr.indexOf('CSE 101') >= 0){
           recommendDC(dcRecArr,retObj);
           recommendCapstone(capstoneRecArr,retObj);
           recommendElectives(electivesRecArr, retObj)
@@ -231,7 +217,6 @@ export function CourseProvider({children}, props){
       return recommendedArr;
     }
     function recommendRequirements(recommendations, userCourseObj) {
-      console.log('Classes taken by user: ', userCourseObj.classesTakenArr)
       // classesTaken = array of arrays
       // classesTaken[0] = array containing classes
       // Don't recommend requirements that have already been taken
@@ -289,6 +274,7 @@ export function CourseProvider({children}, props){
           filteredArr.splice(removeClassIdx,1);
         }
       }
+      
       // Look for CS requirements needed to take CSE 101
       ['CSE 12', 'CSE 13S', 'CSE 16', 'CSE 30'].map(course => {
         const courseIdx = filteredArr.indexOf(course);
@@ -312,6 +298,31 @@ export function CourseProvider({children}, props){
       } else if (index >= 0 && filteredArr.indexOf('MATH 20A') < 0) {
         filteredArr.splice(index, 1);
         recommendations.push('MATH 20B');
+      }
+
+      if (recommendations.indexOf('MATH 19B') >= 0 || recommendations.indexOf('MATH 20B') >= 0 ){
+        let removeClassIdx = filteredArr.indexOf('STAT 131');
+        if (removeClassIdx >= 0) {
+          filteredArr.splice(removeClassIdx,1);
+        }
+        removeClassIdx = filteredArr.indexOf('STAT 131');
+        if (removeClassIdx >= 0) {
+          filteredArr.splice(removeClassIdx,1);
+        }
+      }
+      index = userCourseObj.classesTakenArr.indexOf('CSE 107');
+      if (index >= 0) {
+        let removeClassIdx = filteredArr.indexOf('STAT 131');
+        if (removeClassIdx >= 0) {
+          filteredArr.splice(removeClassIdx,1);
+        }
+      }
+      index = userCourseObj.classesTakenArr.indexOf('STAT 131');
+      if (index >= 0) {
+        let removeClassIdx = filteredArr.indexOf('CSE 107');
+        if (removeClassIdx >= 0) {
+          filteredArr.splice(removeClassIdx,1);
+        }
       }
       index = filteredArr.indexOf('CSE 101');
       // At this point we have only pushed the requirements need for CSE 101 to the recommendation array
@@ -337,7 +348,7 @@ export function CourseProvider({children}, props){
     }
     
     function recommendDC(recommendations, userCourseObj) {
-      if (Array.isArray(dcTaken) === false) {
+      if (Array.isArray(userCourseObj.dcTakenArr) === false) {
         for (const dcClass of dcReqs){ 
           recommendations.push(dcClass);
         }
@@ -345,7 +356,7 @@ export function CourseProvider({children}, props){
     }
 
     function recommendCapstone(recommendations, userCourseObj) {
-      if (Array.isArray(capstoneTaken) === false) {
+      if (Array.isArray(userCourseObj.capstoneTakenArr) === false) {
         
         for (let i = 0; i < 6; i++){
           let randomizedItem = capstoneReq[Math.floor(Math.random() * capstoneReq.length)];

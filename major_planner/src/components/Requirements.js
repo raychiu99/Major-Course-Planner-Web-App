@@ -63,7 +63,7 @@ export default function BasicList(props) {
           <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 10, sm: 8, md: 12 }}>
           {classesTaken.map((className) => { 
               return (
-              <Grid item xs={2} sm={4} md={4}>
+              <Grid item key = {className} xs={2} sm={4} md={4}>
                 <ListItem divider={true} sx={{backgroundColor:'#fefcd0'}}>
                 <ListItemText>{className}</ListItemText>
                 <IconButton type="button" onClick = {() => {handleremove(className)}}>
@@ -75,7 +75,7 @@ export default function BasicList(props) {
           })}
           </Grid>
         </List> : <></> }
-        <Button color = 'secondary' variant='contained' onClick = {() => {insertAllCourses(props.classArr, props.userCourseObj, props.setUserCourseObj);
+        <Button color = 'secondary' variant='contained' onClick = {() => {insertAllCourses(props.classArr);
         history.push("/home")
         }}
         sx={{mt: '5%', mb:'2%'}}

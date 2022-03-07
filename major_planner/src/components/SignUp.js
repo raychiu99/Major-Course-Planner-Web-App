@@ -45,6 +45,16 @@ export default function SignUp() {
         capstoneTaken: 0,
         creditsTaken: 0
       });
+      let tempObj = {};
+      tempObj.classesTakenArr = 0;
+      tempObj.electivesTakenArr = 0;
+      tempObj.dcTakenArr = 0;
+      tempObj.capstoneTakenArr = 0;
+      tempObj.requirementsTakenArr = 0;
+      tempObj.currentClassesArr = 0;
+      tempObj.creditsTaken = 0;
+      tempObj.currentClassesArr = 0;
+      window.localStorage.setItem('user-info', JSON.stringify(tempObj));
       history.push("/Courseselection")
     } catch (error) {
       console.log('THERES AN ERROR: ', error);

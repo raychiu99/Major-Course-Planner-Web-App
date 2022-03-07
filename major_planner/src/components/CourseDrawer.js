@@ -52,8 +52,18 @@ export default function TmpDrawer(props) {
     }
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = (event) => {
     insertAllCourses(props.classArr);
+    const classesObj = JSON.parse(localStorage.getItem('user-info'));
+    let tempArr = [];
+    for (const [key,value] of Object.entries(props.classArr)){
+      tempArr.push(value[0]);
+    }
+    classesObj.currentClassesArr =tempArr;
+    console.log('storing in local storage', JSON.stringify(classesObj))
+    window.localStorage.setItem('user-info', JSON.stringify(classesObj));
+    
+    
     history.push('/home');
   }
 
@@ -73,8 +83,8 @@ export default function TmpDrawer(props) {
       <div style={{ display: 'flex', justifyContent: 'center', paddingTop: '2vh', flexDirection: 'column'}}>
         <Container>
           <Grid container spacing={3}>
-            {props.classArr.map((card) => (          
-              <Grid item key={card}>
+            {props.classArr.map((card,index) => (          
+              <Grid item key={index}>
                 <Card
                   sx={{ height: '100%', width:'240px'}}
                 >
@@ -110,7 +120,7 @@ export default function TmpDrawer(props) {
       </div>
       
       <footer style={{ display: 'flex', paddingBottom: '8px', paddingLeft: '100px' , position: 'fixed', bottom: '0' }}>
-        <Button variant="contained" onClick = {()=> {handleSubmit()}}>
+        <Button variant="contained" onClick = {(event)=> {handleSubmit(event)}}>
           Submit
         </Button>
       </footer>
