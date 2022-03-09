@@ -53,17 +53,11 @@ export default function Dashboard() {
                                     <div style={{ display: 'flex', justifyContent: 'center', paddingTop: '14px', fontSize: '15px', paddingBottom: '8px' }}>
                                         <h3>Current Classes</h3>
                                     </div>
-                                    <List>
                                     {(classesObj.currentClassesArr.length > 0) ?
                                     classesObj.currentClassesArr.map((className)=>(
-                                            <ListItem key = {className}>
-                                                <ListItemText> {className}</ListItemText>
-                                                <Chip sx = {{fontWeight: 'bold'}}label="In Progress" color="primary" 
-                                                size = 'small'></Chip>
-                                            </ListItem>
+                                           <div>{className}</div>
                                     ))
                                     :<></>}
-                                    </List>
                                 </CardContent>
                             </Card>
                         </Grid>
