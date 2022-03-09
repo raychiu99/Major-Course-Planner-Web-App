@@ -55,7 +55,7 @@ export default function TmpDrawer(props) {
   }
 
   const handleSubmit = (event) => {
-    const classesObj = JSON.parse(localStorage.getItem('user-info'));
+    
     
     insertAllCourses(props.classArr, true);
     let tempArr = [];
@@ -65,6 +65,7 @@ export default function TmpDrawer(props) {
     update(ref(db,'Users/'+currentUser.uid), {
       currentClasses: tempArr
     },{merge : false});
+    const classesObj = JSON.parse(localStorage.getItem('user-info'));
     classesObj.currentClassesArr = tempArr;
     window.localStorage.setItem('user-info', JSON.stringify(classesObj));
     
