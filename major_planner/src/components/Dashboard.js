@@ -59,7 +59,7 @@ export default function Dashboard() {
                                     </div>
                                     {(classesObj.currentClassesArr.length > 0) ?
                                     classesObj.currentClassesArr.map((className)=>(
-                                           <div>{className}</div>
+                                           <div key = {className}>{className}</div>
                                     ))
                                     :<></>}
                                 </CardContent>

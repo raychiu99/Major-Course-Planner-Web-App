@@ -45,6 +45,7 @@ export default function SignUp() {
         capstoneTaken: 0,
         creditsTaken: 0
       });
+      // Also populate the local storage user upon signing up
       let tempObj = {};
       tempObj.classesTakenArr = 0;
       tempObj.electivesTakenArr = 0;

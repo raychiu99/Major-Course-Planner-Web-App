@@ -36,6 +36,7 @@ export default function SignIn() {
       tempObj.currentClassesArr = currentClasses;
       tempObj.requirementsTakenArr = requirementsTaken;
       tempObj.creditsTaken = creditsTaken
+      // populate the local storage using with the current information upon signing in
       window.localStorage.setItem('user-info', JSON.stringify(tempObj));
       await signIn(email, password)
       history.push("/home")

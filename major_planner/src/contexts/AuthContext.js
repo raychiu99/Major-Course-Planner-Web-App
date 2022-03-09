@@ -12,17 +12,23 @@ const AuthContext = React.createContext();
 
 export function AuthProvider({ children }) {
   const [currentUser, setCurrentUSer] = useState();
-  // const [loading, setLoading] = useState(true);
 
   /*Function for user sign up*/
+  // Uses firebase auth to create a user
   function signUp(email, password) {
     console.log('Signing up with credentials: ', email, password);
     return createUserWithEmailAndPassword(auth, email, password);
   }
+
+  // Function from firebase that signs in a user
   function signIn(email, password) {
     console.log('Signing in with credentials: ', email, password);
     return signInWithEmailAndPassword(auth, email, password);
   }
+
+  // Function from firebase that logs out a user
+  // the local storage (classes taken, credits, etc.)
+  // is deleted so that a new user doesnt pick it up
   function logOut(){
     signOut(auth).then(() => {
       console.log('Log Out was successful');
@@ -31,6 +37,7 @@ export function AuthProvider({ children }) {
     })
   }
 
+  // updates the inforamtion of a user
   function updateUser(first, last, mail) {
     console.log('Current user: ', auth.currentUser, mail);
     const db = getDatabase();
@@ -45,6 +52,8 @@ export function AuthProvider({ children }) {
       email: mail
     });
   }
+
+  // Update a user password using firebase Auth functions
   function updateUserPassword(oldPassword, newPassword, newPasswordConfirm) {
     if (newPassword !== newPasswordConfirm) return false;
     const user = auth.currentUser;
@@ -58,6 +67,8 @@ export function AuthProvider({ children }) {
     if (succeded) updatePassword(user, newPassword);
     return succeded;
   }
+
+  // update the academic status of a user
   function updateAcademicStatus(newMajor, newSeniority, newCatalog) {
     const db = getDatabase();
     update(ref(db, 'Users/' + auth.currentUser.uid), {
