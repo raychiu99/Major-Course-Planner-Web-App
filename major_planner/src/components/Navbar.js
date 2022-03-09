@@ -23,6 +23,7 @@ const Navbar = () => {
 	
 	
 	return (
+		/*Navbar conditional formatting*/
 		<div className='navbar-container' style={{ backgroundColor: '#f2ecde', textAlign: 'center', height:'100px' }}>
 		{(isLoggedIn !== null) ? <nav className="navbar" style={{ display: 'inline-block', textAlign: 'center' }}>
 				<h1>Major Course Planner</h1>
