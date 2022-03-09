@@ -25,12 +25,16 @@ export default function Dashboard() {
     <div style={{backgroundColor:'#fefcf0',height:'100vh'}}>
         <ThemeProvider theme={theme}>
            
+                {/*Welcome back banner*/} 
                 <div style={{display: 'flex', justifyContent: 'center', height: '10vh', paddingTop: '8vh' }}>
                     <h1> Welcome Back, {firstName} {lastName}! </h1>
                 </div>
                 
+                {/*Dashboard Grid*/}
                 <Container style={{ display: 'flex', justifyContent: 'center', height: '10vh', padding: '50px' }}>
                     <Grid container spacing={3} sx={{ width: '58%', display: 'flex' }}>
+
+                        {/*Info and Current Classes card*/}
                         <Grid item xs={5} >
                             <Card style={{ height: "100%" }}>
                                 <CardContent style={{ height: "100%" }}>
@@ -61,6 +65,8 @@ export default function Dashboard() {
                                 </CardContent>
                             </Card>
                         </Grid>
+
+                        {/*Graduation Status card*/}
                         <Grid item xs={3.5} >
                             <Card style={{ height: "100%" }}>
                                 <CardActionArea style={{ height: "100%" }} href='/Graduation'>
@@ -73,6 +79,8 @@ export default function Dashboard() {
                                 </CardActionArea>
                             </Card>
                         </Grid>
+
+                        {/*Linkcards*/}
                         <Grid item xs={3.5}>
                             <Grid container spacing={3}>
                                 <Grid item xs={12}>
