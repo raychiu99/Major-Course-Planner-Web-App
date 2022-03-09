@@ -15,6 +15,8 @@ export default function ComboBox() {
   const [showTakenClasses, toggleTakenClasses] = useState(false);
   const dbRef = ref(getDatabase());
 
+  // Get the list of courses and information from the database 
+  // useEffect() only executes it once so no unnecessary calls
   useEffect(() => {
     function fetchCourses() {
       get(child(dbRef, 'Faculties/CSE-Computer-Science-and-Engineering')).then((snapshot) => {
@@ -38,6 +40,8 @@ export default function ComboBox() {
     toggleTakenClasses(!showTakenClasses);
   };
 
+   // Add to the array of taken classes that is displayed at the bottom
+   // only add classes that have not already been added
   const handleClick = (classname, sname) => {
     let isTaken = false;
     for (let index in takenClassArr) {
@@ -60,7 +64,7 @@ export default function ComboBox() {
       console.log('You already added that class');
     }
   }
-
+  // Code on line 85 adds all lower requirements to the classes taken array
   return (
     <div className="Course" style={{ height: '100vh', backgroundColor: '#fefcf0' }}>
       <div style={{ height: '13vh', justifyContent: 'center', paddingTop: '3vh' }}>
@@ -89,6 +93,8 @@ export default function ComboBox() {
   );
 }
 
+// Because the seearch box requires that the component has the structure of name, label
+// here is the array of cs classes and their labels
 const tookAllReqs = [
   { name: 'MATH 19A', label: 'MATH 19A Calculus for Science, Engineering, and Mathematics' },
   { name: 'MATH 19B', label: 'MATH 19B Calculus for Science, Engineering, and Mathematics' },
@@ -100,7 +106,6 @@ const tookAllReqs = [
   { name: 'CSE 12', label: 'CSE 12 Computer Systems and Assembly Language and Lab' },
   { name: 'CSE 13S', label: 'CSE 13S Computer Systems and C Programming' },
 ];
-// Top 100 films as rated by IMDb users. http://www.imdb.com/chart/top
 const cseclasses = [
   { name: 'MATH 19A', label: 'MATH 19A Calculus for Science, Engineering, and Mathematics' },
   { name: 'MATH 19B', label: 'MATH 19B Calculus for Science, Engineering, and Mathematics' },

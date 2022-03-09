@@ -21,28 +21,20 @@ const theme = createTheme();
 export default function Planner() {
     const {recommendCourses} = useCourse();
     const [takenClassArr, setTakenClassArr] = useState([]);
-    // const [courses, setCourses] = useState([]);
     const [recommendedArr, setRecommendedArr] = useState([]);
     const [isFetching, setFetching] = useState(true);
+
+    // Get the current courses for the CS department
     const courses = JSON.parse(localStorage.getItem('courses-info'));
     
-    // Fetch All courses
-    /*useEffect(() => {
-      async function fetchCourses(){
-        const snapshot = await get(child(dbRef, 'Faculties/CSE-Computer-Science-and-Engineering'));
-        const value = snapshot.val();
-        setCourses(value);
-        setFetching(true)
-      }
-      fetchCourses();
-    },[dbRef]);*/
-
-    
+    // Colors for the classes
     const cardColor = ['#B6D3DB','#FDD5E0','#DCEFE8','#D68D96'];
-    if (isFetching === true){
-      
+
+    // Get the recommended courses
+    if (isFetching === true){  
       const recommendedClassesArr = recommendCourses();
-      console.log(recommendedClassesArr)
+
+        // Assign a color and the information of the course for each of the recommended courses
         for (let i = 0; i < recommendedClassesArr.length; i++){
           
           if (recommendedClassesArr[i].length > 0){
@@ -59,7 +51,7 @@ export default function Planner() {
       setFetching(false);
     }
     
-
+  // Check if a class is taken or not, if it's not taking add it to the array of classes that will be taken
   const handleClick = (classObj) => {
     let isTaken = false;
     for (let index in takenClassArr){
@@ -76,7 +68,9 @@ export default function Planner() {
       console.log('You already added that class');
     }
   }
-
+  // Code on line 135 is to avoid a bug from when a class returns undefined for whatever reason
+  // couldn't managed to find the exact reason for a class to say the information was undefined
+  // even though the class is in the database.
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -101,7 +95,7 @@ export default function Planner() {
       <div style={{ display: 'flex', justifyContent: 'center', height: '1vh' }}>
         <h3> Recommended classes for next quarter: </h3>
       </div>
-
+      
       <main>
         <Container sx={{ py: 8 }} maxWidth="md">
           <List sx={{ width: '100%', height: '100%' }} spacing={2}>
