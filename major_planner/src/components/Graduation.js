@@ -42,8 +42,10 @@ export default function Grad() {
     return false;
   }; 
   const taken2 = (key) => {
-      if (capstoneTaken.indexOf(key)>= 0){     
-        return true;
+      if (capstoneTaken.length > 0){    
+        if(capstoneTaken.indexOf(key)>= 0){
+          return true;
+        }
       }
   }; 
   const sa3 = () => {
@@ -53,9 +55,11 @@ export default function Grad() {
     return false;
   }; 
   const taken3 = (key) => {
+    if(dcTaken.length >= 1){
       if (dcTaken.indexOf(key)>= 0){     
         return true;
       }
+    }
   }; 
   const sa4 = () => {
     if(electivesTaken.length >= 4){
@@ -64,9 +68,11 @@ export default function Grad() {
     return false;
   }; 
   const taken4 = (key) => {
+    if(electivesTaken.length > 0){
       if (electivesTaken.indexOf(key)>= 0){     
         return true;
       }
+    }
   }; 
   const handleClick = () => {
     setOpen(!open);
