@@ -12,17 +12,40 @@ import Courseselection from './components/Courseselection';
 import { AuthProvider } from './contexts/AuthContext';
 import { UserProvider } from './contexts/UserContext';
 import { CourseProvider } from './contexts/CourseContext';
-import { useEffect, useState } from 'react';
+import { get, getDatabase, ref, child } from "firebase/database";
 function App() {
-  const [userCourseObj, setUserCourseObj] = useState( () => {
-    const initialState = {classesTakenArr: [],
-      dcTakenArr: [],
-      capstoneTakenArr:[],
-      electivesTakenArr:[]}
-    return initialState;
-  });
+  const dbRef = ref(getDatabase());
+  const courses = JSON.parse(localStorage.getItem('courses-info'));
+  // console.log('courses in app.js: ', courses);
+  if (courses === null){
+    async function fetchCourses(){
+      try {
+      const snapshot = await get(child(dbRef, 'Faculties/CSE-Computer-Science-and-Engineering'));
+      const value = snapshot.val();
+      console.log('value: ', value);
+      console.log('storing in local storage', JSON.stringify(value))
+      window.localStorage.setItem('courses-info', JSON.stringify(value))
+      let tempObj = {};
+      tempObj.classesTakenArr = 0;
+      tempObj.electivesTakenArr = 0;
+      tempObj.dcTakenArr = 0;
+      tempObj.capstoneTakenArr = 0;
+      tempObj.requirementsTakenArr = 0;
+      tempObj.currentClassesArr = 0;
+      tempObj.creditsTaken = 0;
+      tempObj.classesTakenArr = 0;
+      window.localStorage.setItem('user-info', JSON.stringify(tempObj));
+      // setCourses(value);
+      // setFetching(true)
+      } catch(err){
+        console.log('error: ', err);
+      }
+    }
+    fetchCourses();
+    
+  }
+  
 
-  console.log(userCourseObj)
   return (
     <AuthProvider>
       <UserProvider>
@@ -38,15 +61,8 @@ function App() {
                   <Route exact path="/How-it-works" component={HowItWorks} />
                   <Route exact path="/DBtester" component={RowAndColumnSpacing} />
                   <Route exact path="/AccountSettings" component={AccountSettings} />
-                  <Route exact path="/NextQuarterPlanner">
-                    <Planner userCourseObj = {userCourseObj}
-                    setUserCourseObj = {setUserCourseObj}/>
-                  </Route>
-                  <Route exact path="/Courseselection">
-                    <Courseselection userCourseObj = {userCourseObj}
-                      setUserCourseObj = {setUserCourseObj}
-                    />
-                  </Route>
+                  <Route exact path="/NextQuarterPlanner" component={Planner}/>
+                  <Route exact path="/Courseselection" component={Courseselection}/>
                   <Route exact path="/Graduation" component={Graduation} />
                 </Switch>
               </div>

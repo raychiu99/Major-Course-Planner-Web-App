@@ -15,6 +15,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import {useAuth} from '../contexts/AuthContext'
 import { useState } from 'react';
 import {Link,useHistory} from 'react-router-dom';
+import { useUser } from '../contexts/UserContext'
 const theme = createTheme();
 
 export default function SignIn() {
@@ -22,14 +23,27 @@ export default function SignIn() {
   const [email, getemail] = useState('');
   const [password , getpassword] = useState('');
   const history = useHistory();
+  const { major, seniority, catalog, currentClasses, classesTaken, requirementsTaken, electivesTaken, capstoneTaken, dcTaken, creditsTaken} = useUser();
   const handleSubmit = async(event) => {
     event.preventDefault();
     try {
+      let tempObj = {};
+      tempObj.classesTakenArr = classesTaken;
+      tempObj.electivesTakenArr = electivesTaken;
+      tempObj.dcTakenArr = dcTaken;
+      tempObj.capstoneTakenArr = capstoneTaken;
+      tempObj.recommendedClassesArr = [];
+      tempObj.currentClassesArr = currentClasses;
+      tempObj.requirementsTakenArr = requirementsTaken;
+      tempObj.creditsTaken = creditsTaken
+      // populate the local storage using with the current information upon signing in
+      window.localStorage.setItem('user-info', JSON.stringify(tempObj));
       await signIn(email, password)
-      history.push("/Courseselection")
+      history.push("/home")
     } catch (error) {
       console.log('THERES AN ERROR')
     }
+    
   };
 
   return (
@@ -102,7 +116,7 @@ export default function SignIn() {
               >
                 Sign In
               </Button>
-              <div classname = "sss">
+              <div className = "sss">
                 Need an account? <Link to ="/SignUp">SignUp</Link>
               </div>
             </Box>

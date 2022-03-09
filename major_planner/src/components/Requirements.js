@@ -2,22 +2,15 @@ import React, { useContext, useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import Divider from '@mui/material/Divider';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useCourse } from '../contexts/CourseContext';
-import { useUser } from '../contexts/UserContext';
 import { useAuth } from '../contexts/AuthContext';
-import { ClassNames } from '@emotion/react';
-import { get, getDatabase, ref, query, child, orderByChild } from "firebase/database";
+import { getDatabase, ref } from "firebase/database";
 import Paper from '@mui/material/Paper';
-import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 import Grid from '@mui/material/Grid';
-import Delete from '@mui/icons-material/Delete';
 import { IconButton, Typography } from '@mui/material';
 import { Link, useHistory } from 'react-router-dom';
 const Item = styled(Paper)(({ theme }) => ({
@@ -29,13 +22,11 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 export default function BasicList(props) {
   const history = useHistory();
-  const {currentUser} = useAuth();
   const {insertAllCourses} = useCourse();
-  const dbRef = ref(getDatabase());
   const [classesTaken, setClassesTaken] = useState([]);
-  const [anew, setdelete] = useState(props.classArr);
 
-  const handleremove= (classObj) => { 
+  // Delete a class from the list
+  const handleremove = (classObj) => { 
     const newList = classesTaken.filter((className) => className!== classObj);
     setClassesTaken(newList);
     for (let index in props.classArr){
@@ -45,15 +36,20 @@ export default function BasicList(props) {
       }
     }
 }
+  // Fetch once the classes given as a prop
   React.useEffect (() => {
     for (let index in props.classArr){
+      // If the class is not in the array add it.
+      // [index][0] means get the code of the class (CSE 101)
+      // otherwise [index][1] means get all the information of the class
       if (classesTaken.indexOf(props.classArr[index][0]) < 0){     
         const classObj = props.classArr[index][0];
         setClassesTaken(classesTaken=>[...classesTaken,classObj]);
       }
     } 
-  }, [props.classArr]); 
-  console.log('Classes taken arr', classesTaken);
+  }, [props.classArr]);
+
+  // Loop through the array of classes and output them
   return (
     <Box sx={{ width: '100%', maxWidth: 800, bgcolor: 'background.paper', backgroundColor:'#fefcf0' }}>
       <nav aria-label="main mailbox folders">
@@ -63,7 +59,7 @@ export default function BasicList(props) {
           <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 10, sm: 8, md: 12 }}>
           {classesTaken.map((className) => { 
               return (
-              <Grid item xs={2} sm={4} md={4}>
+              <Grid item key = {className} xs={2} sm={4} md={4}>
                 <ListItem divider={true} sx={{backgroundColor:'#fefcd0'}}>
                 <ListItemText>{className}</ListItemText>
                 <IconButton type="button" onClick = {() => {handleremove(className)}}>
@@ -75,7 +71,11 @@ export default function BasicList(props) {
           })}
           </Grid>
         </List> : <></> }
-        <Button color = 'secondary' variant='contained' onClick = {() => {insertAllCourses(props.classArr, props.userCourseObj, props.setUserCourseObj);
+        <Button color = 'secondary' variant='contained' onClick = {() => {
+          if (props.classArr.length > 0){
+            insertAllCourses(props.classArr, false);
+          }
+          
         history.push("/home")
         }}
         sx={{mt: '5%', mb:'2%'}}

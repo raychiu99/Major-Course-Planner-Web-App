@@ -20,60 +20,79 @@ export default function Grad() {
   const [open3, setOpen3] = React.useState(false);
   const {classesTaken,capstoneTaken,dcTaken,electivesTaken,major, seniority} = useUser();
   const sa1 = () => {
+    if (classesTaken.length <= 0 || classesTaken.length === undefined) {
+      return false;
+    }
     for(let index in csReqs){
-      if(classesTaken.indexOf(csReqs[index])<0 || csReqs[index].includes(classesTaken) == false){
+      if(classesTaken.indexOf(csReqs[index])< 0 || csReqs[index].includes(classesTaken) === false){
         return false;
       }
     }
     return true;
   }; 
   const taken1 = (key) => {
+    if (classesTaken.length <= 0 || classesTaken.length === undefined) {
+      return false;
+    }
     for(let index in classesTaken){
-      if (classesTaken[index] == key || key.includes(classesTaken[index]) == true){     
+      if (classesTaken[index] === key || key.includes(classesTaken[index]) === true){     
         return true;
       }
     }
     
   }; 
   const sa2 = () => {
+    if (capstoneTaken.length <= 0 || capstoneTaken.length === undefined) {
+      return false;
+    }
     if(capstoneTaken.length >= 1){
       return true;
     }
     return false;
   }; 
   const taken2 = (key) => {
-      if (capstoneTaken.length > 0){    
-        if(capstoneTaken.indexOf(key)>= 0){
-          return true;
-        }
-      }
+    if (capstoneTaken.length <= 0 || capstoneTaken.length === undefined) {
+      return false;
+    }
+    if (capstoneTaken.indexOf(key)>= 0){     
+      return true;
+    }
   }; 
   const sa3 = () => {
+    if (dcTaken.length <= 0 || dcTaken.length === undefined) {
+      return false;
+    }
     if(dcTaken.length >= 1){
       return true;
     }
     return false;
   }; 
   const taken3 = (key) => {
-    if(dcTaken.length >= 1){
-      if (dcTaken.indexOf(key)>= 0){     
-        return true;
-      }
+    if (dcTaken.length <= 0 || dcTaken.length === undefined) {
+      return false;
+    }
+    if (dcTaken.indexOf(key)>= 0){     
+      return true;
     }
   }; 
   const sa4 = () => {
+    if (electivesTaken.length <= 0 || electivesTaken.length === undefined) {
+      return false;
+    }
     if(electivesTaken.length >= 4){
       return true;
     }
     return false;
   }; 
   const taken4 = (key) => {
-    if(electivesTaken.length > 0){
-      if (electivesTaken.indexOf(key)>= 0){     
-        return true;
-      }
+    if (electivesTaken.length <= 0 || electivesTaken.length === undefined) {
+      return false;
+    }
+    if (electivesTaken.indexOf(key)>= 0){     
+      return true;
     }
   }; 
+
   const handleClick = () => {
     setOpen(!open);
   };

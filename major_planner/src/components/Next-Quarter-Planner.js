@@ -1,10 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import { useCourse } from '../contexts/CourseContext';
-import { useUser } from '../contexts/UserContext';
-import { get, getDatabase, ref, child } from "firebase/database";
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -23,29 +21,21 @@ const theme = createTheme();
 export default function Planner() {
     const {recommendCourses} = useCourse();
     const [takenClassArr, setTakenClassArr] = useState([]);
-    const [courses, setCourses] = useState([]);
     const [recommendedArr, setRecommendedArr] = useState([]);
-    const dbRef = ref(getDatabase());
-    const [isFetching, setFetching] = useState(false);
-    
-    
-    // Fetch All courses
-    useEffect(() => {
-      async function fetchCourses(){
-        const snapshot = await get(child(dbRef, 'Faculties/CSE-Computer-Science-and-Engineering'));
-        const value = snapshot.val();
-        setCourses(value);
-        setFetching(true)
-      }
-      fetchCourses();
-    },[dbRef]);
+    const [isFetching, setFetching] = useState(true);
 
+    // Get the current courses for the CS department
+    const courses = JSON.parse(localStorage.getItem('courses-info'));
     
+    // Colors for the classes
     const cardColor = ['#B6D3DB','#FDD5E0','#DCEFE8','#D68D96'];
-    if (isFetching === true){
-      
+
+    // Get the recommended courses
+    if (isFetching === true){  
       const recommendedClassesArr = recommendCourses();
-        for (let i = 0; i < 4; i++){
+
+        // Assign a color and the information of the course for each of the recommended courses
+        for (let i = 0; i < recommendedClassesArr.length; i++){
           
           if (recommendedClassesArr[i].length > 0){
             recommendedClassesArr[i].map((className) => {
@@ -57,10 +47,11 @@ export default function Planner() {
             })
           }
         }
+        
       setFetching(false);
     }
     
-
+  // Check if a class is taken or not, if it's not taking add it to the array of classes that will be taken
   const handleClick = (classObj) => {
     let isTaken = false;
     for (let index in takenClassArr){
@@ -77,7 +68,9 @@ export default function Planner() {
       console.log('You already added that class');
     }
   }
-
+  // Code on line 135 is to avoid a bug from when a class returns undefined for whatever reason
+  // couldn't managed to find the exact reason for a class to say the information was undefined
+  // even though the class is in the database.
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -102,7 +95,7 @@ export default function Planner() {
       <div style={{ display: 'flex', justifyContent: 'center', height: '1vh' }}>
         <h3> Recommended classes for next quarter: </h3>
       </div>
-
+      
       <main>
         <Container sx={{ py: 8 }} maxWidth="md">
           <List sx={{ width: '100%', height: '100%' }} spacing={2}>
@@ -128,55 +121,51 @@ export default function Planner() {
           </List>
           {/* End hero unit */}
           {(recommendedArr.length <= 0) ? 
-                <Grid container spacing={2}>
-                {[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14].map((index) => (
-                  <Grid item key={index} xs={12} sm={6} md={4}>
-                  <Skeleton variant="rectangular" width={250} height={250} />
-                  </Grid>
-                ))
-                }
+            <Grid container spacing={2}>
+              {[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14].map((index) => (
+                <Grid item key={index} xs={12} sm={6} md={4}>
+                <Skeleton variant="rectangular" width={250} height={250} />
                 </Grid>
-            
+              ))
+              }
+            </Grid>
             :
             <Grid container spacing={4}>
-            {recommendedArr.map((card, index) => (
+              {recommendedArr.map((card, index) => (
                 <Grid item key={index} xs={12} sm={6} md={4}>
-                <Card
-                  sx={{ height: '100%', display: 'flex', flexDirection: 'column',
-                  backgroundColor : card[2]}}
-                  
-                >
-                  <CardContent sx={{ flexGrow: 1 }}>
-                    <div style={{ display: 'flex', justifyContent: 'left', height: '41px'}}>
-                      <h1> {card[0]} </h1>
-                    </div>
+                  {(card[1] === undefined) ? <></>:    
+                  <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column',
+                  backgroundColor : card[2]}}>
+                    <CardContent sx={{ flexGrow: 1 }}>
+                      <div style={{ display: 'flex', justifyContent: 'left', height: '41px'}}>
+                        <h1> {card[0]} </h1>
+                      </div>
 
-                    <div style={{ display: 'flex', justifyContent: 'left', paddingBottom: '3px' }}>
-                      <h4>{card[1]["Class Name"].replace(/^([^ ]+ ){2}/, '')}</h4>
-                    </div>
+                      <div style={{ display: 'flex', justifyContent: 'left', paddingBottom: '3px' }}>
+                        <h4>{card[1]["Class Name"].replace(/^([^ ]+ ){2}/, '')}</h4>
+                      </div>
 
-                    <div style={{ display: 'flex', justifyContent: 'left' }}>
-                      Credits: {card[1]["Credits"]}
-                    </div>
+                      <div style={{ display: 'flex', justifyContent: 'left' }}>
+                        Credits: {card[1]["Credits"]}
+                      </div>
 
-                    <div style={{ display: 'flex', justifyContent: 'left' }}>
-                      {card[1]["Requirements"]}
-                    </div>
-
-                  </CardContent>
-                  <CardActions>
-                    <Button size="small" 
-                      onClick = {() => {handleClick(card)}}
-                    >Add Class</Button>
+                      <div style={{ display: 'flex', justifyContent: 'left' }}>
+                        {card[1]["Requirements"]}
+                      </div>
+                      
+                    </CardContent>
+                    <CardActions>
+                      <Button size="small" 
+                        onClick = {() => {handleClick(card)}}
+                      >Add Class</Button>
                   </CardActions>
-                </Card>
+                  </Card>
+                  }
               </Grid>
-              
             ))}
           </Grid>
-        
         }
-          </Container>
+        </Container>
       </main>
       </div>
     </ThemeProvider>

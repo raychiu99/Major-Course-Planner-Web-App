@@ -5,6 +5,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 
+//Simple Linkcard used for Next Quarter Planner and Account Settings on Dashboard
 
 export default function LinkCard({ text, path }) {
   return (

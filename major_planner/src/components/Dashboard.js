@@ -4,11 +4,13 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Container } from '@mui/material';
 import { CardActionArea } from '@mui/material';
 import CardMedia from '@mui/material/CardMedia';
-
+import Chip from '@mui/material/Chip';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import gradcap from "./graduationCap.jpg";
-
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
 import LinkCard from "./LinkCard";
 import { useUser } from '../contexts/UserContext';
 const theme = createTheme();
@@ -17,18 +19,22 @@ const theme = createTheme();
 
 
 export default function Dashboard() {
+    const classesObj = JSON.parse(localStorage.getItem('user-info'));
     const { firstName, lastName, major, seniority, catalog } = useUser();
-    console.log(firstName, lastName, major, seniority, catalog )
     return ( 
     <div style={{backgroundColor:'#fefcf0',height:'100vh'}}>
         <ThemeProvider theme={theme}>
            
+                {/*Welcome back banner*/} 
                 <div style={{display: 'flex', justifyContent: 'center', height: '10vh', paddingTop: '8vh' }}>
                     <h1> Welcome Back, {firstName} {lastName}! </h1>
                 </div>
                 
+                {/*Dashboard Grid*/}
                 <Container style={{ display: 'flex', justifyContent: 'center', height: '10vh', padding: '50px' }}>
                     <Grid container spacing={3} sx={{ width: '58%', display: 'flex' }}>
+
+                        {/*Info and Current Classes card*/}
                         <Grid item xs={5} >
                             <Card style={{ height: "100%" }}>
                                 <CardContent style={{ height: "100%" }}>
@@ -51,12 +57,16 @@ export default function Dashboard() {
                                     <div style={{ display: 'flex', justifyContent: 'center', paddingTop: '14px', fontSize: '15px', paddingBottom: '8px' }}>
                                         <h3>Current Classes</h3>
                                     </div>
-
-                                    some list here
-
+                                    {(classesObj.currentClassesArr.length > 0) ?
+                                    classesObj.currentClassesArr.map((className)=>(
+                                           <div key = {className}>{className}</div>
+                                    ))
+                                    :<></>}
                                 </CardContent>
                             </Card>
                         </Grid>
+
+                        {/*Graduation Status card*/}
                         <Grid item xs={3.5} >
                             <Card style={{ height: "100%" }}>
                                 <CardActionArea style={{ height: "100%" }} href='/Graduation'>
@@ -69,6 +79,8 @@ export default function Dashboard() {
                                 </CardActionArea>
                             </Card>
                         </Grid>
+
+                        {/*Linkcards*/}
                         <Grid item xs={3.5}>
                             <Grid container spacing={3}>
                                 <Grid item xs={12}>

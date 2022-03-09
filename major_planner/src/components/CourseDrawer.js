@@ -20,13 +20,15 @@ import IconButton from '@mui/material/IconButton';
 import { Link, useHistory } from 'react-router-dom';
 import { useCourse } from '../contexts/CourseContext';
 import DeleteIcon from '@mui/icons-material/Delete';
-
-
+import { getDatabase, ref,update } from "firebase/database";
+import {useAuth} from '../contexts/AuthContext';
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 export default function TmpDrawer(props) {
+  const db = getDatabase();
   const {insertAllCourses} = useCourse();
   const history = useHistory();
+  const { currentUser } = useAuth();
   const [state, setState] = React.useState({
     top: false,
     left: false,
@@ -52,8 +54,22 @@ export default function TmpDrawer(props) {
     }
   }
 
-  const handleSubmit = () => {
-    insertAllCourses(props.classArr);
+  const handleSubmit = (event) => {
+    
+    
+    insertAllCourses(props.classArr, true);
+    let tempArr = [];
+    for (const [key,value] of Object.entries(props.classArr)){
+      tempArr.push(value[0]);
+    }
+    update(ref(db,'Users/'+currentUser.uid), {
+      currentClasses: tempArr
+    },{merge : false});
+    const classesObj = JSON.parse(localStorage.getItem('user-info'));
+    classesObj.currentClassesArr = tempArr;
+    window.localStorage.setItem('user-info', JSON.stringify(classesObj));
+    
+    
     history.push('/home');
   }
 
@@ -73,8 +89,8 @@ export default function TmpDrawer(props) {
       <div style={{ display: 'flex', justifyContent: 'center', paddingTop: '2vh', flexDirection: 'column'}}>
         <Container>
           <Grid container spacing={3}>
-            {props.classArr.map((card) => (          
-              <Grid item key={card}>
+            {props.classArr.map((card,index) => (          
+              <Grid item key={index}>
                 <Card
                   sx={{ height: '100%', width:'240px'}}
                 >
@@ -110,7 +126,7 @@ export default function TmpDrawer(props) {
       </div>
       
       <footer style={{ display: 'flex', paddingBottom: '8px', paddingLeft: '100px' , position: 'fixed', bottom: '0' }}>
-        <Button variant="contained" onClick = {()=> {handleSubmit()}}>
+        <Button variant="contained" onClick = {(event)=> {handleSubmit(event)}}>
           Submit
         </Button>
       </footer>
