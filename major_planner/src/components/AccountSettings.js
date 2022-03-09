@@ -41,6 +41,7 @@ export default function AccountSettings() {
         'STEV-Stevenson-College', 'THEA-Theater-Arts', 'TIM-Technology-Information-Management', 'UCDC-UCDC', 'WRIT-Writing',
         'YIDD-Yiddish'];
 
+    // Get data from firebase
     const { updateUser, updateUserPassword, updateAcademicStatus, updateCurrentClasses } = useAuth();
     const { firstName, lastName, email, major, seniority, catalog, currentClasses } = useUser();
 
@@ -63,6 +64,7 @@ export default function AccountSettings() {
 
     const dbRef = ref(getDatabase());
 
+    // Retriecve all classes for currently selected department
     function fetchClasses() {
         get(child(dbRef, 'Faculties/' + selectedDept)).then((snapshot) => {
             if (snapshot.exists()) {
@@ -78,6 +80,7 @@ export default function AccountSettings() {
         fetchClasses();
     }, [selectedDept]);
 
+    // Update the user's name and email
     const handleUpdateProfile = async (event) => {
         event.preventDefault();
         try {
@@ -87,6 +90,7 @@ export default function AccountSettings() {
         }
     };
 
+    // Update the user's password
     const handleUpdatePassword = async (event) => {
         event.preventDefault();
         try {
@@ -96,6 +100,7 @@ export default function AccountSettings() {
         }
     };
 
+    // Update the user's major, seniority, and catalog year
     const handleUpdateAcademicStatus = async (event) => {
         event.preventDefault();
         try {
@@ -106,6 +111,7 @@ export default function AccountSettings() {
         }
     };
 
+    // Update the classes the user is currently taking
     const handleUpdateCurrentClasses = async (event) => {
         event.preventDefault();
         try {
@@ -121,8 +127,10 @@ export default function AccountSettings() {
                 <Container style={{ backgroundColor: '#fefcf0' }}>
                     <Grid container component="main">
                         <CssBaseline />
+
                         {/* Academic settings */}
                         <Grid item xs={12} sm={6}>
+                            {/* Academic Status Settings */}
                             <Box
                                 sx={{
                                     my: 8,
@@ -139,21 +147,21 @@ export default function AccountSettings() {
                                     <Grid container spacing={2}>
                                         <Grid item xs={12}>
                                             <Autocomplete disableClearable autoSelect
-                                                value={major}
+                                                value={newMajor}
                                                 options={majorOpts}
                                                 renderInput={(params) => <TextField {...params} label='Major'></TextField>}
                                                 onChange={(ev, val) => { setNewMajor(val); }} />
                                         </Grid>
                                         <Grid item xs={12}>
                                             <Autocomplete disableClearable autoSelect
-                                                value={seniority}
+                                                value={newSeniority}
                                                 options={seniorityOpts}
                                                 renderInput={(params) => <TextField {...params} label='Seniority'></TextField>}
                                                 onChange={(ev, val) => { setNewSeniority(val); }} />
                                         </Grid>
                                         <Grid item xs={12}>
                                             <Autocomplete disableClearable autoSelect
-                                                value={catalog}
+                                                value={newCatalog}
                                                 options={catalogOpts}
                                                 renderInput={(params) => <TextField {...params} label='Catalog'></TextField>}
                                                 onChange={(ev, val) => { setNewCatalog(val); }} />
@@ -170,6 +178,8 @@ export default function AccountSettings() {
                                     </Button>
                                 </Box>
                             </Box>
+
+                            {/* Current Classes Settings */}
                             <Box
                                 sx={{
                                     my: 8,
@@ -230,8 +240,10 @@ export default function AccountSettings() {
                                 </Box>
                             </Box>
                         </Grid>
+
                         {/* Profile and password settings */}
                         <Grid item xs={12} sm={6}>
+                            {/* Profile Settings */}
                             <Box
                                 sx={{
                                     my: 8,
@@ -294,6 +306,8 @@ export default function AccountSettings() {
                                     </Button>
                                 </Box>
                             </Box>
+
+                            {/* Password Settings */}
                             <Box
                                 sx={{
                                     my: 8,
