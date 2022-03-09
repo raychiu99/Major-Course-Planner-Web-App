@@ -53,7 +53,7 @@ export default function SignUp() {
       tempObj.requirementsTakenArr = 0;
       tempObj.currentClassesArr = 0;
       tempObj.creditsTaken = 0;
-      tempObj.currentClassesArr = 0;
+      tempObj.classesTakenArr = 0;
       window.localStorage.setItem('user-info', JSON.stringify(tempObj));
       history.push("/Courseselection")
     } catch (error) {

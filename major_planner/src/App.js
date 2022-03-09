@@ -25,6 +25,16 @@ function App() {
       console.log('value: ', value);
       console.log('storing in local storage', JSON.stringify(value))
       window.localStorage.setItem('courses-info', JSON.stringify(value))
+      let tempObj = {};
+      tempObj.classesTakenArr = 0;
+      tempObj.electivesTakenArr = 0;
+      tempObj.dcTakenArr = 0;
+      tempObj.capstoneTakenArr = 0;
+      tempObj.requirementsTakenArr = 0;
+      tempObj.currentClassesArr = 0;
+      tempObj.creditsTaken = 0;
+      tempObj.classesTakenArr = 0;
+      window.localStorage.setItem('user-info', JSON.stringify(tempObj));
       // setCourses(value);
       // setFetching(true)
       } catch(err){

@@ -28,6 +28,8 @@ export default function ComboBox() {
       });
     };
     fetchCourses();
+    
+      window.localStorage.getItem('user-info');
   }, [dbRef]);
 
   const cao = Object.entries(courses);

@@ -63,11 +63,7 @@ export function CourseProvider({children}, props){
         // When clicking on the Done button multiple times the values
         // from the current logged in user are being added.
         if (studentClassObj.classesTaken.indexOf(courseObj[index][0]) < 0) {
-          if (Array.isArray(userObj.classesTakenArr)) {
-            userObj.classesTakenArr.push(courseObj[index][0])
-          } else {
-            userObj.classesTakenArr = [courseObj[index][0]];
-          }
+
           
           // studentClassObj.classesTaken.push(courseObj[index][0]);
           setReqCompleted(studentClassObj, courseObj[index][0]);
