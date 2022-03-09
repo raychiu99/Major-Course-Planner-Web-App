@@ -102,7 +102,7 @@ export default function SignIn() {
               >
                 Sign In
               </Button>
-              <div classname = "sss">
+              <div className = "sss">
                 Need an account? <Link to ="/SignUp">SignUp</Link>
               </div>
             </Box>

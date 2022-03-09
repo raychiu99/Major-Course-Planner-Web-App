@@ -4,11 +4,13 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Container } from '@mui/material';
 import { CardActionArea } from '@mui/material';
 import CardMedia from '@mui/material/CardMedia';
-
+import Chip from '@mui/material/Chip';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import gradcap from "./graduationCap.jpg";
-
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
 import LinkCard from "./LinkCard";
 import { useUser } from '../contexts/UserContext';
 const theme = createTheme();
@@ -52,14 +54,17 @@ export default function Dashboard() {
                                     <div style={{ display: 'flex', justifyContent: 'center', paddingTop: '14px', fontSize: '15px', paddingBottom: '8px' }}>
                                         <h3>Current Classes</h3>
                                     </div>
+                                    <List>
                                     {(classesObj.currentClassesArr.length > 0) ?
                                     classesObj.currentClassesArr.map((className)=>(
-                                        <div key = {className}>
-                                            {className}
-                                        </div>
+                                            <ListItem>
+                                                <ListItemText> {className}</ListItemText>
+                                                <Chip sx = {{fontWeight: 'bold'}}label="In Progress" color="primary" 
+                                                size = 'small'></Chip>
+                                            </ListItem>
                                     ))
                                     :<></>}
-
+                                    </List>
                                 </CardContent>
                             </Card>
                         </Grid>

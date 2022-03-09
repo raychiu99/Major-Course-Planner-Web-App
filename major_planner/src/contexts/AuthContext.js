@@ -4,7 +4,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   onAuthStateChanged, updateEmail, EmailAuthProvider,
-  reauthenticateWithCredential, updatePassword
+  reauthenticateWithCredential, updatePassword, signOut
 } from 'firebase/auth';
 import { update } from 'firebase/database';
 import { get, getDatabase, ref, query, child, orderByChild } from "firebase/database";
@@ -23,6 +23,14 @@ export function AuthProvider({ children }) {
     console.log('Signing in with credentials: ', email, password);
     return signInWithEmailAndPassword(auth, email, password);
   }
+  function logOut(){
+    signOut(auth).then(() => {
+      console.log('Log Out was successful');
+    }).catch((error) => {
+      alert('There was an error logging out: ', error);
+    })
+  }
+
   function updateUser(first, last, mail) {
     console.log('Current user: ', auth.currentUser, mail);
     const db = getDatabase();
@@ -77,7 +85,7 @@ export function AuthProvider({ children }) {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ currentUser, signIn, signUp, updateUser, updateUserPassword, updateAcademicStatus }}>
+    <AuthContext.Provider value={{ currentUser, signIn, signUp, logOut,updateUser, updateUserPassword, updateAcademicStatus }}>
       {children}
     </AuthContext.Provider>
   );
