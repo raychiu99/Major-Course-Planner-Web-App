@@ -35,6 +35,7 @@ export function UserProvider({ children }) {
   const [password, setPassword] = useState('');
   const { currentUser } = useAuth();
   const dbRef = ref(getDatabase());
+  // Fetch a user once, and get all the data so that it can be used anywhere in the application
   useEffect(() => {
     if (currentUser) {
       function fetchUser() {
@@ -42,6 +43,7 @@ export function UserProvider({ children }) {
         get(child(dbRef, 'Users/' + currentUser.uid)).then((snapshot) => {
           if (snapshot.exists()) {
             // console.log('snapshot in user context: ', snapshot.val());
+            // Store all the information in the local storage as it is faster than making a query
             let tempObj = {};
             tempObj.classesTakenArr = snapshot.val().classesTaken;
             tempObj.electivesTakenArr = snapshot.val().electivesTaken;
