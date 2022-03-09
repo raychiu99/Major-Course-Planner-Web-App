@@ -13,7 +13,7 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CourseDrawer from './CourseDrawer';
 import Skeleton from '@mui/material/Skeleton';
-
+import {useUser} from '../contexts/UserContext';
 
 const theme = createTheme();
 
@@ -23,7 +23,10 @@ export default function Planner() {
     const [takenClassArr, setTakenClassArr] = useState([]);
     const [recommendedArr, setRecommendedArr] = useState([]);
     const [isFetching, setFetching] = useState(true);
-
+    const {creditsTaken} = useUser();
+    const {major} = useUser();
+    const {seniority} = useUser();
+    const {catalog} = useUser();
     // Get the current courses for the CS department
     const courses = JSON.parse(localStorage.getItem('courses-info'));
     
@@ -85,11 +88,11 @@ export default function Planner() {
       </div>
 
       <div style={{ display: 'flex', justifyContent: 'center', height: '5vh'}}>
-        <h2> Major: filler  Status: filler  Year: filler </h2>
+        <h2> Major: {major}  Status: {seniority}  Year: {catalog} </h2>
       </div>
 
       <div style={{ display: 'flex', justifyContent: 'center', height: '8vh' }}>
-        <h3> filler credits until graduation </h3>
+        <h3> {180 - parseInt(creditsTaken)} credits until graduation </h3>
       </div>
 
       <div style={{ display: 'flex', justifyContent: 'center', height: '1vh' }}>
