@@ -1,9 +1,9 @@
 import { useAuth } from "../contexts/AuthContext";
 import { useHistory } from 'react-router-dom';
 import { useState } from 'react';
+import { useEffect } from "react";
 const Navbar = () => {
 	const userObj = JSON.parse(localStorage.getItem('user-info'));
-	console.log('userObj: ', userObj)
 	const [isLoggedIn, setLoggedIn] = useState(userObj)
 	const {logOut} = useAuth();
 	const history = useHistory();
@@ -13,11 +13,14 @@ const Navbar = () => {
 		logOut();
 		history.push('/');
 	}
-	if (userObj === null && isLoggedIn !== null) {
-		setLoggedIn(null);
-	} else if (userObj !== null && isLoggedIn === null) {
-		setLoggedIn(userObj	);
-	}
+	useEffect(()=>{
+		if (userObj === null && isLoggedIn !== null) {
+			setLoggedIn(null);
+		} else if (userObj !== null && isLoggedIn === null) {
+			setLoggedIn(userObj	);
+		}
+	})
+	
 	
 	return (
 		<div className='navbar-container' style={{ backgroundColor: '#f2ecde', textAlign: 'center', height:'100px' }}>

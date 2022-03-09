@@ -21,7 +21,6 @@ const theme = createTheme();
 export default function Dashboard() {
     const classesObj = JSON.parse(localStorage.getItem('user-info'));
     const { firstName, lastName, major, seniority, catalog } = useUser();
-    console.log(firstName, lastName, major, seniority, catalog );
     return ( 
     <div style={{backgroundColor:'#fefcf0',height:'100vh'}}>
         <ThemeProvider theme={theme}>
@@ -57,7 +56,7 @@ export default function Dashboard() {
                                     <List>
                                     {(classesObj.currentClassesArr.length > 0) ?
                                     classesObj.currentClassesArr.map((className)=>(
-                                            <ListItem>
+                                            <ListItem key = {className}>
                                                 <ListItemText> {className}</ListItemText>
                                                 <Chip sx = {{fontWeight: 'bold'}}label="In Progress" color="primary" 
                                                 size = 'small'></Chip>

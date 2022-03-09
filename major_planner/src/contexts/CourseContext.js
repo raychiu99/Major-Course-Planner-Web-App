@@ -15,11 +15,12 @@ export function CourseProvider({children}, props){
   const [dcTakenArr, setDc] = useState([]);
   const [capstoneTakenArr, setCapstone] = useState([]);
   const [credits, setCredits] = useState(0);
+  const [currentClassesArr, setCurrentClasses] = useState([])
   const userObj = JSON.parse(localStorage.getItem('user-info'));
   let totalCredits = 0;
     
     let studentClassObj = {"classesTaken" : [], "requirementsTaken" : [],"electivesTaken" : [],
-    "dcTaken" : [], "capstoneTaken" : [], "creditsTaken" : 0, "otherElectivesTaken" : 0};
+    "dcTaken" : [], "capstoneTaken" : [], "creditsTaken" : 0, "otherElectivesTaken" : 0, "currentClasses": []};
     const csReqs = [
         "MATH 19A", "MATH 20A", "MATH 19B", "MATH 20B", "AM 10", "MATH 21",
         "AM 30", "MATH 23A", "CSE 16", "CSE 20", "CSE 12", "CSE 13S","CSE 30", "CSE 101", "CSE 120", "CSE 112", "CSE 114A", "CSE 114B","CSE 102", "CSE 103", "CSE 130", "CSE 107","STAT 131"
@@ -53,9 +54,9 @@ export function CourseProvider({children}, props){
     "CSE 162(L)", "CSE 163", "CSE 168", "CSE 181",
     "CSE 183", "CSE 184", "CMPM 172", "ECE 118"
     ];
-    function insertAllCourses (courseObj){
-      
-      
+    // CourseObj is an object filled with classes to be sorted and inserted into the database
+    // isCurrentClass is a boolean that indicates whether or not a class is being currently taken or not
+    function insertAllCourses (courseObj, isCurrentClass){  
       // let totalCount = 0;
       for (let index in courseObj){
         // Avoid adding duplicates
@@ -74,7 +75,12 @@ export function CourseProvider({children}, props){
           setOtherElectives(studentClassObj, courseObj[index][0]);
           setDCReqs(studentClassObj, courseObj[index][0]);
           setCapstoneReqs(studentClassObj, courseObj[index][0]);
-         
+
+          if (Array.isArray(userObj.currentClassesArr) && isCurrentClass === true) {
+            userObj.currentClassesArr.push(courseObj[index][0]);
+          } else {
+            userObj.currentClassesArr = [courseObj[index][0]];
+          }
           if (Array.isArray(userObj.requirementsTakenArr) && studentClassObj.requirementsTaken[0] !== undefined && studentClassObj.requirementsTaken.indexOf(courseObj[index][0])>=0) {
             userObj.requirementsTakenArr.push(courseObj[index][0]);
           } else if (studentClassObj.requirementsTaken[0] !== undefined && studentClassObj.requirementsTaken.indexOf(courseObj[index][0])>=0){
@@ -106,7 +112,10 @@ export function CourseProvider({children}, props){
           setCapstone(studentClassObj.capstoneTaken);
           setElectives(studentClassObj.electivesTaken);
           totalCredits += parseInt(courseObj[index][1].Credits);
-          studentClassObj.creditsTaken = totalCredits;
+          
+          if (isCurrentClass === true) {
+
+          }
           /*let tempObj = {};
           tempObj.classesTakenArr = classesTaken;
           tempObj.electivesTakenArr = electivesTaken;
@@ -124,7 +133,6 @@ export function CourseProvider({children}, props){
           dcTaken: userObj.dcTakenArr,
           capstoneTaken: userObj.capstoneTakenArr,
           creditsTaken: (parseInt(userObj.creditsTaken) + totalCredits),
-          currentClasses: userObj.currentClassesArr 
         },{merge : true});
         
         } else {

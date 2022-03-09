@@ -16,7 +16,7 @@ import { get, getDatabase, ref, child } from "firebase/database";
 function App() {
   const dbRef = ref(getDatabase());
   const courses = JSON.parse(localStorage.getItem('courses-info'));
-  console.log('courses in app.js: ', courses);
+  // console.log('courses in app.js: ', courses);
   if (courses === null){
     async function fetchCourses(){
       try {

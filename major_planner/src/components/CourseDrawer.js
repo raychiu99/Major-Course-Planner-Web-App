@@ -20,13 +20,15 @@ import IconButton from '@mui/material/IconButton';
 import { Link, useHistory } from 'react-router-dom';
 import { useCourse } from '../contexts/CourseContext';
 import DeleteIcon from '@mui/icons-material/Delete';
-
-
+import { getDatabase, ref,update } from "firebase/database";
+import {useAuth} from '../contexts/AuthContext';
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 export default function TmpDrawer(props) {
+  const db = getDatabase();
   const {insertAllCourses} = useCourse();
   const history = useHistory();
+  const { currentUser } = useAuth();
   const [state, setState] = React.useState({
     top: false,
     left: false,
@@ -53,14 +55,17 @@ export default function TmpDrawer(props) {
   }
 
   const handleSubmit = (event) => {
-    insertAllCourses(props.classArr);
     const classesObj = JSON.parse(localStorage.getItem('user-info'));
+    
+    insertAllCourses(props.classArr, true);
     let tempArr = [];
     for (const [key,value] of Object.entries(props.classArr)){
       tempArr.push(value[0]);
     }
-    classesObj.currentClassesArr =tempArr;
-    console.log('storing in local storage', JSON.stringify(classesObj))
+    update(ref(db,'Users/'+currentUser.uid), {
+      currentClasses: tempArr
+    },{merge : false});
+    classesObj.currentClassesArr = tempArr;
     window.localStorage.setItem('user-info', JSON.stringify(classesObj));
     
     
