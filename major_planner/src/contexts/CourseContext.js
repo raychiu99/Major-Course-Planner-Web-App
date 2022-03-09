@@ -70,8 +70,11 @@ export function CourseProvider({children}, props){
           setElectivesTaken(studentClassObj, courseObj[index][0]);
           setOtherElectives(studentClassObj, courseObj[index][0]);
           setDCReqs(studentClassObj, courseObj[index][0]);
-          setCapstoneReqs(studentClassObj, courseObj[index][0]);
-
+          if (Array.isArray(userObj.classesTakenArr)) {
+            userObj.classesTakenArr.push(courseObj[index][0]);
+          } else {
+            userObj.classesTakenArr = [courseObj[index][0]];
+          }
           if (Array.isArray(userObj.currentClassesArr) && isCurrentClass === true) {
             userObj.currentClassesArr.push(courseObj[index][0]);
           } else {
@@ -108,10 +111,6 @@ export function CourseProvider({children}, props){
           setCapstone(studentClassObj.capstoneTaken);
           setElectives(studentClassObj.electivesTaken);
           totalCredits += parseInt(courseObj[index][1].Credits);
-          
-          if (isCurrentClass === true) {
-
-          }
           /*let tempObj = {};
           tempObj.classesTakenArr = classesTaken;
           tempObj.electivesTakenArr = electivesTaken;
