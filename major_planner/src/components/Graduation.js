@@ -19,6 +19,7 @@ export default function Grad() {
   const [open2, setOpen2] = React.useState(false);
   const [open3, setOpen3] = React.useState(false);
   const {classesTaken,capstoneTaken,dcTaken,electivesTaken,major, seniority} = useUser();
+  //check if basic requirements are satisfied
   const sa1 = () => {
     if (classesTaken.length <= 0 || classesTaken.length === undefined) {
       return false;
@@ -30,6 +31,7 @@ export default function Grad() {
     }
     return true;
   }; 
+  //check if this class is taken
   const taken1 = (key) => {
     if (classesTaken.length <= 0 || classesTaken.length === undefined) {
       return false;
@@ -41,6 +43,7 @@ export default function Grad() {
     }
     
   }; 
+  //check if capstone is datisfied
   const sa2 = () => {
     if (capstoneTaken.length <= 0 || capstoneTaken.length === undefined) {
       return false;
@@ -50,6 +53,7 @@ export default function Grad() {
     }
     return false;
   }; 
+   //check if this class is taken
   const taken2 = (key) => {
     if (capstoneTaken.length <= 0 || capstoneTaken.length === undefined) {
       return false;
@@ -67,6 +71,7 @@ export default function Grad() {
     }
     return false;
   }; 
+   //check if this class is taken
   const taken3 = (key) => {
     if (dcTaken.length <= 0 || dcTaken.length === undefined) {
       return false;
@@ -75,6 +80,7 @@ export default function Grad() {
       return true;
     }
   }; 
+  //check if electives are satisfied
   const sa4 = () => {
     if (electivesTaken.length <= 0 || electivesTaken.length === undefined) {
       return false;
@@ -84,6 +90,7 @@ export default function Grad() {
     }
     return false;
   }; 
+   //check if this class is taken
   const taken4 = (key) => {
     if (electivesTaken.length <= 0 || electivesTaken.length === undefined) {
       return false;
@@ -92,6 +99,7 @@ export default function Grad() {
       return true;
     }
   }; 
+ //expend classes
   const handleClick = () => {
     setOpen(!open);
   };
@@ -191,7 +199,7 @@ export default function Grad() {
 
 const csReqs = [
   "MATH 19A or MATH 20A", "MATH 19B or MATH 20B", "AM 10 or MATH 21",
-  "AM 30 or MATH 23A", "CSE 16", "CSE 20", "CSE 12", "CSE 13S or CSE 13E", "CSE 30", "CSE 101", "CSE 120", "CSE 112 or CSE 114A or CSE 114B", "CSE 102", "CSE 103", "CSE 130", "CSE 107 or STAT 131"
+  "AM 30 or MATH 23A", "CSE 16", "CSE 20", "CSE 12", "CSE 13S", "CSE 30", "CSE 101", "CSE 120", "CSE 112 or CSE 114A or CSE 114B", "CSE 102", "CSE 103", "CSE 130", "CSE 107 or STAT 131"
 ];
 
 const dcReqs = ['CSE 115A','CSE 185E', 'CSE 185S', 'CSE 195(F)'];
