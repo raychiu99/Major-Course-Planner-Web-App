@@ -1,6 +1,10 @@
 import { useAuth } from "../contexts/AuthContext";
 import { useHistory } from 'react-router-dom';
+import { useState } from 'react';
 const Navbar = () => {
+	const userObj = JSON.parse(localStorage.getItem('user-info'));
+	console.log('userObj: ', userObj)
+	const [isLoggedIn, setLoggedIn] = useState(userObj)
 	const {logOut} = useAuth();
 	const history = useHistory();
 	function handleClick(){
@@ -9,9 +13,15 @@ const Navbar = () => {
 		logOut();
 		history.push('/');
 	}
+	if (userObj === null && isLoggedIn !== null) {
+		setLoggedIn(null);
+	} else if (userObj !== null && isLoggedIn === null) {
+		setLoggedIn(userObj	);
+	}
+	
 	return (
 		<div className='navbar-container' style={{ backgroundColor: '#f2ecde', textAlign: 'center', height:'100px' }}>
-			<nav className="navbar" style={{ display: 'inline-block', textAlign: 'center' }}>
+		{(isLoggedIn !== null) ? <nav className="navbar" style={{ display: 'inline-block', textAlign: 'center' }}>
 				<h1>Major Course Planner</h1>
 				<div className="links" style={{ textAlign: 'center', paddingTop: '8px' }}>
 					<a href="/How-it-works">How It Works</a>
@@ -23,6 +33,18 @@ const Navbar = () => {
 				</div>
 				
 			</nav>
+		:
+		<nav className="navbar" style={{ display: 'inline-block', textAlign: 'center' }}>
+				<h1>Major Course Planner</h1>
+				<div className="links" style={{ textAlign: 'center', paddingTop: '8px' }}>
+					<a href="/How-it-works">How It Works</a>
+					<a href="/SignUp">Sign Up</a>
+					<a href="/">Log In</a>
+				</div>
+				
+			</nav>}
+		
+			
 			
 		</div>
 	);

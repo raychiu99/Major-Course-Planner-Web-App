@@ -42,7 +42,8 @@ export default function Planner() {
     if (isFetching === true){
       
       const recommendedClassesArr = recommendCourses();
-        for (let i = 0; i < 4; i++){
+      console.log(recommendedClassesArr)
+        for (let i = 0; i < recommendedClassesArr.length; i++){
           
           if (recommendedClassesArr[i].length > 0){
             recommendedClassesArr[i].map((className) => {

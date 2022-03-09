@@ -212,6 +212,9 @@ export function CourseProvider({children}, props){
         recommendedArr.push(capstoneRecArr);
         recommendedArr.push(electivesRecArr);
 
+      } else {
+        return [ ["MATH 19A", "MATH 20A", "MATH 19B", "MATH 20B", "AM 10", "MATH 21",
+        "AM 30", "MATH 23A", "CSE 16", "CSE 20", "CSE 12", "CSE 13S","CSE 30"]]
       }
       console.log('Recommendations: ', recommendedArr)
       return recommendedArr;

@@ -25,11 +25,19 @@ export default function SignIn() {
   const handleSubmit = async(event) => {
     event.preventDefault();
     try {
+      let tempObj = {};
+      tempObj.classesTakenArr = [];
+      tempObj.electivesTakenArr = [];
+      tempObj.dcTakenArr = [];
+      tempObj.capstoneTakenArr = [];
+      tempObj.recommendedClassesArr = [];
+      window.localStorage.setItem('user-info', JSON.stringify(tempObj));
       await signIn(email, password)
       history.push("/Courseselection")
     } catch (error) {
       console.log('THERES AN ERROR')
     }
+    
   };
 
   return (
