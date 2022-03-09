@@ -6,8 +6,9 @@ import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
+import DeleteIcon from '@mui/icons-material/Delete';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { Autocomplete, Container, List, ListItem, ListItemText } from '@mui/material';
+import { Autocomplete, Container, List, ListItem, ListItemText, IconButton } from '@mui/material';
 import { getDatabase, get, ref, child } from 'firebase/database';
 import { useAuth } from '../contexts/AuthContext';
 import { useUser } from '../contexts/UserContext';
@@ -174,7 +175,7 @@ export default function AccountSettings() {
                                         sx={{ mt: 3, mb: 2 }}
                                         onSubmit={handleUpdateAcademicStatus}
                                     >
-                                        Save
+                                        Update Status
                                     </Button>
                                 </Box>
                             </Box>
@@ -210,22 +211,41 @@ export default function AccountSettings() {
                                         </Grid>
                                         <Grid item xs={4}>
                                             <Button
-                                                type="submit"
                                                 fullWidth
                                                 variant="contained"
                                                 sx={{ mt: 3, mb: 2 }}
-                                                onSubmit={(event) => { setNewCurrentClasses([...newCurrentClasses, selectedClass]); }}
+                                                onClick={() => { if (selectedClass && newCurrentClasses.indexOf(selectedClass) === -1) setNewCurrentClasses([...newCurrentClasses, selectedClass]); }}
                                             >
                                                 Add
                                             </Button>
                                         </Grid>
                                         <Grid item xs={12}>
-                                            <List>
-                                                {newCurrentClasses.reduce((l, c) => {
-                                                    l.push((<ListItem><ListItemText primary={c} /></ListItem>));
-                                                    return l;
-                                                }, [])}
-                                            </List>
+
+
+                                            <Box sx={{ width: '100%', maxWidth: 800, bgcolor: 'background.paper', backgroundColor: '#fefcf0' }}>
+                                                <nav aria-label="main mailbox folders">
+                                                    {(newCurrentClasses !== undefined) ?
+                                                        <List>
+                                                            <Typography variant='h4'>Classes Taken</Typography>
+                                                            <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 10, sm: 8, md: 12 }}>
+                                                                {newCurrentClasses.map((className) => {
+                                                                    return (
+                                                                        <Grid item key={className} xs={2} sm={4} md={4}>
+                                                                            <ListItem divider={true} sx={{ backgroundColor: '#fefcd0' }}>
+                                                                                <ListItemText>{className}</ListItemText>
+                                                                                <IconButton type="button" onClick={() => { setNewCurrentClasses(newCurrentClasses.filter((c) => c !== className)); }}>
+                                                                                    <DeleteIcon />
+                                                                                </IconButton>
+                                                                            </ListItem>
+                                                                        </Grid>
+                                                                    );
+                                                                })}
+                                                            </Grid>
+                                                        </List> : <></>}
+                                                </nav>
+                                            </Box>
+
+
                                         </Grid>
                                     </Grid>
                                     <Button
@@ -235,7 +255,7 @@ export default function AccountSettings() {
                                         sx={{ mt: 3, mb: 2 }}
                                         onSubmit={handleUpdateCurrentClasses}
                                     >
-                                        Save
+                                        Update Current Classes
                                     </Button>
                                 </Box>
                             </Box>
@@ -302,7 +322,7 @@ export default function AccountSettings() {
                                         sx={{ mt: 3, mb: 2 }}
                                         onSubmit={handleUpdateProfile}
                                     >
-                                        Save
+                                        Update Profile
                                     </Button>
                                 </Box>
                             </Box>
@@ -363,7 +383,7 @@ export default function AccountSettings() {
                                         sx={{ mt: 3, mb: 2 }}
                                         onSubmit={handleUpdatePassword}
                                     >
-                                        Save
+                                        Update Password
                                     </Button>
                                 </Box>
                             </Box>
