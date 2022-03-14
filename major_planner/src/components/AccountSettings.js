@@ -282,7 +282,7 @@ export default function AccountSettings() {
                                             <TextField
                                                 required
                                                 fullWidth
-                                                value={firstName}
+                                                value={userFirstName}
                                                 id="firstName"
                                                 label="First Name"
                                                 name="firstName"
@@ -294,7 +294,7 @@ export default function AccountSettings() {
                                             <TextField
                                                 required
                                                 fullWidth
-                                                value={lastName}
+                                                value={userLastName}
                                                 id="lastName"
                                                 label="Last Name"
                                                 name="lastName"
@@ -306,7 +306,7 @@ export default function AccountSettings() {
                                             <TextField
                                                 required
                                                 fullWidth
-                                                value={email}
+                                                value={userEmail}
                                                 id="email"
                                                 label="Email Address"
                                                 name="email"
